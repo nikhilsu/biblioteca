@@ -1,0 +1,25 @@
+<?xml version = "1.0"?>
+<project name="geometry" default="runjUnit" basedir=".">
+<target name="build" depends="clean">
+<mkdir dir="out"/>
+<javac destdir="out">
+  <src path="src;test"/>
+  <classpath location="lib/junit-4.12.jar"/>
+</javac>
+</target>
+
+<target name="clean" description="Remove any previous output directory">
+<delete dir="out"/>
+</target>
+
+<target name="runjUnit" depends="build" description="runs the junit test cases">
+<junit printsummary="yes" haltonfailure="true"  showoutput="true">
+  <classpath>
+    <pathelement location="lib/junit-4.12.jar"/>
+    <pathelement location="lib/hamcrest-all-1.1.jar"/>
+    <pathelement location="out"/>
+  </classpath>
+    <test name="com.thoughtworks.librarysys" todir="."/>
+</junit>
+</target>
+</project>
