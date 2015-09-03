@@ -19,7 +19,7 @@
     <pathelement location="lib/hamcrest-all-1.1.jar"/>
     <pathelement location="out"/>
   </classpath>
-    <test name="com.thoughtworks.librarysys" todir="."/>
+    <test name="com.thoughtworks.librarysys.ConsoleDisplayTest" todir="."/>
 </junit>
 </target>
 </project>

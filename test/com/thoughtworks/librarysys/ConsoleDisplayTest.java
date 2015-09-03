@@ -18,7 +18,7 @@ public class ConsoleDisplayTest {
 
     @After
     public void cleanUpStream() {
-        System.setOut(null);
+        System.setOut(System.out);
     }
 
     @Test
