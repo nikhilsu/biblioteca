@@ -35,15 +35,16 @@ public class ConsoleDisplayTest {
 
     @Test
     public void shouldDisplayAListOfBooksAlongWithTheWelcomeMessage() {
-        ArrayList<String> message = new ArrayList<String>();
-        message.add("Welcome");
+        ArrayList<String> messageToDisplay = new ArrayList<String>();
+        messageToDisplay.add("Welcome");
+
         ArrayList<String> listOfBooks = new ArrayList<String>();
         listOfBooks.add("Harry Potter");
         listOfBooks.add("Inferno");
         listOfBooks.add("Kite Runner");
-        message.addAll(listOfBooks);
+        messageToDisplay.addAll(listOfBooks);
 
-        ConsoleDisplay consoleDisplay = new ConsoleDisplay(message);
+        ConsoleDisplay consoleDisplay = new ConsoleDisplay(messageToDisplay);
 
         consoleDisplay.displayOnScreen();
 

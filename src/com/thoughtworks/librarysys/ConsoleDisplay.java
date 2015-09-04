@@ -2,7 +2,7 @@ package com.thoughtworks.librarysys;
 
 import java.util.ArrayList;
 
-//Takes in a string and prints it on the console
+//Takes in a message and prints it on the console
 public class ConsoleDisplay {
     private ArrayList<String> message;
 
