@@ -32,26 +32,4 @@ public class ConsoleDisplayTest {
 
         assertEquals("Welcome\n", outputStream.toString());
     }
-
-    @Test
-    public void shouldDisplayAListOfBooksAlongWithTheWelcomeMessage() {
-        ArrayList<String> messageToDisplay = new ArrayList<String>();
-        messageToDisplay.add("Welcome");
-
-        ArrayList<String> listOfBooks = new ArrayList<String>();
-        listOfBooks.add("Harry Potter");
-        listOfBooks.add("Inferno");
-        listOfBooks.add("Kite Runner");
-        messageToDisplay.addAll(listOfBooks);
-
-        ConsoleDisplay consoleDisplay = new ConsoleDisplay(messageToDisplay);
-
-        consoleDisplay.displayOnScreen();
-
-        String testString = "Welcome\n" +
-                "Harry Potter\n" +
-                "Inferno\n" +
-                "Kite Runner\n";
-        assertEquals(testString, outputStream.toString());
-    }
 }
