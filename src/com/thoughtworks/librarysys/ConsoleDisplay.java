@@ -14,8 +14,11 @@ public class ConsoleDisplay {
 
     public void displayOnScreen() {
         System.out.println(message);
-        for(String book : books){
-            System.out.println(book);
+        if (books.size() > 0) {
+            System.out.println("Name of the Book\tAuthor\tYear Of Publication");
+            for (String book : books) {
+                System.out.println(book);
+            }
         }
     }
 }
