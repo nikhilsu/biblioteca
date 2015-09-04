@@ -24,8 +24,9 @@ public class ConsoleDisplayTest {
 
     @Test
     public void shouldDisplayAStringThatIsPassedToTheConsoleDisplay() {
-        String message = "Welcome";
-        ConsoleDisplay consoleDisplay = new ConsoleDisplay(message, new ArrayList<String>());
+        ArrayList<String> message = new ArrayList<String>();
+        ConsoleDisplay consoleDisplay = new ConsoleDisplay(message);
+        message.add("Welcome");
 
         consoleDisplay.displayOnScreen();
 
@@ -34,18 +35,22 @@ public class ConsoleDisplayTest {
 
     @Test
     public void shouldDisplayAListOfBooksAlongWithTheWelcomeMessage() {
-        ArrayList<String> listOfBookDetail = new ArrayList<String>();
-        listOfBookDetail.add("Harry Potter\tJ.K Rowling\t1997");
-        listOfBookDetail.add("The Monk Who Sold His Ferrari\tRohit Sharma\t1997");
-        listOfBookDetail.add("Inferno\tDan Brown\t2012");
-        listOfBookDetail.add("Kite Runner\tKhaled Hosseini\t2003");
-        ConsoleDisplay consoleDisplay = new ConsoleDisplay("Welcome", listOfBookDetail);
+        ArrayList<String> message = new ArrayList<String>();
+        message.add("Welcome");
+        ArrayList<String> listOfBooks = new ArrayList<String>();
+        listOfBooks.add("Harry Potter");
+        listOfBooks.add("Inferno");
+        listOfBooks.add("Kite Runner");
+        message.addAll(listOfBooks);
+
+        ConsoleDisplay consoleDisplay = new ConsoleDisplay(message);
 
         consoleDisplay.displayOnScreen();
 
-        String testString = "Welcome\nName of the Book\tAuthor\tYear Of Publication\n" +
-                "Harry Potter\tJ.K Rowling\t1997\nThe Monk Who Sold His Ferrari\tRohit Sharma\t1997\n" +
-                "Inferno\tDan Brown\t2012\nKite Runner\tKhaled Hosseini\t2003\n";
+        String testString = "Welcome\n" +
+                "Harry Potter\n" +
+                "Inferno\n" +
+                "Kite Runner\n";
         assertEquals(testString, outputStream.toString());
     }
 }
