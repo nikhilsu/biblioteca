@@ -3,19 +3,17 @@ package com.thoughtworks.librarysys;
 import java.util.ArrayList;
 
 public class BookList {
-    private ArrayList<String> listOfBooks = new ArrayList<String>();
+    private ArrayList<Book> listOfBooks = new ArrayList<Book>();
 
-    public BookList() {
-        listOfBooks.add("Gone Girl");
-        listOfBooks.add("Inferno");
-        listOfBooks.add("Kite Runner");
+    public BookList(ArrayList<Book> listOfBooks) {
+        this.listOfBooks = listOfBooks;
     }
 
     @Override
     public String toString() {
-        String names = "";
-        for (String bookName : listOfBooks)
-            names += bookName + "\n";
-        return names;
+        String listOfBookDetails = "Name Of The Book\tAuthor\tYear Of Publication\n";
+        for (Book book : listOfBooks)
+            listOfBookDetails += book.toString();
+        return listOfBookDetails;
     }
 }
