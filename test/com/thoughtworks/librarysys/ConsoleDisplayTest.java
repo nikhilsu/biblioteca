@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
+
 
 import static org.junit.Assert.*;
 
@@ -24,9 +24,8 @@ public class ConsoleDisplayTest {
 
     @Test
     public void shouldDisplayAStringThatIsPassedToTheConsoleDisplay() {
-        ArrayList<String> message = new ArrayList<String>();
+        String message = "Welcome";
         ConsoleDisplay consoleDisplay = new ConsoleDisplay(message);
-        message.add("Welcome");
 
         consoleDisplay.displayOnScreen();
 
