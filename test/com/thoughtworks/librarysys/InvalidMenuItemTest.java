@@ -12,4 +12,11 @@ public class InvalidMenuItemTest {
 
         assertEquals("Select a valid option!\n", invalidMenuItem.performOperation());
     }
+
+    @Test
+    public void shouldReturnTheStringSelectAValidChoiceWhenToStringMethodIsCalled() {
+        InvalidMenuItem invalidMenuItem = new InvalidMenuItem();
+
+        assertEquals("Select a valid option!\n", invalidMenuItem.toString());
+    }
 }
