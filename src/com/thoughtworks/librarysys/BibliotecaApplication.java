@@ -14,16 +14,18 @@ public class BibliotecaApplication {
     }
 
     public void run() {
-        ConsoleDisplay consoleDisplay = new ConsoleDisplay(welcomeUser.toString());
-        consoleDisplay.displayOnScreen();
-        consoleDisplay = new ConsoleDisplay(mainMenuItem.performOperation());
-        consoleDisplay.displayOnScreen();
+        printToConsole(welcomeUser.toString());
+        printToConsole(mainMenuItem.performOperation());
         ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
         String choice = consoleInput.inputFromUser();
         InputParser inputParser = new InputParser(mainMenuItem, library);
-        MainMenuItem parserOutput = inputParser.parse(choice);
-        String outputMessageFromMenuItem = parserOutput.performOperation();
-        consoleDisplay = new ConsoleDisplay(outputMessageFromMenuItem);
+        MainMenuItem parsedMainMenuType = inputParser.parse(choice);
+        String outputMessageFromMenuItem = parsedMainMenuType.performOperation();
+        printToConsole(outputMessageFromMenuItem);
+    }
+
+    private void printToConsole(String stringToPrint) {
+        ConsoleDisplay consoleDisplay = new ConsoleDisplay(stringToPrint);
         consoleDisplay.displayOnScreen();
     }
 }
