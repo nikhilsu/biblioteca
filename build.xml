@@ -5,11 +5,13 @@
      <path id="test.compile.classpath" description="classpath for compiling test-sources">
           <pathelement location="out/classes" />
           <pathelement location="lib/junit-4.12.jar" />
+          <pathelement location="lib/system-rules-1.12.0.jar" />
      </path>
      <path id="test.runtime.classpath" description="classpath for running junit-tests">
           <pathelement location="out/testclasses" />
           <pathelement location="out/instrumentedclasses" />
           <pathelement location="lib/junit-4.12.jar" />
+          <pathelement location="lib/system-rules-1.12.0.jar" />
           <pathelement location="lib/hamcrest-all-1.1.jar" />
      </path>
      <path id="cobertura.classpath" description="classpath for instrumenting classes">

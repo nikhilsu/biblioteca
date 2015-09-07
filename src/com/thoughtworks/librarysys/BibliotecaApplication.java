@@ -22,6 +22,8 @@ public class BibliotecaApplication {
             return;
         if (choice.equals("1"))
             new ConsoleDisplay(bookList.toString()).displayOnScreen();
+        else if (choice.equals("2"))
+            System.exit(0);
         else
             new ConsoleDisplay("Select a valid option!").displayOnScreen();
     }
