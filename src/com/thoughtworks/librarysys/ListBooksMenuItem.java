@@ -1,6 +1,7 @@
 package com.thoughtworks.librarysys;
 
-public class ListBooksMenuItem extends MainMenuItem{
+//listbooksmenuitem is a mainmenuitem that returns the list of all the books in the library
+public class ListBooksMenuItem extends MainMenuItem {
     Library library;
 
     public ListBooksMenuItem(Library library) {

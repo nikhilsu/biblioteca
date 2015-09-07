@@ -1,5 +1,6 @@
 package com.thoughtworks.librarysys;
 
+//input parser parses a string input to concrete mainmenuitem types
 public class InputParser {
     MainMenuItem mainMenuItem;
     Library library;

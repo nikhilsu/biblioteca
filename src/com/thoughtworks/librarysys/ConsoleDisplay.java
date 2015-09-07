@@ -9,6 +9,6 @@ public class ConsoleDisplay {
     }
 
     public void displayOnScreen() {
-            System.out.print(message);
+        System.out.print(message);
     }
 }

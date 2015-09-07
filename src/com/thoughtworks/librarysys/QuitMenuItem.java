@@ -1,6 +1,7 @@
 package com.thoughtworks.librarysys;
 
-public class QuitMenuItem extends MainMenuItem{
+//quitMenuItem is a mainmenuitem that exits the application
+public class QuitMenuItem extends MainMenuItem {
 
     @Override
     public String performOperation() {

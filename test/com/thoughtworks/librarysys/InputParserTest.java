@@ -49,6 +49,7 @@ public class InputParserTest {
 
         assertEquals(new QuitMenuItem().getClass(), inputParser.parse(userChoice).getClass());
     }
+
     @Test
     public void shouldReturnAnObjectOfTypeInvalidMenuChoiceWhenTheUsersChoiceOfMenuItemIsInvalid() {
         ArrayList<String> listOfMenuItems = new ArrayList<>();

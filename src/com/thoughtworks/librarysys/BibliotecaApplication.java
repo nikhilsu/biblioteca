@@ -2,6 +2,7 @@ package com.thoughtworks.librarysys;
 
 import java.util.Scanner;
 
+//Biblioteca application creates the necessary objects to run the application
 public class BibliotecaApplication {
     WelcomeUser welcomeUser;
     MainMenuItem mainMenuItem;
