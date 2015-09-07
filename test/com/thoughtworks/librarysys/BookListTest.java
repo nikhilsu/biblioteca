@@ -19,10 +19,10 @@ public class BookListTest {
         listOfBooks.add(bookThree);
         BookList bookList = new BookList(listOfBooks);
 
-        String testString = "Name Of The Book\tAuthor\tYear Of Publication\n" +
-                "Gone Girl\tGillian Flynn\t2014\n" +
-                "Kite Runner\tKhaled Hossieni\t2003\n" +
-                "Inferno\tDan Brown\t2012\n";
+        String testString = String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
+                String.format("%-30s%-30s%-20s\n", "Gone Girl", "Gillian Flynn", 2014) +
+                String.format("%-30s%-30s%-20s\n", "Kite Runner", "Khaled Hossieni", 2003) +
+                String.format("%-30s%-30s%-20s\n", "Inferno", "Dan Brown", 2012);
 
         assertEquals(testString, bookList.toString());
     }

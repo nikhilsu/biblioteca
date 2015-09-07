@@ -8,8 +8,8 @@ public class WelcomeUserTest {
 
     @Test
     public void shouldPrintAWelcomeMessageToGreetTheUser() {
-        WelcomeUser welcomeUser = new WelcomeUser();
+        WelcomeUser welcomeUser = new WelcomeUser("Welcome");
 
-        assertEquals("Welcome", welcomeUser.toString());
+        assertEquals("Welcome\n", welcomeUser.toString());
     }
 }

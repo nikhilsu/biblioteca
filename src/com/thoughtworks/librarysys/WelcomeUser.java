@@ -4,8 +4,8 @@ package com.thoughtworks.librarysys;
 public class WelcomeUser {
     private String welcomeMessage;
 
-    public WelcomeUser(){
-        welcomeMessage = "Welcome";
+    public WelcomeUser(String welcomeMessage) {
+        this.welcomeMessage = welcomeMessage + "\n";
     }
 
     @Override

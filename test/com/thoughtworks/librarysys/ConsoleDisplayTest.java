@@ -24,7 +24,7 @@ public class ConsoleDisplayTest {
 
     @Test
     public void shouldDisplayAStringThatIsPassedToTheConsoleDisplay() {
-        String message = "Welcome";
+        String message = "Welcome\n";
         ConsoleDisplay consoleDisplay = new ConsoleDisplay(message);
 
         consoleDisplay.displayOnScreen();

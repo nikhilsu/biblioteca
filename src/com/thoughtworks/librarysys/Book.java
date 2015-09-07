@@ -1,5 +1,5 @@
 package com.thoughtworks.librarysys;
-
+//book has a name author and year of publication and returns them in a required format
 public class Book {
     private String name;
     private String author;
@@ -13,6 +13,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return this.name+"\t"+this.author+"\t"+yearOfPublication+"\n";
+        return String.format("%-30s%-30s%-20s\n", this.name, this.author, yearOfPublication);
     }
 }
