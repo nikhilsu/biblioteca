@@ -18,7 +18,11 @@ public class BibliotecaApplication {
         new ConsoleDisplay(mainMenu.toString()).displayOnScreen();
         ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
         String choice = consoleInput.inputFromUser();
+        if (choice.equals(""))
+            return;
         if (choice.equals("1"))
             new ConsoleDisplay(bookList.toString()).displayOnScreen();
+        else
+            new ConsoleDisplay("Select a valid option!").displayOnScreen();
     }
 }
