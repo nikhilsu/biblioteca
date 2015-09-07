@@ -2,10 +2,10 @@ package com.thoughtworks.librarysys;
 
 import java.util.ArrayList;
 //booklist has a list of books whose details are returned with a column header
-public class BookList {
+public class Library {
     private ArrayList<Book> listOfBooks = new ArrayList<Book>();
 
-    public BookList(ArrayList<Book> listOfBooks) {
+    public Library(ArrayList<Book> listOfBooks) {
         this.listOfBooks = listOfBooks;
     }
 

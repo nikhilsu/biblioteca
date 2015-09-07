@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class BookListTest {
+public class LibraryTest {
 
     @Test
     public void shouldReturnTheNamesOfAllTheBooksInTheList() {
@@ -17,13 +17,13 @@ public class BookListTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        BookList bookList = new BookList(listOfBooks);
+        Library library = new Library(listOfBooks);
 
         String testString = String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
                 String.format("%-30s%-30s%-20s\n", "Gone Girl", "Gillian Flynn", 2014) +
                 String.format("%-30s%-30s%-20s\n", "Kite Runner", "Khaled Hossieni", 2003) +
                 String.format("%-30s%-30s%-20s\n", "Inferno", "Dan Brown", 2012);
 
-        assertEquals(testString, bookList.toString());
+        assertEquals(testString, library.toString());
     }
 }

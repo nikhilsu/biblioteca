@@ -1,11 +1,14 @@
 package com.thoughtworks.librarysys;
 
 import java.util.ArrayList;
-//MainMenu has a list of items that is displayed on the screen
-public class MainMenu {
+//MainMenuItem has a list of items that is displayed on the screen
+public class MainMenuItem {
     private ArrayList<String> listOfMenuItems;
 
-    public MainMenu(ArrayList<String> listOfMenuItems) {
+    public MainMenuItem() {
+    }
+
+    public MainMenuItem(ArrayList<String> listOfMenuItems) {
         this.listOfMenuItems = listOfMenuItems;
     }
 
