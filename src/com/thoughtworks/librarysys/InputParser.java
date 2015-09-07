@@ -12,6 +12,7 @@ public class InputParser {
     public MainMenuItem parse(String userChoice) {
         if (userChoice.equals("1"))
             return new ListBooksMenuItem(library);
-        else return mainMenuItem;
+        else
+            return new QuitMenuItem();
     }
 }
