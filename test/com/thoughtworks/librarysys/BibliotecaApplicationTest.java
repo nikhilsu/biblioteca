@@ -11,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class BibliotecaApplicationTest {
@@ -44,7 +45,7 @@ public class BibliotecaApplicationTest {
         listOfMenuItems.add("2. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("\n".getBytes());
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("0\n".getBytes());
         System.setIn(inputStream);
         bibliotecaApplication.run();
         System.setIn(System.in);
@@ -53,7 +54,7 @@ public class BibliotecaApplicationTest {
                 "1. List Books\n" +
                 "2. Quit\n";
 
-        assertEquals(testString, outputStream.toString());
+        assertTrue(outputStream.toString().contains(testString));
     }
 
     @Test
@@ -109,7 +110,7 @@ public class BibliotecaApplicationTest {
         String testString = "Welcome to The Biblioteca\n" +
                 "1. List Books\n" +
                 "2. Quit\n" +
-                "Select a valid option!";
+                "Select a valid option!\n";
 
         assertEquals(testString, outputStream.toString());
     }

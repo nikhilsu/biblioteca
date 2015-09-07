@@ -14,17 +14,16 @@ public class BibliotecaApplication {
     }
 
     public void run() {
-        new ConsoleDisplay(welcomeUser.toString()).displayOnScreen();
-        new ConsoleDisplay(mainMenuItem.toString()).displayOnScreen();
+        ConsoleDisplay consoleDisplay = new ConsoleDisplay(welcomeUser.toString());
+        consoleDisplay.displayOnScreen();
+        consoleDisplay = new ConsoleDisplay(mainMenuItem.performOperation());
+        consoleDisplay.displayOnScreen();
         ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
         String choice = consoleInput.inputFromUser();
-        if (choice.equals(""))
-            return;
-        if (choice.equals("1"))
-            new ConsoleDisplay(library.toString()).displayOnScreen();
-        else if (choice.equals("2"))
-            System.exit(0);
-        else
-            new ConsoleDisplay("Select a valid option!").displayOnScreen();
+        InputParser inputParser = new InputParser(mainMenuItem, library);
+        MainMenuItem parserOutput = inputParser.parse(choice);
+        String outputMessageFromMenuItem = parserOutput.performOperation();
+        consoleDisplay = new ConsoleDisplay(outputMessageFromMenuItem);
+        consoleDisplay.displayOnScreen();
     }
 }
