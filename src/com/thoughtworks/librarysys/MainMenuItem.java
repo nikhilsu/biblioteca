@@ -12,6 +12,10 @@ public class MainMenuItem {
         this.listOfMenuItems = listOfMenuItems;
     }
 
+    public String performOperation() {
+        return this.toString();
+    }
+
     @Override
     public String toString() {
         String menu = "";
