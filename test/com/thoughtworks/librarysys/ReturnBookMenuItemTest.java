@@ -21,10 +21,9 @@ public class ReturnBookMenuItemTest {
         Book book = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(book);
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library);
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(library);
 
-        assertEquals("Done\n", checkoutBookMenuItem.performOperation());
+        assertEquals("Done\n", returnBookMenuItem.performOperation());
         System.setIn(System.in);
     }
-
 }
