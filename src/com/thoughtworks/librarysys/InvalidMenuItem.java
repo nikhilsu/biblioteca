@@ -2,6 +2,11 @@ package com.thoughtworks.librarysys;
 
 //invalidmenuitem is a mainmenuitem that return "select a valic option!" string
 public class InvalidMenuItem extends MainMenuItem {
+    private String displayMessage;
+
+    public InvalidMenuItem(String displayMessage){
+        this.displayMessage = displayMessage + "\n";
+    }
 
     @Override
     public String performOperation() {
@@ -10,7 +15,7 @@ public class InvalidMenuItem extends MainMenuItem {
 
     @Override
     public String toString() {
-        return "Select a valid option!\n";
+        return displayMessage;
     }
 }
 

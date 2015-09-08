@@ -67,6 +67,6 @@ public class InputParserTest {
         InputParser inputParser = new InputParser(mainMenuItem, library);
 
         String userChoice = "0";
-        assertEquals(new InvalidMenuItem().getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new InvalidMenuItem("Select a valid option!").getClass(), inputParser.parse(userChoice).getClass());
     }
 }

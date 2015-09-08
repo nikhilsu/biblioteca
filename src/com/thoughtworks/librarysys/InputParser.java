@@ -16,6 +16,6 @@ public class InputParser {
         else if (userChoice.equals("2"))
             return new QuitMenuItem();
         else
-            return new InvalidMenuItem();
+            return new InvalidMenuItem("Select a valid option!");
     }
 }
