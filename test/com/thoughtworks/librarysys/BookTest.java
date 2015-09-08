@@ -21,4 +21,11 @@ public class BookTest {
 
         assertEquals(book, book);
     }
+
+    @Test
+    public void isNotEqualToSomethingThatIsNotABook() {
+        Book book = new Book("Kite Runner", "Khaled Hossieni", 2003);
+
+        assertNotEquals(book, "Book");
+    }
 }
