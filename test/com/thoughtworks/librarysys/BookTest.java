@@ -28,4 +28,11 @@ public class BookTest {
 
         assertNotEquals(book, "Book");
     }
+
+    @Test
+    public void isNotEqualToNull() {
+        Book book = new Book("Kite Runner", "Khaled Hossieni", 2003);
+
+        assertNotEquals(book, null);
+    }
 }

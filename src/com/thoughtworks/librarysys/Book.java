@@ -19,7 +19,7 @@ public class Book {
 
     @Override
     public boolean equals(Object obj) {
-        if (this.getClass() != obj.getClass())
+        if (obj == null || this.getClass() != obj.getClass())
             return false;
         Book that = (Book) obj;
         if (this.name.equals(that.name))
