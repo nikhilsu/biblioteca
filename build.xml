@@ -58,7 +58,7 @@
      </target>
  
      <target name="runjUnit" depends="compile.tests">
-          <junit fork="yes" forkmode="once" printsummary="yes" haltonfailure="no" showoutput="true">
+          <junit fork="yes" forkmode="once" printsummary="yes" haltonfailure="yes" showoutput="true">
                <formatter type="xml" />
                <classpath refid="test.runtime.classpath" />
                <batchtest todir="out/reports/junit">
