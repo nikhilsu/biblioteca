@@ -19,7 +19,7 @@ public class BibliotecaApplication {
         printToConsole(mainMenuItem.performOperation());
         ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
         String choice = consoleInput.inputFromUser();
-        InputParser inputParser = new InputParser(mainMenuItem, library);
+        InputParser inputParser = new InputParser(library);
         MainMenuItem parsedMainMenuType = inputParser.parse(choice);
         String outputMessageFromMenuItem = parsedMainMenuType.performOperation();
         printToConsole(outputMessageFromMenuItem);
