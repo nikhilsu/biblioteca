@@ -203,6 +203,42 @@ public class BibliotecaApplicationTest {
     }
 
     @Test
+    public void shouldReturnABookWhoseNameIsPassedAsInputToTheApplicationWhenTheUserSelectsTheReturnMenuMenuItem() {
+        WelcomeUser welcomeUser = new WelcomeUser("Welcome to The Biblioteca");
+        Book bookOne = new Book("Kite Runner", "Khaled Hossieni", 2003);
+        Book bookTwo = new Book("Inferno", "Dan Brown", 2012);
+        ArrayList<Book> listOfBooks = new ArrayList<>();
+        listOfBooks.add(bookOne);
+        listOfBooks.add(bookTwo);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Book borrowedBook = new Book("Gone Girl", "Gillian Flynn", 2014);
+        listOfCheckedOutBooks.add(borrowedBook);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
+        ArrayList<String> listOfMenuItems = new ArrayList<>();
+        listOfMenuItems.add("1. List Books");
+        listOfMenuItems.add("2. Checkout Book");
+        listOfMenuItems.add("3. Return Book");
+        listOfMenuItems.add("4. Quit");
+        MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
+        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("Gone Girl\n".getBytes());
+        System.setIn(inputStream);
+        ConsoleInput c = mock(ConsoleInput.class);
+        when(c.inputFromUser()).thenReturn("3");
+        bibliotecaApplication.run(c);
+        System.setIn(System.in);
+
+        String testString = "Welcome to The Biblioteca\n" +
+                "1. List Books\n" +
+                "2. Checkout Book\n" +
+                "3. Return Book\n" +
+                "4. Quit\n" +
+                "Thank you for returning the book\n";
+
+        assertEquals(testString, outputStream.toString());
+    }
+
+    @Test
     public void shouldExitTheApplicationWhenTheUserSelectsTheExitMenuItem() {
         WelcomeUser welcomeUser = new WelcomeUser("Welcome to The Biblioteca");
         Book bookOne = new Book("Kite Runner", "Khaled Hossieni", 2003);
