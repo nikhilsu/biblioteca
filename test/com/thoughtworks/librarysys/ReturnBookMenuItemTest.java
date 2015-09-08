@@ -43,7 +43,7 @@ public class ReturnBookMenuItemTest {
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(library);
 
-        assertEquals("Can't perform OP\n", returnBookMenuItem.performOperation());
+        assertEquals("That is not a valid book to return\n", returnBookMenuItem.performOperation());
         System.setIn(System.in);
     }
 }

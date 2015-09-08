@@ -17,6 +17,6 @@ public class ReturnBookMenuItem extends  MainMenuItem{
         if (library.toReturn(bookToBeReturned) == true)
             return "Thank you for returning the book\n";
         else
-            return "Can't perform OP\n";
+            return "That is not a valid book to return\n";
     }
 }
