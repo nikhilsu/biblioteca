@@ -24,7 +24,7 @@ public class CheckoutBookMenuItemTest {
         Library library = new Library(listOfBooks);
         CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library);
 
-        assertEquals("Thank you! Enjoy the book", checkoutBookMenuItem.performOperation());
+        assertEquals("Thank you! Enjoy the book\n", checkoutBookMenuItem.performOperation());
         System.setIn(System.in);
     }
 
@@ -42,7 +42,7 @@ public class CheckoutBookMenuItemTest {
         Library library = new Library(listOfBooks);
         CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library);
 
-        assertEquals("Can't perform OP", checkoutBookMenuItem.performOperation());
+        assertEquals("That book is not available\n", checkoutBookMenuItem.performOperation());
         System.setIn(System.in);
     }
 }

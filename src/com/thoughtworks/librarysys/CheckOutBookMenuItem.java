@@ -18,6 +18,6 @@ public class CheckoutBookMenuItem extends MainMenuItem{
         if (library.checkOut(bookToCheckout) == true)
             return "Thank you! Enjoy the book\n";
         else
-            return "Can't perform OP\n";
+            return "That book is not available\n";
     }
 }

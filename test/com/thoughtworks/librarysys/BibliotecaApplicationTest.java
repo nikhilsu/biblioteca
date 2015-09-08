@@ -150,6 +150,35 @@ public class BibliotecaApplicationTest {
     }
 
     @Test
+    public void shouldNotCheckoutABookWhichIsNotAvailableInTheLibraryAndShouldIntimateTheUserAboutTheSame() {
+        WelcomeUser welcomeUser = new WelcomeUser("Welcome to The Biblioteca");
+        Book bookOne = new Book("Kite Runner", "Khaled Hossieni", 2003);
+        Book bookTwo = new Book("Inferno", "Dan Brown", 2012);
+        ArrayList<Book> listOfBooks = new ArrayList<>();
+        listOfBooks.add(bookOne);
+        listOfBooks.add(bookTwo);
+        Library library = new Library(listOfBooks);
+        ArrayList<String> listOfMenuItems = new ArrayList<>();
+        listOfMenuItems.add("1. List Books");
+        listOfMenuItems.add("2. Checkout Book");
+        listOfMenuItems.add("3. Quit");
+        MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
+        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("2\r\n Head First Java\r\n".getBytes());
+        System.setIn(inputStream);
+        bibliotecaApplication.run();
+        System.setIn(System.in);
+
+        String testString = "Welcome to The Biblioteca\n" +
+                "1. List Books\n" +
+                "2. Checkout Book\n" +
+                "3. Quit\n" +
+                "That book is not available\n";
+
+        assertEquals(testString, outputStream.toString());
+    }
+
+    @Test
     public void shouldExitTheApplicationWhenTheUserSelectsTheExitMenuItem() {
         WelcomeUser welcomeUser = new WelcomeUser("Welcome to The Biblioteca");
         Book bookOne = new Book("Kite Runner", "Khaled Hossieni", 2003);
