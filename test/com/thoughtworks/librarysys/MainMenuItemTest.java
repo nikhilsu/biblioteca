@@ -10,13 +10,18 @@ public class MainMenuItemTest {
 
     @Test
     public void shouldDisplayTheMainMenu() {
-        ArrayList<String> listOfItems = new ArrayList<String>();
-        listOfItems.add("1. List books");
-        listOfItems.add("2. Quit");
-        MainMenuItem mainMenuItem = new MainMenuItem(listOfItems);
+        ArrayList<String> listOfMenuItems = new ArrayList<String>();
+        listOfMenuItems.add("1. List Books");
+        listOfMenuItems.add("2. Checkout Book");
+        listOfMenuItems.add("3. Return Book");
+        listOfMenuItems.add("4. Quit");
+        MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
 
-        String testString = "1. List books\n" +
-                "2. Quit\n";
+        String testString = "Welcome to The Biblioteca\n" +
+                "1. List Books\n" +
+                "2. Checkout Book\n" +
+                "3. Return Book\n" +
+                "4. Quit\n";
 
         assertEquals(testString, mainMenuItem.toString());
     }

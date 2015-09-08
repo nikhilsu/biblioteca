@@ -16,6 +16,8 @@ public class InputParser {
         else if (userChoice.equals("2"))
             return new CheckoutBookMenuItem(library);
         else if (userChoice.equals("3"))
+            return new ReturnBookMenuItem(library);
+        else if (userChoice.equals("4"))
             return new QuitMenuItem();
         else
             return new InvalidMenuItem("Select a valid option!");

@@ -46,7 +46,8 @@ public class BibliotecaApplicationTest {
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
-        listOfMenuItems.add("3. Quit");
+        listOfMenuItems.add("3. Return Book");
+        listOfMenuItems.add("4. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
         ByteArrayInputStream inputStream = new ByteArrayInputStream("0\n".getBytes());
@@ -58,7 +59,8 @@ public class BibliotecaApplicationTest {
         String testString = "Welcome to The Biblioteca\n" +
                 "1. List Books\n" +
                 "2. Checkout Book\n" +
-                "3. Quit\n";
+                "3. Return Book\n" +
+                "4. Quit\n";
 
         assertTrue(outputStream.toString().contains(testString));
     }
@@ -76,7 +78,8 @@ public class BibliotecaApplicationTest {
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
-        listOfMenuItems.add("3. Quit");
+        listOfMenuItems.add("3. Return Book");
+        listOfMenuItems.add("4. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
 
@@ -89,7 +92,8 @@ public class BibliotecaApplicationTest {
         String testString = "Welcome to The Biblioteca\n" +
                 "1. List Books\n" +
                 "2. Checkout Book\n" +
-                "3. Quit\n" +
+                "3. Return Book\n" +
+                "4. Quit\n" +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
                 String.format("%-30s%-30s%-20s\n", "Kite Runner", "Khaled Hossieni", 2003) +
                 String.format("%-30s%-30s%-20s\n", "Inferno", "Dan Brown", 2012);
@@ -110,7 +114,8 @@ public class BibliotecaApplicationTest {
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
-        listOfMenuItems.add("3. Quit");
+        listOfMenuItems.add("3. Return Book");
+        listOfMenuItems.add("4. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
         ByteArrayInputStream inputStream = new ByteArrayInputStream("7\n".getBytes());
@@ -122,7 +127,8 @@ public class BibliotecaApplicationTest {
         String testString = "Welcome to The Biblioteca\n" +
                 "1. List Books\n" +
                 "2. Checkout Book\n" +
-                "3. Quit\n" +
+                "3. Return Book\n" +
+                "4. Quit\n" +
                 "Select a valid option!\n";
 
         assertEquals(testString, outputStream.toString());
@@ -141,7 +147,8 @@ public class BibliotecaApplicationTest {
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
-        listOfMenuItems.add("3. Quit");
+        listOfMenuItems.add("3. Return Book");
+        listOfMenuItems.add("4. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
         ByteArrayInputStream inputStream = new ByteArrayInputStream("Kite Runner\n".getBytes());
@@ -154,7 +161,8 @@ public class BibliotecaApplicationTest {
         String testString = "Welcome to The Biblioteca\n" +
                 "1. List Books\n" +
                 "2. Checkout Book\n" +
-                "3. Quit\n" +
+                "3. Return Book\n" +
+                "4. Quit\n" +
                 "Thank you! Enjoy the book\n";
 
         assertEquals(testString, outputStream.toString());
@@ -173,7 +181,8 @@ public class BibliotecaApplicationTest {
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
-        listOfMenuItems.add("3. Quit");
+        listOfMenuItems.add("3. Return Book");
+        listOfMenuItems.add("4. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
         ByteArrayInputStream inputStream = new ByteArrayInputStream("Head First Java\r\n".getBytes());
@@ -186,7 +195,8 @@ public class BibliotecaApplicationTest {
         String testString = "Welcome to The Biblioteca\n" +
                 "1. List Books\n" +
                 "2. Checkout Book\n" +
-                "3. Quit\n" +
+                "3. Return Book\n" +
+                "4. Quit\n" +
                 "That book is not available\n";
 
         assertEquals(testString, outputStream.toString());
@@ -205,10 +215,11 @@ public class BibliotecaApplicationTest {
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
-        listOfMenuItems.add("3. Quit");
+        listOfMenuItems.add("3. Return Book");
+        listOfMenuItems.add("4. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("3\n".getBytes());
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("4\n".getBytes());
         System.setIn(inputStream);
 
         exit.expectSystemExit();
