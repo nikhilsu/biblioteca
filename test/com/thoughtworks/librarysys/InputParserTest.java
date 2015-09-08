@@ -40,7 +40,7 @@ public class InputParserTest {
 
         String userChoice = "2";
 
-        assertEquals(new CheckoutBookMenuItem(library, new ConsoleInput(new Scanner(System.in))).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new CheckoutBookMenuItem(library).getClass(), inputParser.parse(userChoice).getClass());
     }
 
     @Test

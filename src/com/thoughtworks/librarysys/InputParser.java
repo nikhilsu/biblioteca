@@ -14,7 +14,7 @@ public class InputParser {
         if (userChoice.equals("1"))
             return new ListBooksMenuItem(library);
         else if (userChoice.equals("2"))
-            return new CheckoutBookMenuItem(library, new ConsoleInput(new Scanner(System.in)));
+            return new CheckoutBookMenuItem(library);
         else if (userChoice.equals("3"))
             return new QuitMenuItem();
         else

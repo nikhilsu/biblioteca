@@ -14,7 +14,6 @@ public class CheckoutBookMenuItemTest {
     public void shouldCheckoutABookFromTheListOfBooksInTheLibraryByInputtingTheNameOfTheBook() {
         ByteArrayInputStream inputStream = new ByteArrayInputStream("Gone Girl\n".getBytes());
         System.setIn(inputStream);
-        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
         ArrayList<Book> listOfBooks = new ArrayList<Book>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
@@ -23,7 +22,7 @@ public class CheckoutBookMenuItemTest {
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
         Library library = new Library(listOfBooks);
-        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library, consoleInput);
+        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library);
 
         assertEquals("Done", checkoutBookMenuItem.performOperation());
         System.setIn(System.in);
@@ -33,7 +32,6 @@ public class CheckoutBookMenuItemTest {
     public void shouldNotCheckOutABookFromTheLibraryIfItIsNotABookFromTheLibrary() {
         ByteArrayInputStream inputStream = new ByteArrayInputStream("Head First Java\n".getBytes());
         System.setIn(inputStream);
-        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
         ArrayList<Book> listOfBooks = new ArrayList<>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
@@ -42,7 +40,7 @@ public class CheckoutBookMenuItemTest {
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
         Library library = new Library(listOfBooks);
-        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library, consoleInput);
+        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library);
 
         assertEquals("Can't perform OP", checkoutBookMenuItem.performOperation());
         System.setIn(System.in);
