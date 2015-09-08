@@ -35,4 +35,11 @@ public class BookTest {
 
         assertNotEquals(book, null);
     }
+
+    @Test
+    public void hasSameHashCodeWhenPointsAreSame() {
+        Book book = new Book("Kite Runner", "Khaled Hossieni", 2003);
+
+        assertEquals(book.hashCode(), book.hashCode());
+    }
 }
