@@ -18,7 +18,13 @@ public class Library {
         return listOfBookDetails;
     }
 
-    public void checkOut(Book book) {
-        listOfBooks.remove(book);
+    public boolean checkOut(Book book) {
+        if (listOfBooks.contains(book)) {
+            listOfBooks.remove(book);
+            return true;
+        }
+
+        else
+        return false;
     }
 }
