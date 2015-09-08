@@ -18,7 +18,8 @@ public class InputParserTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         InputParser inputParser = new InputParser(library);
 
         String userChoice = "1";
@@ -35,7 +36,8 @@ public class InputParserTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         InputParser inputParser = new InputParser(library);
 
         String userChoice = "2";
@@ -52,7 +54,8 @@ public class InputParserTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         InputParser inputParser = new InputParser(library);
 
         String userChoice = "3";
@@ -69,7 +72,8 @@ public class InputParserTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         InputParser inputParser = new InputParser(library);
 
         String userChoice = "0";

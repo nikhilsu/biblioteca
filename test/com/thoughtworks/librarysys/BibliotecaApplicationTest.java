@@ -41,7 +41,8 @@ public class BibliotecaApplicationTest {
         ArrayList<Book> listOfBooks = new ArrayList<>();
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
@@ -70,7 +71,8 @@ public class BibliotecaApplicationTest {
         ArrayList<Book> listOfBooks = new ArrayList<>();
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
@@ -103,7 +105,8 @@ public class BibliotecaApplicationTest {
         ArrayList<Book> listOfBooks = new ArrayList<>();
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
@@ -133,7 +136,8 @@ public class BibliotecaApplicationTest {
         ArrayList<Book> listOfBooks = new ArrayList<>();
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
@@ -164,7 +168,8 @@ public class BibliotecaApplicationTest {
         ArrayList<Book> listOfBooks = new ArrayList<>();
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
@@ -195,7 +200,8 @@ public class BibliotecaApplicationTest {
         ArrayList<Book> listOfBooks = new ArrayList<>();
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");

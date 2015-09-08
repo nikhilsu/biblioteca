@@ -21,7 +21,8 @@ public class CheckoutBookMenuItemTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library);
 
         assertEquals("Thank you! Enjoy the book\n", checkoutBookMenuItem.performOperation());
@@ -39,7 +40,8 @@ public class CheckoutBookMenuItemTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library);
 
         assertEquals("That book is not available\n", checkoutBookMenuItem.performOperation());

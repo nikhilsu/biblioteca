@@ -17,7 +17,8 @@ public class ListBooksMenuItemTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(library);
 
         String testString = String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
@@ -37,7 +38,8 @@ public class ListBooksMenuItemTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        Library library = new Library(listOfBooks);
+        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(library);
 
         String testString = String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
