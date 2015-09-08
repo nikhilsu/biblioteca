@@ -41,6 +41,7 @@ public class Library {
             removeBookFromCheckedOutBookListAndAddItToAvailableBooksList(indexOfBookToBeReturned);
             return true;
         }
+        else
         return false;
     }
 
