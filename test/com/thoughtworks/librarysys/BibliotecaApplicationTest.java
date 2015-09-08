@@ -5,12 +5,14 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
+import static org.mockito.Mockito.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -48,7 +50,8 @@ public class BibliotecaApplicationTest {
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
         ByteArrayInputStream inputStream = new ByteArrayInputStream("0\n".getBytes());
         System.setIn(inputStream);
-        bibliotecaApplication.run();
+        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        bibliotecaApplication.run(consoleInput);
         System.setIn(System.in);
 
         String testString = "Welcome to The Biblioteca\n" +
@@ -77,7 +80,8 @@ public class BibliotecaApplicationTest {
 
         ByteArrayInputStream inputStream = new ByteArrayInputStream("1\n".getBytes());
         System.setIn(inputStream);
-        bibliotecaApplication.run();
+        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        bibliotecaApplication.run(consoleInput);
         System.setIn(System.in);
 
         String testString = "Welcome to The Biblioteca\n" +
@@ -108,7 +112,8 @@ public class BibliotecaApplicationTest {
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
         ByteArrayInputStream inputStream = new ByteArrayInputStream("7\n".getBytes());
         System.setIn(inputStream);
-        bibliotecaApplication.run();
+        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        bibliotecaApplication.run(consoleInput);
         System.setIn(System.in);
 
         String testString = "Welcome to The Biblioteca\n" +
@@ -135,9 +140,11 @@ public class BibliotecaApplicationTest {
         listOfMenuItems.add("3. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("2\r\n Kite Runner\r\n".getBytes());
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("Kite Runner\n".getBytes());
         System.setIn(inputStream);
-        bibliotecaApplication.run();
+        ConsoleInput c = mock(ConsoleInput.class);
+        when(c.inputFromUser()).thenReturn("2");
+        bibliotecaApplication.run(c);
         System.setIn(System.in);
 
         String testString = "Welcome to The Biblioteca\n" +
@@ -164,9 +171,11 @@ public class BibliotecaApplicationTest {
         listOfMenuItems.add("3. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication(welcomeUser, mainMenuItem, library);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("2\r\n Head First Java\r\n".getBytes());
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("Head First Java\r\n".getBytes());
         System.setIn(inputStream);
-        bibliotecaApplication.run();
+        ConsoleInput consoleInput = mock(ConsoleInput.class);
+        when(consoleInput.inputFromUser()).thenReturn("2");
+        bibliotecaApplication.run(consoleInput);
         System.setIn(System.in);
 
         String testString = "Welcome to The Biblioteca\n" +
@@ -197,7 +206,8 @@ public class BibliotecaApplicationTest {
         System.setIn(inputStream);
 
         exit.expectSystemExit();
-        bibliotecaApplication.run();
+        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        bibliotecaApplication.run(consoleInput);
         System.setIn(System.in);
     }
 }

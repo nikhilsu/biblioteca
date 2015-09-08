@@ -14,10 +14,10 @@ public class BibliotecaApplication {
         this.library = library;
     }
 
-    public void run() {
+    public void run(ConsoleInput inputStream) {
         printToConsole(welcomeUser.toString());
         printToConsole(mainMenuItem.performOperation());
-        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        ConsoleInput consoleInput = inputStream;//new ConsoleInput(new Scanner(System.in));
         String choice = consoleInput.inputFromUser();
         InputParser inputParser = new InputParser(library);
         MainMenuItem parsedMainMenuType = inputParser.parse(choice);
