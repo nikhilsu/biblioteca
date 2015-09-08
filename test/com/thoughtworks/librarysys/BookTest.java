@@ -42,4 +42,12 @@ public class BookTest {
 
         assertEquals(book.hashCode(), book.hashCode());
     }
+
+    @Test
+    public void shouldHaveSameHashCodeComparingABookToAnotherBookWithSameState() {
+        Book bookOne = new Book("Brief History of Time", "Stephen Hawking", 1988);
+        Book bookTwo = new Book("Brief History of Time", "Stephen Hawking", 1988);
+
+        assertEquals(bookOne, bookTwo);
+    }
 }
