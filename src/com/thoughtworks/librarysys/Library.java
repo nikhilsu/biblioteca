@@ -23,7 +23,6 @@ public class Library {
             listOfBooks.remove(book);
             return true;
         }
-
         else
         return false;
     }

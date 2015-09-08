@@ -14,4 +14,11 @@ public class BookTest {
 
         assertEquals(testString, book.toString());
     }
+
+    @Test
+    public void isEqualToItself() {
+        Book book = new Book("Kite Runner", "Khaled Hossieni", 2003);
+
+        assertEquals(book, book);
+    }
 }
