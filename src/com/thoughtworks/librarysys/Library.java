@@ -17,4 +17,8 @@ public class Library {
             listOfBookDetails += book.toString();
         return listOfBookDetails;
     }
+
+    public void checkOut(Book book) {
+        listOfBooks.remove(book);
+    }
 }
