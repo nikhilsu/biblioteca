@@ -15,7 +15,7 @@ public class ReturnBookMenuItem extends  MainMenuItem{
         String nameOfTheBookToCheckout = consoleInput.inputFromUser();
         Book bookToBeReturned = new Book(nameOfTheBookToCheckout, "Author", 0);
         if (library.toReturn(bookToBeReturned) == true)
-            return "Done\n";
+            return "Thank you for returning the book.\n";
         else
             return "Can't perform OP\n";
     }

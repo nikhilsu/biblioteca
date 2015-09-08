@@ -24,7 +24,7 @@ public class ReturnBookMenuItemTest {
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(library);
 
-        assertEquals("Done\n", returnBookMenuItem.performOperation());
+        assertEquals("Thank you for returning the book.\n", returnBookMenuItem.performOperation());
         System.setIn(System.in);
     }
 

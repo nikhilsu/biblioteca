@@ -17,8 +17,7 @@ public class MainMenuItemTest {
         listOfMenuItems.add("4. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
 
-        String testString = "Welcome to The Biblioteca\n" +
-                "1. List Books\n" +
+        String testString = "1. List Books\n" +
                 "2. Checkout Book\n" +
                 "3. Return Book\n" +
                 "4. Quit\n";
