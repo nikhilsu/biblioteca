@@ -144,7 +144,7 @@ public class BibliotecaApplicationTest {
                 "1. List Books\n" +
                 "2. Checkout Book\n" +
                 "3. Quit\n" +
-                "Done\n";
+                "Thank you! Enjoy the book\n";
 
         assertEquals(testString, outputStream.toString());
     }

@@ -24,7 +24,7 @@ public class CheckoutBookMenuItemTest {
         Library library = new Library(listOfBooks);
         CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library);
 
-        assertEquals("Done", checkoutBookMenuItem.performOperation());
+        assertEquals("Thank you! Enjoy the book", checkoutBookMenuItem.performOperation());
         System.setIn(System.in);
     }
 

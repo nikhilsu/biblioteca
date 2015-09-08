@@ -16,8 +16,8 @@ public class CheckoutBookMenuItem extends MainMenuItem{
         String nameOfTheBookToCheckout = consoleInput.inputFromUser();
         Book bookToCheckout = new Book(nameOfTheBookToCheckout, "Not needed", 0);
         if (library.checkOut(bookToCheckout) == true)
-            return "Done";
+            return "Thank you! Enjoy the book\n";
         else
-            return "Can't perform OP";
+            return "Can't perform OP\n";
     }
 }
