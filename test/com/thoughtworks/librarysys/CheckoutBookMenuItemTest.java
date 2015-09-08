@@ -26,6 +26,7 @@ public class CheckoutBookMenuItemTest {
         CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library, consoleInput);
 
         assertEquals("Done", checkoutBookMenuItem.performOperation());
+        System.setIn(System.in);
     }
 
     @Test
@@ -44,6 +45,6 @@ public class CheckoutBookMenuItemTest {
         CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library, consoleInput);
 
         assertEquals("Can't perform OP", checkoutBookMenuItem.performOperation());
-
+        System.setIn(System.in);
     }
 }
