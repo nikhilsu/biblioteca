@@ -1,7 +1,5 @@
 package com.thoughtworks.librarysys;
 
-import java.util.Scanner;
-
 //input parser parses a string input to concrete mainmenuitem types
 public class InputParser {
     Library library;

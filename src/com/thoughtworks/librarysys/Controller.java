@@ -1,23 +1,22 @@
 package com.thoughtworks.librarysys;
 
-import java.util.Scanner;
-
 //Biblioteca application creates the necessary objects to run the application
-public class BibliotecaApplication {
+public class Controller {
     WelcomeUser welcomeUser;
     MainMenuItem mainMenuItem;
     Library library;
+    ConsoleInput consoleInput;
 
-    public BibliotecaApplication(WelcomeUser welcomeUser, MainMenuItem mainMenuItem, Library library) {
+    public Controller(WelcomeUser welcomeUser, MainMenuItem mainMenuItem, Library library, ConsoleInput consoleInput) {
         this.welcomeUser = welcomeUser;
         this.mainMenuItem = mainMenuItem;
         this.library = library;
+        this.consoleInput = consoleInput;
     }
 
-    public void run(ConsoleInput inputStream) {
+    public void run() {
         printToConsole(welcomeUser.toString());
         printToConsole(mainMenuItem.performOperation());
-        ConsoleInput consoleInput = inputStream;//new ConsoleInput(new Scanner(System.in));
         String choice = consoleInput.inputFromUser();
         InputParser inputParser = new InputParser(library);
         MainMenuItem parsedMainMenuType = inputParser.parse(choice);
