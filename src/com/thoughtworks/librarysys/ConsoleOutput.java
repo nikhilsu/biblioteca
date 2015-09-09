@@ -1,10 +1,12 @@
 package com.thoughtworks.librarysys;
 
-//Takes in a message and prints it on the console
-public class ConsoleDisplay {
-    private String message;
+import java.io.PrintStream;
 
-    public ConsoleDisplay(String message) {
+//Takes in a message and prints it on the console
+public class ConsoleOutput {
+    String message;
+
+    public ConsoleOutput(String message) {
         this.message = message;
     }
 

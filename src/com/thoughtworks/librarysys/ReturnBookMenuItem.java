@@ -1,17 +1,16 @@
 package com.thoughtworks.librarysys;
 
-import java.util.Scanner;
-
 public class ReturnBookMenuItem extends  MainMenuItem{
-    Library library;
+    private Library library;
+    private ConsoleInput consoleInput;
 
-    public ReturnBookMenuItem(Library library) {
+    public ReturnBookMenuItem(Library library, ConsoleInput consoleInput) {
         this.library = library;
+        this.consoleInput = consoleInput;
     }
 
     @Override
     public String performOperation() {
-        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
         String nameOfTheBookToCheckout = consoleInput.inputFromUser();
         Book bookToBeReturned = new Book(nameOfTheBookToCheckout, "Author", 0);
         if (library.toReturn(bookToBeReturned) == true)

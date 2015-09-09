@@ -151,13 +151,10 @@ public class ControllerTest {
         listOfMenuItems.add("3. Return Book");
         listOfMenuItems.add("4. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("Kite Runner\n".getBytes());
-        System.setIn(inputStream);
         ConsoleInput consoleInput = mock(ConsoleInput.class);
-        when(consoleInput.inputFromUser()).thenReturn("2");
+        when(consoleInput.inputFromUser()).thenReturn("2").thenReturn("Kite Runner");
         Controller controller = new Controller(welcomeUser, mainMenuItem, library, consoleInput);
         controller.run();
-        System.setIn(System.in);
 
         String testString = "Welcome to The Biblioteca\n" +
                 "1. List Books\n" +
@@ -185,10 +182,8 @@ public class ControllerTest {
         listOfMenuItems.add("3. Return Book");
         listOfMenuItems.add("4. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("Head First Java\r\n".getBytes());
-        System.setIn(inputStream);
         ConsoleInput consoleInput = mock(ConsoleInput.class);
-        when(consoleInput.inputFromUser()).thenReturn("2");
+        when(consoleInput.inputFromUser()).thenReturn("2").thenReturn("Head First Java");
         Controller controller = new Controller(welcomeUser, mainMenuItem, library, consoleInput);
         controller.run();
         System.setIn(System.in);
@@ -221,13 +216,10 @@ public class ControllerTest {
         listOfMenuItems.add("3. Return Book");
         listOfMenuItems.add("4. Quit");
         MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("Gone Girl\n".getBytes());
-        System.setIn(inputStream);
         ConsoleInput consoleInput = mock(ConsoleInput.class);
-        when(consoleInput.inputFromUser()).thenReturn("3");
+        when(consoleInput.inputFromUser()).thenReturn("3").thenReturn("Gone Girl");
         Controller controller = new Controller(welcomeUser, mainMenuItem, library, consoleInput);
         controller.run();
-        System.setIn(System.in);
 
         String testString = "Welcome to The Biblioteca\n" +
                 "1. List Books\n" +

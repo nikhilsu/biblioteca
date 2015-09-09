@@ -3,7 +3,9 @@ package com.thoughtworks.librarysys;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -22,7 +24,8 @@ public class ReturnBookMenuItemTest {
         Book book = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(book);
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(library);
+        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(library, consoleInput);
 
         assertEquals("Thank you for returning the book\n", returnBookMenuItem.performOperation());
         System.setIn(System.in);
@@ -41,7 +44,8 @@ public class ReturnBookMenuItemTest {
         Book book = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(book);
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(library);
+        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(library, consoleInput);
 
         assertEquals("That is not a valid book to return\n", returnBookMenuItem.performOperation());
         System.setIn(System.in);

@@ -15,17 +15,18 @@ public class Controller {
     }
 
     public void run() {
-        printToConsole(welcomeUser.toString());
-        printToConsole(mainMenuItem.performOperation());
+
+        printToScreen(welcomeUser.toString());
+        printToScreen(mainMenuItem.performOperation());
         String choice = consoleInput.inputFromUser();
-        InputParser inputParser = new InputParser(library);
+        InputParser inputParser = new InputParser(library, consoleInput);
         MainMenuItem parsedMainMenuType = inputParser.parse(choice);
         String outputMessageFromMenuItem = parsedMainMenuType.performOperation();
-        printToConsole(outputMessageFromMenuItem);
+        printToScreen(outputMessageFromMenuItem);
     }
 
-    private void printToConsole(String stringToPrint) {
-        ConsoleDisplay consoleDisplay = new ConsoleDisplay(stringToPrint);
-        consoleDisplay.displayOnScreen();
+    private void printToScreen(String messageToPrint) {
+        ConsoleOutput consoleOutput = new ConsoleOutput(messageToPrint);
+        consoleOutput.displayOnScreen();
     }
 }

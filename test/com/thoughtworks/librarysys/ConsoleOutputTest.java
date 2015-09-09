@@ -10,7 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 
-public class ConsoleDisplayTest {
+public class ConsoleOutputTest {
     final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
     @Before
@@ -26,9 +26,8 @@ public class ConsoleDisplayTest {
     @Test
     public void shouldDisplayAStringThatIsPassedToTheConsoleDisplay() {
         String message = "Welcome\n";
-        ConsoleDisplay consoleDisplay = new ConsoleDisplay(message);
-
-        consoleDisplay.displayOnScreen();
+        ConsoleOutput consoleOutput = new ConsoleOutput(message);
+        consoleOutput.displayOnScreen();
 
         assertEquals("Welcome\n", outputStream.toString());
     }

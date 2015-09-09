@@ -2,6 +2,7 @@ package com.thoughtworks.librarysys;
 
 import org.junit.Test;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,7 +21,8 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        InputParser inputParser = new InputParser(library);
+        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        InputParser inputParser = new InputParser(library, consoleInput);
 
         String userChoice = "1";
 
@@ -38,11 +40,12 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        InputParser inputParser = new InputParser(library);
+        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        InputParser inputParser = new InputParser(library, consoleInput);
 
         String userChoice = "2";
 
-        assertEquals(new CheckoutBookMenuItem(library).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new CheckoutBookMenuItem(library, consoleInput).getClass(), inputParser.parse(userChoice).getClass());
     }
 
     @Test
@@ -56,7 +59,8 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        InputParser inputParser = new InputParser(library);
+        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        InputParser inputParser = new InputParser(library, consoleInput);
 
         String userChoice = "4";
 
@@ -74,7 +78,8 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        InputParser inputParser = new InputParser(library);
+        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        InputParser inputParser = new InputParser(library, consoleInput);
 
         String userChoice = "0";
 
@@ -92,10 +97,11 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        InputParser inputParser = new InputParser(library);
+        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
+        InputParser inputParser = new InputParser(library, consoleInput);
 
         String userChoice = "3";
 
-        assertEquals(new ReturnBookMenuItem(library).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new ReturnBookMenuItem(library, consoleInput).getClass(), inputParser.parse(userChoice).getClass());
     }
 }
