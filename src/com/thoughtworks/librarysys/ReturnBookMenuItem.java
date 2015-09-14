@@ -1,7 +1,7 @@
 package com.thoughtworks.librarysys;
 
 //returnbookmenuitem is a menu item responsible for returning a book to the library
-public class ReturnBookMenuItem extends  MainMenuItem {
+public class ReturnBookMenuItem extends MenuItem {
     private Library library;
     private ConsoleView consoleView;
 
@@ -12,6 +12,7 @@ public class ReturnBookMenuItem extends  MainMenuItem {
 
     @Override
     public String performOperation() {
+        consoleView.printOnConsole("Enter The Book to Return: ");
         String nameOfTheBookToCheckout = consoleView.inputFromUser();
         Book bookToBeReturned = new Book(nameOfTheBookToCheckout, "Author", 0);
         if (library.toReturn(bookToBeReturned) == true)

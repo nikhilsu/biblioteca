@@ -10,17 +10,13 @@ public class InputParser {
         this.consoleView = consoleView;
     }
 
-    public MainMenuItem parse(String userChoice) {
+    public MenuItem parse(String userChoice) {
         if (userChoice.equals("1"))
             return new ListBooksMenuItem(library);
-        else if (userChoice.equals("2")) {
-            consoleView.printOnConsole("Enter The Book to checkout: ");
+        else if (userChoice.equals("2"))
             return new CheckoutBookMenuItem(library, consoleView);
-        }
-        else if (userChoice.equals("3")) {
-            consoleView.printOnConsole("Enter the book to return: ");
+        else if (userChoice.equals("3"))
             return new ReturnBookMenuItem(library, consoleView);
-        }
         else if (userChoice.equals("4"))
             return new QuitMenuItem();
         else

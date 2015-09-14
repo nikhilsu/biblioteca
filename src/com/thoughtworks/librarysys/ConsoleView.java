@@ -19,4 +19,8 @@ public class ConsoleView {
     public String inputFromUser() {
         return scanner.nextLine();
     }
+
+    public void notifySuccessfulBookCheckout() {
+        printOnConsole("Thank you! Enjoy the book\n");
+    }
 }

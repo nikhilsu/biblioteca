@@ -1,7 +1,7 @@
 package com.thoughtworks.librarysys;
 
 //invalidmenuitem is a mainmenuitem that return "select a valic option!" string
-public class InvalidMenuItem extends MainMenuItem {
+public class InvalidMenuItem extends MenuItem {
     private String displayMessage;
 
     public InvalidMenuItem(String displayMessage){

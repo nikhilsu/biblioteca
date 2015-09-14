@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class MainMenuItemTest {
+public class MenuItemTest {
 
     @Test
     public void shouldDisplayTheMainMenu() {
@@ -15,13 +15,13 @@ public class MainMenuItemTest {
         listOfMenuItems.add("2. Checkout Book");
         listOfMenuItems.add("3. Return Book");
         listOfMenuItems.add("4. Quit");
-        MainMenuItem mainMenuItem = new MainMenuItem(listOfMenuItems);
+        MenuItem menuItem = new MenuItem(listOfMenuItems);
 
         String testString = "1. List Books\n" +
                 "2. Checkout Book\n" +
                 "3. Return Book\n" +
                 "4. Quit\n";
 
-        assertEquals(testString, mainMenuItem.toString());
+        assertEquals(testString, menuItem.toString());
     }
 }

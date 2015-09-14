@@ -2,14 +2,14 @@ package com.thoughtworks.librarysys;
 
 import java.util.ArrayList;
 
-//MainMenuItem has a list of menu items which it returns as a string to be displayed
-public class MainMenuItem {
+//MenuItem has a list of menu items which it returns as a string to be displayed
+public class MenuItem {
     private ArrayList<String> listOfMenuItems;
 
-    public MainMenuItem() {
+    public MenuItem() {
     }
 
-    public MainMenuItem(ArrayList<String> listOfMenuItems) {
+    public MenuItem(ArrayList<String> listOfMenuItems) {
         this.listOfMenuItems = listOfMenuItems;
     }
 

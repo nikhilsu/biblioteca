@@ -2,6 +2,9 @@ package com.thoughtworks.librarysys;
 
 import org.junit.Test;
 
+import java.io.PrintStream;
+import java.util.Scanner;
+
 import static org.mockito.Mockito.*;
 
 public class ConsoleViewTest {
@@ -19,5 +22,16 @@ public class ConsoleViewTest {
         ConsoleView consoleView = mock(ConsoleView.class);
 
         when(consoleView.inputFromUser()).thenReturn("Hello World");
+    }
+
+    @Test
+    public void shouldPrintTheSuccessfulCheckoutMessageOntoTheConsole() {
+        Scanner scanner = new Scanner(System.in);
+        PrintStream printStream = mock(PrintStream.class);
+        ConsoleView consoleView = new ConsoleView(scanner, printStream);
+
+        consoleView.notifySuccessfulBookCheckout();
+
+        verify(printStream).print("Thank you! Enjoy the book\n");
     }
 }

@@ -12,7 +12,7 @@ public class CheckoutBookMenuItemTest {
 
     @Test
     public void shouldCheckoutABookFromTheListOfBooksInTheLibraryByInputtingTheNameOfTheBook() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
+        ArrayList<Book> listOfBooks = new ArrayList<>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
         Book bookThree = new Book("Inferno", "Dan Brown", 2012);

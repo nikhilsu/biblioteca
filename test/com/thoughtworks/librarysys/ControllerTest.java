@@ -13,14 +13,14 @@ public class ControllerTest {
         Library library = mock(Library.class);
         Book book = new Book("Kite Runner", "Author", 0);
         when(library.checkOut(book)).thenReturn(true);
-        MainMenuItem mainMenuItem = mock(MainMenuItem.class);
-        when(mainMenuItem.performOperation()).thenReturn("1. List Books\n" +
+        MenuItem menuItem = mock(MenuItem.class);
+        when(menuItem.performOperation()).thenReturn("1. List Books\n" +
                 "2. Checkout Book\n" +
                 "3. Return Book\n" +
                 "4. Quit\n");
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("2").thenReturn("Kite Runner");
-        Controller controller = new Controller(welcomeUser, mainMenuItem, library, consoleView);
+        Controller controller = new Controller(welcomeUser, menuItem, library, consoleView);
         controller.run();
 
         verify(consoleView).printOnConsole("Welcome to The Biblioteca\n");

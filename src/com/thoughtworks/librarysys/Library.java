@@ -20,6 +20,16 @@ public class Library {
         return listOfBookDetails;
     }
 
+    private void removeBookFromAvailableBooksListAndAddItToCheckedOutBookList(int indexOfBook) {
+        listOfCheckedOutBooks.add(listOfBooksAvailable.get(indexOfBook));
+        listOfBooksAvailable.remove(indexOfBook);
+    }
+
+    private void removeBookFromCheckedOutBookListAndAddItToAvailableBooksList(int indexOfBookToBeReturned) {
+        listOfBooksAvailable.add(listOfCheckedOutBooks.get(indexOfBookToBeReturned));
+        listOfCheckedOutBooks.remove(indexOfBookToBeReturned);
+    }
+
     public boolean checkOut(Book bookToCheckout) {
         int indexOfBook = listOfBooksAvailable.indexOf(bookToCheckout);
         if (indexOfBook != -1) {
@@ -30,11 +40,6 @@ public class Library {
         return false;
     }
 
-    private void removeBookFromAvailableBooksListAndAddItToCheckedOutBookList(int indexOfBook) {
-        listOfCheckedOutBooks.add(listOfBooksAvailable.get(indexOfBook));
-        listOfBooksAvailable.remove(indexOfBook);
-    }
-
     public boolean toReturn(Book bookToBeReturned) {
         int indexOfBookToBeReturned = listOfCheckedOutBooks.indexOf(bookToBeReturned);
         if (indexOfBookToBeReturned != -1){
@@ -43,10 +48,5 @@ public class Library {
         }
         else
         return false;
-    }
-
-    private void removeBookFromCheckedOutBookListAndAddItToAvailableBooksList(int indexOfBookToBeReturned) {
-        listOfBooksAvailable.add(listOfCheckedOutBooks.get(indexOfBookToBeReturned));
-        listOfCheckedOutBooks.remove(indexOfBookToBeReturned);
     }
 }
