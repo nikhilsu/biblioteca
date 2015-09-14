@@ -12,13 +12,6 @@ public class QuitMenuItemTest {
     public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 
     @Test
-    public void shouldReturnTheStringExitingApplicationWhenTheToStringMethodIsCalled() {
-        QuitMenuItem quitMenuItem = new QuitMenuItem();
-
-        assertEquals("Exiting Application", quitMenuItem.toString());
-    }
-
-    @Test
     public void shouldExitTheApplicationWhenThePerformOperationMethodIsCalled() {
         QuitMenuItem quitMenuItem = new QuitMenuItem();
 

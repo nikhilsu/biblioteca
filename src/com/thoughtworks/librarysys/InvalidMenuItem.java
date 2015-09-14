@@ -3,14 +3,16 @@ package com.thoughtworks.librarysys;
 //invalidmenuitem is a mainmenuitem that return "select a valic option!" string
 public class InvalidMenuItem extends MenuItem {
     private String displayMessage;
+    private ConsoleView consoleView;
 
-    public InvalidMenuItem(String displayMessage){
+    public InvalidMenuItem(String displayMessage, ConsoleView consoleView) {
         this.displayMessage = displayMessage + "\n";
+        this.consoleView = consoleView;
     }
 
     @Override
-    public String performOperation() {
-        return this.toString();
+    public void performOperation() {
+         consoleView.printOnConsole(this.toString());
     }
 
     @Override

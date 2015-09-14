@@ -11,13 +11,10 @@ public class CheckoutBookMenuItem extends MenuItem {
     }
 
     @Override
-    public String performOperation() {
+    public void performOperation() {
         consoleView.printOnConsole("Enter The Book to checkout: ");
         String nameOfTheBookToCheckout = consoleView.inputFromUser();
         Book bookToCheckout = new Book(nameOfTheBookToCheckout, "Not needed", 0);
-        if (library.checkOut(bookToCheckout) == true)
-            return "Thank you! Enjoy the book\n";
-        else
-            return "That book is not available\n";
+        library.checkOut(bookToCheckout);
     }
 }

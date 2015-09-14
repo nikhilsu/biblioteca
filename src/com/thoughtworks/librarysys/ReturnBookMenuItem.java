@@ -11,13 +11,10 @@ public class ReturnBookMenuItem extends MenuItem {
     }
 
     @Override
-    public String performOperation() {
+    public void performOperation() {
         consoleView.printOnConsole("Enter The Book to Return: ");
         String nameOfTheBookToCheckout = consoleView.inputFromUser();
         Book bookToBeReturned = new Book(nameOfTheBookToCheckout, "Author", 0);
-        if (library.toReturn(bookToBeReturned) == true)
-            return "Thank you for returning the book\n";
-        else
-            return "That is not a valid book to return\n";
+        library.toReturn(bookToBeReturned);
     }
 }

@@ -8,26 +8,17 @@ public class ControllerTest {
 
     @Test
     public void shouldCheckoutABookWhoseNameIsPassedAsInputToTheApplicationWhenTheUserSelectsTheCheckoutMenuItem() {
-        WelcomeUser welcomeUser = mock(WelcomeUser.class);
-        when(welcomeUser.toString()).thenReturn("Welcome to The Biblioteca\n");
-        Library library = mock(Library.class);
-        Book book = new Book("Kite Runner", "Author", 0);
-        when(library.checkOut(book)).thenReturn(true);
         MenuItem menuItem = mock(MenuItem.class);
-        when(menuItem.performOperation()).thenReturn("1. List Books\n" +
-                "2. Checkout Book\n" +
-                "3. Return Book\n" +
-                "4. Quit\n");
         ConsoleView consoleView = mock(ConsoleView.class);
-        when(consoleView.inputFromUser()).thenReturn("2").thenReturn("Kite Runner");
-        Controller controller = new Controller(welcomeUser, menuItem, library, consoleView);
+        when(consoleView.inputFromUser()).thenReturn("1");
+        InputParser inputParser = mock(InputParser.class);
+        Library library = mock(Library.class);
+        ListBooksMenuItem listBooksMenuItem = mock(ListBooksMenuItem.class);
+        when(inputParser.parse("1")).thenReturn(listBooksMenuItem);
+        Controller controller = new Controller(menuItem, library, inputParser, consoleView);
+
         controller.run();
 
-        verify(consoleView).printOnConsole("Welcome to The Biblioteca\n");
-        verify(consoleView).printOnConsole("1. List Books\n" +
-                "2. Checkout Book\n" +
-                "3. Return Book\n" +
-                "4. Quit\n");
-        verify(consoleView).printOnConsole("Thank you! Enjoy the book\n");
+        verify(listBooksMenuItem).performOperation();
     }
 }

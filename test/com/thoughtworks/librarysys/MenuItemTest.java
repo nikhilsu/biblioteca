@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class MenuItemTest {
 
@@ -15,7 +16,8 @@ public class MenuItemTest {
         listOfMenuItems.add("2. Checkout Book");
         listOfMenuItems.add("3. Return Book");
         listOfMenuItems.add("4. Quit");
-        MenuItem menuItem = new MenuItem(listOfMenuItems);
+        ConsoleView consoleView = mock(ConsoleView.class);
+        MenuItem menuItem = new MenuItem(listOfMenuItems, consoleView);
 
         String testString = "1. List Books\n" +
                 "2. Checkout Book\n" +

@@ -5,16 +5,18 @@ import java.util.ArrayList;
 //MenuItem has a list of menu items which it returns as a string to be displayed
 public class MenuItem {
     private ArrayList<String> listOfMenuItems;
+    private ConsoleView consoleView;
 
     public MenuItem() {
     }
 
-    public MenuItem(ArrayList<String> listOfMenuItems) {
+    public MenuItem(ArrayList<String> listOfMenuItems, ConsoleView consoleView) {
         this.listOfMenuItems = listOfMenuItems;
+        this.consoleView = consoleView;
     }
 
-    public String performOperation() {
-        return this.toString();
+    public void performOperation() {
+        consoleView.printOnConsole(this.toString());
     }
 
     @Override

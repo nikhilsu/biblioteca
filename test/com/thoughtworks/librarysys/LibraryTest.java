@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class LibraryTest {
 
@@ -18,7 +20,8 @@ public class LibraryTest {
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
+        ConsoleView consoleView = mock(ConsoleView.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
 
         String testString = String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
                 String.format("%-30s%-30s%-20s\n", "Gone Girl", "Gillian Flynn", 2014) +
@@ -38,10 +41,12 @@ public class LibraryTest {
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
+        ConsoleView consoleView = mock(ConsoleView.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
 
-        assertTrue(library.checkOut(bookTwo));
+        library.checkOut(bookTwo);
 
+        verify(consoleView).notifySuccessfulBookCheckout();
     }
 
     @Test
@@ -54,11 +59,13 @@ public class LibraryTest {
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
+        ConsoleView consoleView = mock(ConsoleView.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
 
         Book notALibraryBook = new Book("Head First java", "Bert Bates", 2003);
+        library.checkOut(notALibraryBook);
 
-        assertFalse(library.checkOut(notALibraryBook));
+        verify(consoleView).notifyUnsuccessfulCheckout();
     }
 
     @Test
@@ -71,11 +78,13 @@ public class LibraryTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(borrowedBook);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
+        ConsoleView consoleView = mock(ConsoleView.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
 
         Book libraryBook = new Book("Inferno", "Author", 0);
+        library.toReturn(libraryBook);
 
-        assertTrue(library.toReturn(libraryBook));
+        verify(consoleView).notifySuccessfulReturn();
     }
 
     @Test
@@ -88,11 +97,13 @@ public class LibraryTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(borrowedBook);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
+        ConsoleView consoleView = mock(ConsoleView.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
 
         Book libraryBook = new Book("Head First Java", "Author", 0);
+        library.toReturn(libraryBook);
 
-        assertFalse(library.toReturn(libraryBook));
+        verify(consoleView).notifyUnsuccessfulReturn();
     }
 
     @Test
@@ -105,7 +116,8 @@ public class LibraryTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(borrowedBook);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
+        ConsoleView consoleView = mock(ConsoleView.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
         Book libraryBook = new Book("Inferno", "Author", 0);
 
         library.toReturn(libraryBook);

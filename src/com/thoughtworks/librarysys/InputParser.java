@@ -12,7 +12,7 @@ public class InputParser {
 
     public MenuItem parse(String userChoice) {
         if (userChoice.equals("1"))
-            return new ListBooksMenuItem(library);
+            return new ListBooksMenuItem(library, consoleView);
         else if (userChoice.equals("2"))
             return new CheckoutBookMenuItem(library, consoleView);
         else if (userChoice.equals("3"))
@@ -20,6 +20,6 @@ public class InputParser {
         else if (userChoice.equals("4"))
             return new QuitMenuItem();
         else
-            return new InvalidMenuItem("Select a valid option!");
+            return new InvalidMenuItem("Select a valid option!", consoleView);
     }
 }

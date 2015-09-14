@@ -4,13 +4,7 @@ package com.thoughtworks.librarysys;
 public class QuitMenuItem extends MenuItem {
 
     @Override
-    public String performOperation() {
+    public void performOperation() {
         System.exit(0);
-        return this.toString();
-    }
-
-    @Override
-    public String toString() {
-        return "Exiting Application";
     }
 }

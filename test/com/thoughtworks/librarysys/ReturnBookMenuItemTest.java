@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class ReturnBookMenuItemTest {
@@ -20,12 +21,14 @@ public class ReturnBookMenuItemTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Book book = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(book);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("Inferno");
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
         ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(library, consoleView);
 
-        assertEquals("Thank you for returning the book\n", returnBookMenuItem.performOperation());
+        returnBookMenuItem.performOperation();
+
+        verify(consoleView).notifySuccessfulReturn();
     }
 
     @Test
@@ -39,11 +42,13 @@ public class ReturnBookMenuItemTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Book book = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(book);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks);
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("Head First Java");
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
         ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(library, consoleView);
 
-        assertEquals("That is not a valid book to return\n", returnBookMenuItem.performOperation());
+        returnBookMenuItem.performOperation();
+
+        verify(consoleView).notifyUnsuccessfulReturn();
     }
 }
