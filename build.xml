@@ -70,7 +70,7 @@
                <sysproperty key="net.sourceforge.cobertura.datafile" file="out/cobertura.ser" />
                <classpath refid="cobertura.classpath" />
           </junit>
-          <cobertura-report format="xml" destdir="out/reports/cobertura" datafile="out/cobertura.ser" srcdir="src" />
+          <cobertura-report format="html" destdir="out/reports/cobertura" datafile="out/cobertura.ser" srcdir="src" />
      </target>
 
      <target name="buildJar" depends="runjUnit">
