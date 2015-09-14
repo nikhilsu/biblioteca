@@ -2,9 +2,11 @@ package com.thoughtworks.librarysys;
 
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class ConsoleViewTest {
@@ -19,9 +21,12 @@ public class ConsoleViewTest {
 
     @Test
     public void shouldReturnTheUserInputString() {
-        ConsoleView consoleView = mock(ConsoleView.class);
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("hello world\n".getBytes());
 
-        when(consoleView.inputFromUser()).thenReturn("Hello World");
+        ConsoleView consoleView = new ConsoleView(new Scanner(inputStream), new PrintStream(System.out));
+
+        assertEquals("hello world", consoleView.inputFromUser());
+
     }
 
     @Test
