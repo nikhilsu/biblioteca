@@ -16,10 +16,12 @@ public class Library {
 
     @Override
     public String toString() {
-        String listOfBookDetails = String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication");
+        String listOfBookDetails = String.format("%085d\n", 0).replace("0","-") +
+                String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
+                String.format("%085d\n", 0).replace("0","-");
         for (Book book : listOfBooksAvailable)
             listOfBookDetails += book.toString();
-        return listOfBookDetails;
+        return listOfBookDetails + "\n";
     }
 
     private void removeBookFromAvailableBooksListAndAddItToCheckedOutBookList(int indexOfBook) {

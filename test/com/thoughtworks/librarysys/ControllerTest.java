@@ -12,10 +12,9 @@ public class ControllerTest {
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("1");
         InputParser inputParser = mock(InputParser.class);
-        Library library = mock(Library.class);
         ListBooksMenuItem listBooksMenuItem = mock(ListBooksMenuItem.class);
         when(inputParser.parse("1")).thenReturn(listBooksMenuItem);
-        Controller controller = new Controller(menuItem, library, inputParser, consoleView);
+        Controller controller = new Controller(menuItem, inputParser, consoleView);
 
         controller.run();
 

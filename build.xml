@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="pathashala" default="runjUnit" basedir=".">
+<project name="pathashala" default="buildJar" basedir=".">
      
    
      <path id="test.compile.classpath" description="classpath for compiling test-sources">
@@ -70,8 +70,23 @@
                <sysproperty key="net.sourceforge.cobertura.datafile" file="out/cobertura.ser" />
                <classpath refid="cobertura.classpath" />
           </junit>
- 
-          <cobertura-report format="html" destdir="out/reports/cobertura" datafile="out/cobertura.ser" srcdir="src" />
+          <cobertura-report format="xml" destdir="out/reports/cobertura" datafile="out/cobertura.ser" srcdir="src" />
+     </target>
+
+     <target name="buildJar" depends="runjUnit">
+          <jar destfile="lib/BibliotecaApp.jar" basedir="out/classes" excludes="**/*Test*.class">
+               <manifest>
+                    <attribute name="Main-Class" value="com.thoughtworks.librarysys"/>
+               </manifest>
+          </jar>
+     </target>
+
+     <target name="run" depends="buildJar">
+          <java fork="true" failonerror="yes" classname="com.thoughtworks.librarysys">
+               <classpath>
+                    <path location="lib/BibliotecaApp.jar"/>
+               </classpath>
+          </java>
      </target>
  
 </project>

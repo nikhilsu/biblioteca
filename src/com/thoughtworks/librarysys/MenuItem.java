@@ -21,9 +21,9 @@ public class MenuItem {
 
     @Override
     public String toString() {
-        String menu = "";
+        String menu = "----------Menu----------\n";
         for (String item : listOfMenuItems)
             menu += item + "\n";
-        return menu;
+        return menu + "Enter your choice : ";
     }
 }

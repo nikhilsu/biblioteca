@@ -20,10 +20,12 @@ public class MenuItemTest {
         ConsoleView consoleView = mock(ConsoleView.class);
         MenuItem menuItem = new MenuItem(listOfMenuItems, consoleView);
 
-        String testString = "1. List Books\n" +
+        String testString = "----------Menu----------\n" +
+                "1. List Books\n" +
                 "2. Checkout Book\n" +
                 "3. Return Book\n" +
-                "4. Quit\n";
+                "4. Quit\n" +
+                "Enter your choice : ";
 
         assertEquals(testString, menuItem.toString());
     }
@@ -38,10 +40,12 @@ public class MenuItemTest {
         ConsoleView consoleView = mock(ConsoleView.class);
         MenuItem menuItem = new MenuItem(listOfMenuItems, consoleView);
 
-        String testString = "1. List Books\n" +
+        String testString = "----------Menu----------\n" +
+                "1. List Books\n" +
                 "2. Checkout Book\n" +
                 "3. Return Book\n" +
-                "4. Quit\n";
+                "4. Quit\n" +
+                "Enter your choice : ";
 
         menuItem.performOperation();
 

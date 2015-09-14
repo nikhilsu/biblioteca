@@ -13,7 +13,7 @@ public class LibraryObserverTest {
         LibraryObserver libraryObserver = new LibraryObserver(consoleView);
         libraryObserver.notifySuccessfulBookCheckout();
 
-        verify(consoleView).printOnConsole("Thank you! Enjoy the book\n");
+        verify(consoleView).printOnConsole("Thank you! Enjoy the book\n\n");
     }
 
     @Test
@@ -22,7 +22,7 @@ public class LibraryObserverTest {
         LibraryObserver libraryObserver = new LibraryObserver(consoleView);
         libraryObserver.notifyUnsuccessfulCheckout();
 
-        verify(consoleView).printOnConsole("That book is not available\n");
+        verify(consoleView).printOnConsole("That book is not available\n\n");
     }
 
     @Test
@@ -31,7 +31,7 @@ public class LibraryObserverTest {
         LibraryObserver libraryObserver = new LibraryObserver(consoleView);
         libraryObserver.notifySuccessfulReturn();
 
-        verify(consoleView).printOnConsole("Thank you for returning the book\n");
+        verify(consoleView).printOnConsole("Thank you for returning the book\n\n");
     }
 
     @Test
@@ -40,6 +40,6 @@ public class LibraryObserverTest {
         LibraryObserver libraryObserver = new LibraryObserver(consoleView);
         libraryObserver.notifyUnsuccessfulReturn();
 
-        verify(consoleView).printOnConsole("That is not a valid book to return\n");
+        verify(consoleView).printOnConsole("That is not a valid book to return\n\n");
     }
 }
