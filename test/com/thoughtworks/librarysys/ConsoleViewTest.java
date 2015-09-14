@@ -45,4 +45,15 @@ public class ConsoleViewTest {
 
         verify(printStream).print("That book is not available\n");
     }
+
+    @Test
+    public void shouldPrintTheSuccessfulReturnMessageOntoTheConsole() {
+        Scanner scanner = new Scanner(System.in);
+        PrintStream printStream = mock(PrintStream.class);
+        ConsoleView consoleView = new ConsoleView(scanner, printStream);
+
+        consoleView.notifySuccessfulReturn();
+
+        verify(printStream).print("Thank you for returning the book\n");
+    }
 }
