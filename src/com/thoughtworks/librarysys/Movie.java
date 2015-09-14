@@ -1,6 +1,7 @@
 package com.thoughtworks.librarysys;
 
-public class Movie {
+//Movie contains the name year of release director and the rating and returns the same in a formatted way
+public class Movie implements LibraryItem{
     private String name;
     private int year;
     private String director;
@@ -13,9 +14,7 @@ public class Movie {
         this.rating = rating;
     }
 
-    @Override
-    public String toString() {
+    public String displayDetails() {
         return String.format("%-30s%-20s%-35s%-20s\n", this.name, this.year, this.director, this.rating);
     }
-
 }

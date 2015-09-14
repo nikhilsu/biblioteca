@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 public class ListBooksMenuItemTest {
@@ -21,9 +20,9 @@ public class ListBooksMenuItemTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryObserver libraryObserver = new LibraryObserver(consoleView);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(library, consoleView);
+        LibraryBooksObserver libraryBooksObserver = new LibraryBooksObserver(consoleView);
+        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(libraryBooks, consoleView);
 
         String testString = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
@@ -47,9 +46,9 @@ public class ListBooksMenuItemTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryObserver libraryObserver = new LibraryObserver(consoleView);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(library, consoleView);
+        LibraryBooksObserver libraryBooksObserver = new LibraryBooksObserver(consoleView);
+        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(libraryBooks, consoleView);
 
         String testString = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +

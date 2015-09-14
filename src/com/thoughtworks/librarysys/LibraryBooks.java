@@ -3,15 +3,15 @@ package com.thoughtworks.librarysys;
 import java.util.ArrayList;
 
 //library has a list of books whose details are returned with a column header
-public class Library {
+public class LibraryBooks implements LibraryOperations{
     private ArrayList<Book> listOfBooksAvailable;
     private ArrayList<Book> listOfCheckedOutBooks;
-    private LibraryObserver libraryObserver;
+    private LibraryBooksObserver libraryBooksObserver;
 
-    public Library(ArrayList<Book> listOfBooksAvailable, ArrayList<Book> listOfCheckedOutBooks, LibraryObserver libraryObserver) {
+    public LibraryBooks(ArrayList<Book> listOfBooksAvailable, ArrayList<Book> listOfCheckedOutBooks, LibraryBooksObserver libraryBooksObserver) {
         this.listOfBooksAvailable = listOfBooksAvailable;
         this.listOfCheckedOutBooks = listOfCheckedOutBooks;
-        this.libraryObserver = libraryObserver;
+        this.libraryBooksObserver = libraryBooksObserver;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Library {
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
                 String.format("%085d\n", 0).replace("0","-");
         for (Book book : listOfBooksAvailable)
-            listOfBookDetails += book.toString();
+            listOfBookDetails += book.displayDetails();
         return listOfBookDetails + "\n";
     }
 
@@ -34,23 +34,23 @@ public class Library {
         listOfCheckedOutBooks.remove(indexOfBookToBeReturned);
     }
 
-    public void checkOut(Book bookToCheckout) {
+    public void checkOut(LibraryItem bookToCheckout) {
         int indexOfBook = listOfBooksAvailable.indexOf(bookToCheckout);
         if (indexOfBook != -1) {
             removeBookFromAvailableBooksListAndAddItToCheckedOutBookList(indexOfBook);
-            libraryObserver.notifySuccessfulBookCheckout();
+            libraryBooksObserver.notifySuccessfulBookCheckout();
         }
         else
-            libraryObserver.notifyUnsuccessfulCheckout();
+            libraryBooksObserver.notifyUnsuccessfulCheckout();
     }
 
     public void toReturn(Book bookToBeReturned) {
         int indexOfBookToBeReturned = listOfCheckedOutBooks.indexOf(bookToBeReturned);
         if (indexOfBookToBeReturned != -1) {
             removeBookFromCheckedOutBookListAndAddItToAvailableBooksList(indexOfBookToBeReturned);
-            libraryObserver.notifySuccessfulReturn();
+            libraryBooksObserver.notifySuccessfulReturn();
         }
         else
-            libraryObserver.notifyUnsuccessfulReturn();
+            libraryBooksObserver.notifyUnsuccessfulReturn();
     }
 }

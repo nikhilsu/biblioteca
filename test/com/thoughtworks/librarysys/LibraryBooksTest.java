@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class LibraryTest {
+public class LibraryBooksTest {
 
     @Test
     public void shouldReturnTheNamesOfAllTheBooksInTheList() {
@@ -21,8 +21,8 @@ public class LibraryTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryObserver libraryObserver = new LibraryObserver(consoleView);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        LibraryBooksObserver libraryBooksObserver = new LibraryBooksObserver(consoleView);
+        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
 
         String testString = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
@@ -31,7 +31,7 @@ public class LibraryTest {
                 String.format("%-30s%-30s%-20s\n", "Kite Runner", "Khaled Hossieni", 2003) +
                 String.format("%-30s%-30s%-20s\n", "Inferno", "Dan Brown", 2012) + "\n";
 
-        assertEquals(testString, library.toString());
+        assertEquals(testString, libraryBooks.toString());
     }
 
     @Test
@@ -44,12 +44,12 @@ public class LibraryTest {
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        LibraryObserver libraryObserver = mock(LibraryObserver.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
+        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
 
-        library.checkOut(bookTwo);
+        libraryBooks.checkOut(bookTwo);
 
-        verify(libraryObserver).notifySuccessfulBookCheckout();
+        verify(libraryBooksObserver).notifySuccessfulBookCheckout();
     }
 
     @Test
@@ -62,13 +62,13 @@ public class LibraryTest {
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        LibraryObserver libraryObserver = mock(LibraryObserver.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
+        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
 
         Book notALibraryBook = new Book("Head First java", "Bert Bates", 2003);
-        library.checkOut(notALibraryBook);
+        libraryBooks.checkOut(notALibraryBook);
 
-        verify(libraryObserver).notifyUnsuccessfulCheckout();
+        verify(libraryBooksObserver).notifyUnsuccessfulCheckout();
     }
 
     @Test
@@ -81,13 +81,13 @@ public class LibraryTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(borrowedBook);
-        LibraryObserver libraryObserver = mock(LibraryObserver.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
+        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
 
         Book libraryBook = new Book("Inferno", "Author", 0);
-        library.toReturn(libraryBook);
+        libraryBooks.toReturn(libraryBook);
 
-        verify(libraryObserver).notifySuccessfulReturn();
+        verify(libraryBooksObserver).notifySuccessfulReturn();
     }
 
     @Test
@@ -100,13 +100,13 @@ public class LibraryTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(borrowedBook);
-        LibraryObserver libraryObserver = mock(LibraryObserver.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
+        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
 
         Book libraryBook = new Book("Head First Java", "Author", 0);
-        library.toReturn(libraryBook);
+        libraryBooks.toReturn(libraryBook);
 
-        verify(libraryObserver).notifyUnsuccessfulReturn();
+        verify(libraryBooksObserver).notifyUnsuccessfulReturn();
     }
 
     @Test
@@ -119,11 +119,11 @@ public class LibraryTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(borrowedBook);
-        LibraryObserver libraryObserver = mock(LibraryObserver.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
+        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
         Book libraryBook = new Book("Inferno", "Author", 0);
 
-        library.toReturn(libraryBook);
+        libraryBooks.toReturn(libraryBook);
         String testString = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
                 String.format("%085d\n", 0).replace("0", "-") +
@@ -131,6 +131,6 @@ public class LibraryTest {
                 String.format("%-30s%-30s%-20s\n", "Kite Runner", "Khaled Hossieni", 2003) +
                 String.format("%-30s%-30s%-20s\n", "Inferno", "Dan Brown", 2012) + "\n";
 
-        assertEquals(testString, library.toString());
+        assertEquals(testString, libraryBooks.toString());
     }
 }

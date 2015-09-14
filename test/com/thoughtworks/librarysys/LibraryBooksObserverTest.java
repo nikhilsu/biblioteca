@@ -5,13 +5,13 @@ import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class LibraryObserverTest {
+public class LibraryBooksObserverTest {
 
     @Test
     public void shouldPrintTheSuccessfulCheckoutMessageOntoTheConsole() {
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryObserver libraryObserver = new LibraryObserver(consoleView);
-        libraryObserver.notifySuccessfulBookCheckout();
+        LibraryBooksObserver libraryBooksObserver = new LibraryBooksObserver(consoleView);
+        libraryBooksObserver.notifySuccessfulBookCheckout();
 
         verify(consoleView).printOnConsole("Thank you! Enjoy the book\n\n");
     }
@@ -19,8 +19,8 @@ public class LibraryObserverTest {
     @Test
     public void shouldPrintTheUnsuccessfulCheckoutMessageOntoTheConsole() {
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryObserver libraryObserver = new LibraryObserver(consoleView);
-        libraryObserver.notifyUnsuccessfulCheckout();
+        LibraryBooksObserver libraryBooksObserver = new LibraryBooksObserver(consoleView);
+        libraryBooksObserver.notifyUnsuccessfulCheckout();
 
         verify(consoleView).printOnConsole("That book is not available\n\n");
     }
@@ -28,8 +28,8 @@ public class LibraryObserverTest {
     @Test
     public void shouldPrintTheSuccessfulReturnMessageOntoTheConsole() {
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryObserver libraryObserver = new LibraryObserver(consoleView);
-        libraryObserver.notifySuccessfulReturn();
+        LibraryBooksObserver libraryBooksObserver = new LibraryBooksObserver(consoleView);
+        libraryBooksObserver.notifySuccessfulReturn();
 
         verify(consoleView).printOnConsole("Thank you for returning the book\n\n");
     }
@@ -37,8 +37,8 @@ public class LibraryObserverTest {
     @Test
     public void shouldPrintTheUnsuccessfulReturnMessageOntoTheConsole() {
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryObserver libraryObserver = new LibraryObserver(consoleView);
-        libraryObserver.notifyUnsuccessfulReturn();
+        LibraryBooksObserver libraryBooksObserver = new LibraryBooksObserver(consoleView);
+        libraryBooksObserver.notifyUnsuccessfulReturn();
 
         verify(consoleView).printOnConsole("That is not a valid book to return\n\n");
     }

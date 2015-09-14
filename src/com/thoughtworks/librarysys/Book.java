@@ -1,7 +1,7 @@
 package com.thoughtworks.librarysys;
 
 //book has a name author and year of publication and returns them in a required format
-public class Book {
+public class Book implements LibraryItem {
     private String name;
     private String author;
     private int yearOfPublication;
@@ -12,8 +12,7 @@ public class Book {
         this.yearOfPublication = yearOfPublication;
     }
 
-    @Override
-    public String toString() {
+    public String displayDetails() {
         return String.format("%-30s%-30s%-20s\n", this.name, this.author, yearOfPublication);
     }
 

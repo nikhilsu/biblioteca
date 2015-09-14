@@ -9,8 +9,8 @@ public class BibliotecaApplication {
     private Scanner scanner;
     private PrintStream printStream;
     private ConsoleView consoleView;
-    private LibraryObserver libraryObserver;
-    private Library library;
+    private LibraryBooksObserver libraryBooksObserver;
+    private LibraryBooks libraryBooks;
     private MenuItem menuItem;
     private InputParser inputParser;
     private WelcomeUser welcomeUser;
@@ -44,11 +44,11 @@ public class BibliotecaApplication {
         this.scanner = new Scanner(System.in);
         this.printStream = new PrintStream(System.out);
         this.consoleView = new ConsoleView(scanner, printStream);
-        this.libraryObserver = new LibraryObserver(consoleView);
+        this.libraryBooksObserver = new LibraryBooksObserver(consoleView);
         ArrayList<Book> listOfBooks = manufactureListOfBooks();
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        this.library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
-        this.inputParser = new InputParser(library, consoleView);
+        this.libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        this.inputParser = new InputParser(libraryBooks, consoleView);
         ArrayList<String> listOfMenuItems = manufactureListOfMenuItems();
         this.menuItem = new MenuItem(listOfMenuItems, consoleView);
         this.welcomeUser = manufactureWelcomeUser();

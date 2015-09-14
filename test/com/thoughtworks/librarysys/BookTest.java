@@ -13,7 +13,7 @@ public class BookTest {
 
         String testString = String.format("%-30s%-30s%-20s\n", "Kite Runner", "Khaled Hossieni", 2003);
 
-        assertEquals(testString, book.toString());
+        assertEquals(testString, book.displayDetails());
     }
 
     @Test

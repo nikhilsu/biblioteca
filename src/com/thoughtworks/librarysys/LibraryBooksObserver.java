@@ -1,10 +1,10 @@
 package com.thoughtworks.librarysys;
-//LibraryObserver observes the library class for successful and unsuccessful return and checkouts
+//LibraryBooksObserver observes the library class for successful and unsuccessful return and checkouts
 
-public class LibraryObserver {
+public class LibraryBooksObserver {
     private ConsoleView consoleView;
 
-    public LibraryObserver(ConsoleView consoleView) {
+    public LibraryBooksObserver(ConsoleView consoleView) {
         this.consoleView = consoleView;
     }
 
