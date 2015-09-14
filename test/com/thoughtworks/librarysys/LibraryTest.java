@@ -21,7 +21,8 @@ public class LibraryTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = new LibraryObserver(consoleView);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
 
         String testString = String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
                 String.format("%-30s%-30s%-20s\n", "Gone Girl", "Gillian Flynn", 2014) +
@@ -41,12 +42,12 @@ public class LibraryTest {
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
 
         library.checkOut(bookTwo);
 
-        verify(consoleView).notifySuccessfulBookCheckout();
+        verify(libraryObserver).notifySuccessfulBookCheckout();
     }
 
     @Test
@@ -59,13 +60,13 @@ public class LibraryTest {
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
 
         Book notALibraryBook = new Book("Head First java", "Bert Bates", 2003);
         library.checkOut(notALibraryBook);
 
-        verify(consoleView).notifyUnsuccessfulCheckout();
+        verify(libraryObserver).notifyUnsuccessfulCheckout();
     }
 
     @Test
@@ -78,13 +79,13 @@ public class LibraryTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(borrowedBook);
-        ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
 
         Book libraryBook = new Book("Inferno", "Author", 0);
         library.toReturn(libraryBook);
 
-        verify(consoleView).notifySuccessfulReturn();
+        verify(libraryObserver).notifySuccessfulReturn();
     }
 
     @Test
@@ -97,13 +98,13 @@ public class LibraryTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(borrowedBook);
-        ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
 
         Book libraryBook = new Book("Head First Java", "Author", 0);
         library.toReturn(libraryBook);
 
-        verify(consoleView).notifyUnsuccessfulReturn();
+        verify(libraryObserver).notifyUnsuccessfulReturn();
     }
 
     @Test
@@ -116,8 +117,8 @@ public class LibraryTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
         listOfCheckedOutBooks.add(borrowedBook);
-        ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
         Book libraryBook = new Book("Inferno", "Author", 0);
 
         library.toReturn(libraryBook);

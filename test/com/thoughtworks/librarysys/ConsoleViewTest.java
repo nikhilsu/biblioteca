@@ -13,10 +13,12 @@ public class ConsoleViewTest {
 
     @Test
     public void shouldDisplayAStringPassedToItOnTheConsole() {
-        ConsoleView consoleView = mock(ConsoleView.class);
+        PrintStream printStream = mock(PrintStream.class);
+        Scanner scanner = new Scanner(System.in);
+        ConsoleView consoleView = new ConsoleView(scanner, printStream);
         consoleView.printOnConsole("Hello World!");
 
-        verify(consoleView, times(1)).printOnConsole("Hello World!");
+        verify(printStream, times(1)).print("Hello World!");
     }
 
     @Test
@@ -27,49 +29,5 @@ public class ConsoleViewTest {
 
         assertEquals("hello world", consoleView.inputFromUser());
 
-    }
-
-    @Test
-    public void shouldPrintTheSuccessfulCheckoutMessageOntoTheConsole() {
-        Scanner scanner = new Scanner(System.in);
-        PrintStream printStream = mock(PrintStream.class);
-        ConsoleView consoleView = new ConsoleView(scanner, printStream);
-
-        consoleView.notifySuccessfulBookCheckout();
-
-        verify(printStream).print("Thank you! Enjoy the book\n");
-    }
-
-    @Test
-    public void shouldPrintTheUnsuccessfulCheckoutMessageOntoTheConsole() {
-        Scanner scanner = new Scanner(System.in);
-        PrintStream printStream = mock(PrintStream.class);
-        ConsoleView consoleView = new ConsoleView(scanner, printStream);
-
-        consoleView.notifyUnsuccessfulCheckout();
-
-        verify(printStream).print("That book is not available\n");
-    }
-
-    @Test
-    public void shouldPrintTheSuccessfulReturnMessageOntoTheConsole() {
-        Scanner scanner = new Scanner(System.in);
-        PrintStream printStream = mock(PrintStream.class);
-        ConsoleView consoleView = new ConsoleView(scanner, printStream);
-
-        consoleView.notifySuccessfulReturn();
-
-        verify(printStream).print("Thank you for returning the book\n");
-    }
-
-    @Test
-    public void shouldPrintTheUnsuccessfulReturnMessageOntoTheConsole() {
-        Scanner scanner = new Scanner(System.in);
-        PrintStream printStream = mock(PrintStream.class);
-        ConsoleView consoleView = new ConsoleView(scanner, printStream);
-
-        consoleView.notifyUnsuccessfulReturn();
-
-        verify(printStream).print("That is not a valid book to return\n");
     }
 }

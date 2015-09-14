@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 public class ListBooksMenuItemTest {
@@ -20,7 +21,8 @@ public class ListBooksMenuItemTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = new LibraryObserver(consoleView);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
         ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(library, consoleView);
 
         String testString = String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
@@ -43,7 +45,8 @@ public class ListBooksMenuItemTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = new LibraryObserver(consoleView);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
         ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(library, consoleView);
 
         String testString = String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +

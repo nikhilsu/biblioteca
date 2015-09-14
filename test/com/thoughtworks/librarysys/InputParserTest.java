@@ -20,7 +20,8 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
         InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "1";
@@ -39,7 +40,8 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
         InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "2";
@@ -58,7 +60,8 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
         InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "4";
@@ -77,7 +80,8 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
         InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "0";
@@ -96,7 +100,8 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
-        Library library = new Library(listOfBooks, listOfCheckedOutBooks, consoleView);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Library library = new Library(listOfBooks, listOfCheckedOutBooks, libraryObserver);
         InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "3";

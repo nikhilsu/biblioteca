@@ -2,7 +2,7 @@ package com.thoughtworks.librarysys;
 
 import java.io.PrintStream;
 import java.util.Scanner;
-//ConsoleView serves as an interface that can take input from the user and display a string
+//ConsoleView serves as an interface that can take input from the user and display a string and observes the library
 public class ConsoleView {
     private PrintStream printStream;
     private Scanner scanner;
@@ -18,21 +18,5 @@ public class ConsoleView {
 
     public String inputFromUser() {
         return scanner.nextLine();
-    }
-
-    public void notifySuccessfulBookCheckout() {
-        printOnConsole("Thank you! Enjoy the book\n");
-    }
-
-    public void notifyUnsuccessfulCheckout() {
-        printOnConsole("That book is not available\n");
-    }
-
-    public void notifySuccessfulReturn() {
-        printOnConsole("Thank you for returning the book\n");
-    }
-
-    public void notifyUnsuccessfulReturn() {
-        printOnConsole("That is not a valid book to return\n");
     }
 }

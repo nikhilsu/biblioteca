@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class Library {
     private ArrayList<Book> listOfBooksAvailable;
     private ArrayList<Book> listOfCheckedOutBooks;
-    private ConsoleView consoleView;
+    private LibraryObserver libraryObserver;
 
-    public Library(ArrayList<Book> listOfBooksAvailable, ArrayList<Book> listOfCheckedOutBooks, ConsoleView consoleView) {
+    public Library(ArrayList<Book> listOfBooksAvailable, ArrayList<Book> listOfCheckedOutBooks, LibraryObserver libraryObserver) {
         this.listOfBooksAvailable = listOfBooksAvailable;
         this.listOfCheckedOutBooks = listOfCheckedOutBooks;
-        this.consoleView = consoleView;
+        this.libraryObserver = libraryObserver;
     }
 
     @Override
@@ -36,19 +36,19 @@ public class Library {
         int indexOfBook = listOfBooksAvailable.indexOf(bookToCheckout);
         if (indexOfBook != -1) {
             removeBookFromAvailableBooksListAndAddItToCheckedOutBookList(indexOfBook);
-            consoleView.notifySuccessfulBookCheckout();
+            libraryObserver.notifySuccessfulBookCheckout();
         }
         else
-        consoleView.notifyUnsuccessfulCheckout();
+            libraryObserver.notifyUnsuccessfulCheckout();
     }
 
     public void toReturn(Book bookToBeReturned) {
         int indexOfBookToBeReturned = listOfCheckedOutBooks.indexOf(bookToBeReturned);
         if (indexOfBookToBeReturned != -1) {
             removeBookFromCheckedOutBookListAndAddItToAvailableBooksList(indexOfBookToBeReturned);
-            consoleView.notifySuccessfulReturn();
+            libraryObserver.notifySuccessfulReturn();
         }
         else
-        consoleView.notifyUnsuccessfulReturn();
+            libraryObserver.notifyUnsuccessfulReturn();
     }
 }
