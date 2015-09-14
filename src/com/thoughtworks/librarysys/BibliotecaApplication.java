@@ -58,4 +58,16 @@ public class BibliotecaApplication {
         this.consoleView.printOnConsole(welcomeUser.toString());
         this.controller = new Controller(menuItem, inputParser, consoleView);
     }
+
+    public void start() {
+        while (true)
+            this.controller.run();
+    }
+
+    public static void main(String[] args) {
+        BibliotecaApplication bibliotecaApplication = new BibliotecaApplication();
+        bibliotecaApplication.createDependencies();
+        bibliotecaApplication.initialiseApplication();
+        bibliotecaApplication.start();
+    }
 }

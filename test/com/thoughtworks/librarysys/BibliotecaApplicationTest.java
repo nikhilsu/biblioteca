@@ -23,4 +23,14 @@ public class BibliotecaApplicationTest {
 
         verify(bibliotecaApplication).initialiseApplication();
     }
+
+    @Test
+    public void shouldRunTheApplicationByCallingTheRunMethod() {
+        BibliotecaApplication bibliotecaApplication = mock(BibliotecaApplication.class);
+        bibliotecaApplication.createDependencies();
+        bibliotecaApplication.initialiseApplication();
+        bibliotecaApplication.start();
+
+        verify(bibliotecaApplication).start();
+    }
 }
