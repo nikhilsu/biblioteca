@@ -59,9 +59,10 @@
  
      <target name="runjUnit" depends="compile.tests">
           <junit fork="yes" forkmode="once" printsummary="yes" haltonfailure="yes" showoutput="true">
-               <formatter type="xml" />
                <classpath refid="test.runtime.classpath" />
-               <batchtest todir="out/reports/junit">
+               <formatter type="plain" usefile="false" />
+	       <formatter type="plain" />
+	       <batchtest todir="out/reports/junit">
                     <fileset dir="test">
                          <include name="**/*Test.java" />
                     </fileset>

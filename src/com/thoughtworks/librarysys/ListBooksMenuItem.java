@@ -17,6 +17,6 @@ public class ListBooksMenuItem extends MenuItem {
 
     @Override
     public String toString() {
-        return libraryBooks.toString();
+        return libraryBooks.displayListOfDetails();
     }
 }

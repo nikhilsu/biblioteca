@@ -10,7 +10,7 @@ public class MovieTest {
     public void shouldReturnTheNameOfTheMovieYearOfReleaaseDirectorAndRatingInAFormattedString() {
         Movie movie = new Movie("Matrix", 1999, "Andy Wachowski", 9);
 
-        String testString = String.format("%-30s%-20s%-35s%-20s\n", "Matrix", 1999, "Andy Wachowski", 9);
+        String testString = String.format("%-25s%-20s%-30s%-20s\n", "Matrix", 1999, "Andy Wachowski", 9);
 
         assertEquals(testString, movie.displayDetails());
     }

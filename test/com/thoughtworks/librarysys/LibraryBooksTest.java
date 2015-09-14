@@ -31,7 +31,7 @@ public class LibraryBooksTest {
                 String.format("%-30s%-30s%-20s\n", "Kite Runner", "Khaled Hossieni", 2003) +
                 String.format("%-30s%-30s%-20s\n", "Inferno", "Dan Brown", 2012) + "\n";
 
-        assertEquals(testString, libraryBooks.toString());
+        assertEquals(testString, libraryBooks.displayListOfDetails());
     }
 
     @Test
@@ -131,6 +131,6 @@ public class LibraryBooksTest {
                 String.format("%-30s%-30s%-20s\n", "Kite Runner", "Khaled Hossieni", 2003) +
                 String.format("%-30s%-30s%-20s\n", "Inferno", "Dan Brown", 2012) + "\n";
 
-        assertEquals(testString, libraryBooks.toString());
+        assertEquals(testString, libraryBooks.displayListOfDetails());
     }
 }

@@ -15,7 +15,7 @@ public class LibraryBooks implements LibraryOperations{
     }
 
     @Override
-    public String toString() {
+    public String displayListOfDetails() {
         String listOfBookDetails = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
                 String.format("%085d\n", 0).replace("0","-");
@@ -34,6 +34,7 @@ public class LibraryBooks implements LibraryOperations{
         listOfCheckedOutBooks.remove(indexOfBookToBeReturned);
     }
 
+    @Override
     public void checkOut(LibraryItem bookToCheckout) {
         int indexOfBook = listOfBooksAvailable.indexOf(bookToCheckout);
         if (indexOfBook != -1) {

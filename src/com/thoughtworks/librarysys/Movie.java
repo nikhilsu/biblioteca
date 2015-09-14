@@ -15,6 +15,6 @@ public class Movie implements LibraryItem{
     }
 
     public String displayDetails() {
-        return String.format("%-30s%-20s%-35s%-20s\n", this.name, this.year, this.director, this.rating);
+        return String.format("%-25s%-20s%-30s%-20s\n", this.name, this.year, this.director, this.rating);
     }
 }
