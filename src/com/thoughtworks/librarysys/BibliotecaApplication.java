@@ -14,6 +14,7 @@ public class BibliotecaApplication {
     private MenuItem menuItem;
     private InputParser inputParser;
     private WelcomeUser welcomeUser;
+    private Controller controller;
 
     private ArrayList<Book> manufactureListOfBooks() {
         ArrayList<Book> listOfBooks = new ArrayList<>();
@@ -51,5 +52,10 @@ public class BibliotecaApplication {
         ArrayList<String> listOfMenuItems = manufactureListOfMenuItems();
         this.menuItem = new MenuItem(listOfMenuItems, consoleView);
         this.welcomeUser = manufactureWelcomeUser();
+    }
+
+    public void initialiseApplication() {
+        this.consoleView.printOnConsole(welcomeUser.toString());
+        this.controller = new Controller(menuItem, inputParser, consoleView);
     }
 }

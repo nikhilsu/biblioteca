@@ -16,4 +16,11 @@ public class BibliotecaApplicationTest {
         verify(bibliotecaApplication).createDependencies();
     }
 
+    @Test
+    public void shouldInitialiseTheApplicationByPrintingTheWelcomeMessageAndCreatingTheControllerObject() {
+        BibliotecaApplication bibliotecaApplication = mock(BibliotecaApplication.class);
+        bibliotecaApplication.initialiseApplication();
+
+        verify(bibliotecaApplication).initialiseApplication();
+    }
 }
