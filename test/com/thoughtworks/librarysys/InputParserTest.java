@@ -21,8 +21,10 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
-        InputParser inputParser = new InputParser(library, consoleInput);
+        Scanner scanner = new Scanner(System.in);
+        PrintStream printStream = new PrintStream(System.out);
+        ConsoleView consoleView = new ConsoleView(scanner, printStream);
+        InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "1";
 
@@ -40,12 +42,14 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
-        InputParser inputParser = new InputParser(library, consoleInput);
+        Scanner scanner = new Scanner(System.in);
+        PrintStream printStream = new PrintStream(System.out);
+        ConsoleView consoleView = new ConsoleView(scanner, printStream);
+        InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "2";
 
-        assertEquals(new CheckoutBookMenuItem(library, consoleInput).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new CheckoutBookMenuItem(library, consoleView).getClass(), inputParser.parse(userChoice).getClass());
     }
 
     @Test
@@ -59,8 +63,10 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
-        InputParser inputParser = new InputParser(library, consoleInput);
+        Scanner scanner = new Scanner(System.in);
+        PrintStream printStream = new PrintStream(System.out);
+        ConsoleView consoleView = new ConsoleView(scanner, printStream);
+        InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "4";
 
@@ -78,8 +84,10 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
-        InputParser inputParser = new InputParser(library, consoleInput);
+        Scanner scanner = new Scanner(System.in);
+        PrintStream printStream = new PrintStream(System.out);
+        ConsoleView consoleView = new ConsoleView(scanner, printStream);
+        InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "0";
 
@@ -97,11 +105,13 @@ public class InputParserTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
-        InputParser inputParser = new InputParser(library, consoleInput);
+        Scanner scanner = new Scanner(System.in);
+        PrintStream printStream = new PrintStream(System.out);
+        ConsoleView consoleView = new ConsoleView(scanner, printStream);
+        InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "3";
 
-        assertEquals(new ReturnBookMenuItem(library, consoleInput).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new ReturnBookMenuItem(library, consoleView).getClass(), inputParser.parse(userChoice).getClass());
     }
 }

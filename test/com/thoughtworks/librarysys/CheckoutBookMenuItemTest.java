@@ -2,18 +2,16 @@ package com.thoughtworks.librarysys;
 
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class CheckoutBookMenuItemTest {
 
     @Test
     public void shouldCheckoutABookFromTheListOfBooksInTheLibraryByInputtingTheNameOfTheBook() {
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("Gone Girl\n".getBytes());
-        System.setIn(inputStream);
         ArrayList<Book> listOfBooks = new ArrayList<Book>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
@@ -23,17 +21,15 @@ public class CheckoutBookMenuItemTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
-        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library, consoleInput);
+        ConsoleView consoleView = mock(ConsoleView.class);
+        when(consoleView.inputFromUser()).thenReturn("Gone Girl");
+        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library, consoleView);
 
         assertEquals("Thank you! Enjoy the book\n", checkoutBookMenuItem.performOperation());
-        System.setIn(System.in);
     }
 
     @Test
     public void shouldNotCheckOutABookFromTheLibraryIfItIsNotABookFromTheLibrary() {
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("Head First Java\n".getBytes());
-        System.setIn(inputStream);
         ArrayList<Book> listOfBooks = new ArrayList<>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
@@ -43,10 +39,10 @@ public class CheckoutBookMenuItemTest {
         listOfBooks.add(bookThree);
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         Library library = new Library(listOfBooks, listOfCheckedOutBooks);
-        ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
-        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library, consoleInput);
-
+        ConsoleView consoleView = mock(ConsoleView.class);
+        when(consoleView.inputFromUser()).thenReturn("Head First Java");
+        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(library, consoleView);
+        
         assertEquals("That book is not available\n", checkoutBookMenuItem.performOperation());
-        System.setIn(System.in);
     }
 }

@@ -1,21 +1,18 @@
 package com.thoughtworks.librarysys;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 //checkoutbook menu item is a menu item responsible for checking out a book from the library
-public class CheckoutBookMenuItem extends MainMenuItem{
+public class CheckoutBookMenuItem extends MainMenuItem {
     private Library library;
-    private ConsoleInput consoleInput;
+    private ConsoleView consoleView;
 
-    public CheckoutBookMenuItem(Library library, ConsoleInput consoleInput) {
+    public CheckoutBookMenuItem(Library library, ConsoleView consoleView) {
         this.library = library;
-        this.consoleInput = consoleInput;
+        this.consoleView = consoleView;
     }
 
     @Override
     public String performOperation() {
-        String nameOfTheBookToCheckout = consoleInput.inputFromUser();
+        String nameOfTheBookToCheckout = consoleView.inputFromUser();
         Book bookToCheckout = new Book(nameOfTheBookToCheckout, "Not needed", 0);
         if (library.checkOut(bookToCheckout) == true)
             return "Thank you! Enjoy the book\n";
