@@ -31,4 +31,8 @@ public class ConsoleView {
     public void notifySuccessfulReturn() {
         printOnConsole("Thank you for returning the book\n");
     }
+
+    public void notifyUnsuccessfulReturn() {
+        printOnConsole("That is not a valid book to return\n");
+    }
 }

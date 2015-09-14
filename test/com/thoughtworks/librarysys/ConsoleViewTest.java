@@ -56,4 +56,15 @@ public class ConsoleViewTest {
 
         verify(printStream).print("Thank you for returning the book\n");
     }
+
+    @Test
+    public void shouldPrintTheUnsuccessfulReturnMessageOntoTheConsole() {
+        Scanner scanner = new Scanner(System.in);
+        PrintStream printStream = mock(PrintStream.class);
+        ConsoleView consoleView = new ConsoleView(scanner, printStream);
+
+        consoleView.notifyUnsuccessfulReturn();
+
+        verify(printStream).print("That is not a valid book to return\n");
+    }
 }
