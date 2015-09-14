@@ -23,4 +23,8 @@ public class ConsoleView {
     public void notifySuccessfulBookCheckout() {
         printOnConsole("Thank you! Enjoy the book\n");
     }
+
+    public void notifyUnsuccessfulCheckout() {
+        printOnConsole("That book is not available\n");
+    }
 }
