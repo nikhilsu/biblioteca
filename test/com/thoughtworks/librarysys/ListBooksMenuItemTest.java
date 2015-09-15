@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -56,9 +57,8 @@ public class ListBooksMenuItemTest {
                 String.format("%-30s%-30s%-20s\n", "Gone Girl", "Gillian Flynn", 2014) +
                 String.format("%-30s%-30s%-20s\n", "Kite Runner", "Khaled Hossieni", 2003) +
                 String.format("%-30s%-30s%-20s\n", "Inferno", "Dan Brown", 2012) + "\n";
-        listBooksMenuItem.performOperation();
 
-        verify(consoleView).printOnConsole(testString);
+        assertEquals(testString, listBooksMenuItem.toString());
     }
 
 }

@@ -1,10 +1,10 @@
 package com.thoughtworks.librarysys;
 
-public class ListMovie extends MenuItem {
+public class ListMovieMenuItem extends MenuItem {
     private LibraryMovies libraryMovies;
     private ConsoleView consoleView;
 
-    public ListMovie(LibraryMovies libraryMovies, ConsoleView consoleView) {
+    public ListMovieMenuItem(LibraryMovies libraryMovies, ConsoleView consoleView) {
         this.libraryMovies = libraryMovies;
         this.consoleView = consoleView;
     }
