@@ -28,5 +28,19 @@ public class LibraryTest {
 
         Movie movieToCheckOut = new Movie("Movie", 1000, "Director", 0);
         library.checkOut(movieToCheckOut);
+
+        verify(movies).checkOut(movieToCheckOut);
+    }
+
+    @Test
+    public void shouldReturnABook() {
+        Books books = mock(Books.class);
+        Movies movies = mock(Movies.class);
+        Library library = new Library(books, movies);
+
+        Book bookToReturn = new Book("Book", "Author", 0);
+        library.toReturn(bookToReturn);
+
+        verify(books).toReturn(bookToReturn);
     }
 }

@@ -16,5 +16,9 @@ public class Library {
     public void checkOut(Movie movieToCheckout) {
         movies.checkOut(movieToCheckout);
     }
+
+    public void toReturn(Book bookToReturn) {
+        books.toReturn(bookToReturn);
+    }
 }
 
