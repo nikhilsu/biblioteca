@@ -36,4 +36,11 @@ public class MovieTest {
 
         assertNotEquals(movie, "Movie");
     }
+
+    @Test
+    public void shouldNotBeEqualToNull() {
+        Movie movie = new Movie("Matrix", 1999, "Andy Wachowski", 9);
+
+        assertNotEquals(movie, null);
+    }
 }

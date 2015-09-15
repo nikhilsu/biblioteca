@@ -20,7 +20,7 @@ public class Movie implements LibraryItem{
 
     @Override
     public boolean equals(Object obj) {
-        if(this.getClass() != obj.getClass())
+        if(obj == null || this.getClass() != obj.getClass())
             return false;
         Movie that = (Movie) obj;
         if (this.name.equals(that.name))
