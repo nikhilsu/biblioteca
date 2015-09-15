@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="pathashala" default="buildJar" basedir=".">
-     
+<project name="pathashala" default="runjUnit" basedir=".">
    
      <path id="test.compile.classpath" description="classpath for compiling test-sources">
-          <pathelement location="out/classes" />
+          <pathelement location="out" />
           <pathelement location="lib/junit-4.12.jar" />
           <pathelement location="lib/system-rules-1.12.0.jar" />
           <pathelement location="lib/mockito-all-1.9.5.jar" />
      </path>
      <path id="test.runtime.classpath" description="classpath for running junit-tests">
-          <pathelement location="out/testclasses" />
+          <pathelement location="out" />
           <pathelement location="out/instrumentedclasses" />
           <pathelement location="lib/junit-4.12.jar" />
           <pathelement location="lib/system-rules-1.12.0.jar" />
@@ -33,36 +32,34 @@
  
      <target name="prepare" depends="clean">
           <mkdir dir="out" />
-          <mkdir dir="out/classes" />
-          <mkdir dir="out/testclasses" />
           <mkdir dir="out/reports" />
           <mkdir dir="out/reports/junit" />
-          <mkdir dir="out/reports/cobertura}" />
+          <mkdir dir="out/reports/cobertura" />
      </target>
  
      <target name="compile.sources" depends="prepare">
-          <javac srcdir="src" destdir="out/classes" debug="on" fork="true" includeantruntime="no" />
+          <javac srcdir="src" destdir="out" debug="on" fork="true" includeantruntime="no" />
      </target>
  
      <target name="instrument.classes" depends="compile.sources">
           <cobertura-instrument todir="out/instrumentedclasses" datafile="out/cobertura.ser">
+               <exclude name="**/*Test*.class"/>
                <includeclasses regex=".*" />
                <instrumentationClasspath>
-                    <pathelement location="out/classes" />
+                    <pathelement location="out" />
                </instrumentationClasspath>
           </cobertura-instrument>
      </target>
  
      <target name="compile.tests" depends="instrument.classes">
-          <javac classpathref="test.compile.classpath" srcdir="test" destdir="out/testclasses" debug="on" fork="true" includeantruntime="no" />
+          <javac classpathref="test.compile.classpath" srcdir="test" destdir="out" debug="on" fork="true" includeantruntime="no" />
      </target>
  
      <target name="runjUnit" depends="compile.tests">
           <junit fork="yes" forkmode="once" printsummary="yes" haltonfailure="yes" showoutput="true">
                <classpath refid="test.runtime.classpath" />
                <formatter type="plain" usefile="false" />
-	       <formatter type="plain" />
-	       <batchtest todir="out/reports/junit">
+	           <batchtest todir="out/reports/junit">
                     <fileset dir="test">
                          <include name="**/*Test.java" />
                     </fileset>
@@ -89,5 +86,4 @@
                </classpath>
           </java>
      </target>
- 
 </project>

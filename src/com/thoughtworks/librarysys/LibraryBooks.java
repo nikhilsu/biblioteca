@@ -34,7 +34,7 @@ public class LibraryBooks implements LibraryOperations{
         listOfCheckedOutBooks.remove(indexOfBookToBeReturned);
     }
 
-    @Override
+    @Override  // void checkout(Book bookToReturn)
     public void checkOut(LibraryItem bookToCheckout) {
         int indexOfBook = listOfBooksAvailable.indexOf(bookToCheckout);
         if (indexOfBook != -1) {
