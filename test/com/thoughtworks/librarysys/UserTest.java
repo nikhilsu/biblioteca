@@ -48,7 +48,14 @@ public class UserTest {
     public void shouldHaveTheSameHashCodeAsAnotherObjectHavingTheSameState() {
         User userOne = new User("111-1111", "passwd");
         User userTwo = new User("111-1111", "passwd");
-        
+
         assertEquals(userOne.hashCode(), userTwo.hashCode());
+    }
+
+    @Test
+    public void sameObjectsHaveEqualHashCodes() {
+        User userOne = new User("111-1111", "passwd");
+
+        assertEquals(userOne.hashCode(), userOne.hashCode());
     }
 }
