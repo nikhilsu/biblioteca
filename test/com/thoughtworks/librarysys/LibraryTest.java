@@ -54,4 +54,15 @@ public class LibraryTest {
 
         verify(books).displayListOfDetails();
     }
+
+    @Test
+    public void shouldListTheDetailsOfMoviesOfTheLibrary() {
+        Books books = mock(Books.class);
+        Movies movies = mock(Movies.class);
+        Library library = new Library(books, movies);
+
+        library.listMovies();
+
+        verify(movies).displayListOfDetails();
+    }
 }
