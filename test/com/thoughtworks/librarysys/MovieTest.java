@@ -43,4 +43,12 @@ public class MovieTest {
 
         assertNotEquals(movie, null);
     }
+
+    @Test
+    public void shouldNotBeEqualToAnotherMovie() {
+        Movie movieOne = new Movie("Matrix", 1999, "Andy Wachowski", 9);
+        Movie movieTwo = new Movie("Gone Girl", 2014, "David Fincher", 9);
+
+        assertNotEquals(movieOne, movieTwo);
+    }
 }
