@@ -55,7 +55,15 @@ public class MovieTest {
     @Test
     public void shouldHaveSameHashCodeWhenTheObjectsAreSame() {
         Movie movieOne = new Movie("Matrix", 1999, "Andy Wachowski", 9);
-        
+
         assertEquals(movieOne.hashCode(), movieOne.hashCode());
+    }
+
+    @Test
+    public void twoMoviesShouldHaveSameHashCodesWhenTheirStatesAreTheSame() {
+        Movie movieOne = new Movie("Matrix", 1999, "Andy Wachowski", 9);
+        Movie movieTwo = new Movie("Matrix", 1999, "Andy Wachowski", 9);
+
+        assertEquals(movieOne.hashCode(), movieTwo.hashCode());
     }
 }
