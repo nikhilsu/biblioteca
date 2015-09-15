@@ -11,58 +11,31 @@ public class InputParserTest {
 
     @Test
     public void shouldReturnAnObjectOfTypeListBooksWhenTheUsersChoiceOfMenuItemIsOne() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
-        Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
-        Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
-        Book bookThree = new Book("Inferno", "Dan Brown", 2012);
-        listOfBooks.add(bookOne);
-        listOfBooks.add(bookTwo);
-        listOfBooks.add(bookThree);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = mock(Library.class);
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        InputParser inputParser = new InputParser(books, consoleView);
+        InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "1";
 
-        assertEquals(new ListBooksMenuItem(books, consoleView).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new ListBooksMenuItem(library, consoleView).getClass(), inputParser.parse(userChoice).getClass());
     }
 
     @Test
     public void shouldReturnAnObjectOfTypeCheckoutBookMenuItemWhenTheUsersChoiceOfMenuItemIsTwo() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
-        Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
-        Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
-        Book bookThree = new Book("Inferno", "Dan Brown", 2012);
-        listOfBooks.add(bookOne);
-        listOfBooks.add(bookTwo);
-        listOfBooks.add(bookThree);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = mock(Library.class);
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        InputParser inputParser = new InputParser(books, consoleView);
+        InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "2";
 
-        assertEquals(new CheckoutBookMenuItem(books, consoleView).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new CheckoutBookMenuItem(library, consoleView).getClass(), inputParser.parse(userChoice).getClass());
     }
 
     @Test
     public void shouldReturnAnObjectOfTypeQuitMenuItemWhenTheUsersChoiceOfMenuItemIsFour() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
-        Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
-        Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
-        Book bookThree = new Book("Inferno", "Dan Brown", 2012);
-        listOfBooks.add(bookOne);
-        listOfBooks.add(bookTwo);
-        listOfBooks.add(bookThree);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = mock(Library.class);
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        InputParser inputParser = new InputParser(books, consoleView);
+        InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "4";
 
@@ -71,18 +44,9 @@ public class InputParserTest {
 
     @Test
     public void shouldReturnAnObjectOfTypeInvalidMenuChoiceWhenTheUsersChoiceOfMenuItemIsInvalid() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
-        Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
-        Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
-        Book bookThree = new Book("Inferno", "Dan Brown", 2012);
-        listOfBooks.add(bookOne);
-        listOfBooks.add(bookTwo);
-        listOfBooks.add(bookThree);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = mock(Library.class);
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        InputParser inputParser = new InputParser(books, consoleView);
+        InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "0";
 
@@ -91,21 +55,23 @@ public class InputParserTest {
 
     @Test
     public void shouldReturnAnObjectOfTypeReturnBookMenuItemWhenTheUsersChoiceOfMenuItemIsThree() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
-        Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
-        Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
-        Book bookThree = new Book("Inferno", "Dan Brown", 2012);
-        listOfBooks.add(bookOne);
-        listOfBooks.add(bookTwo);
-        listOfBooks.add(bookThree);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        Library library = mock(Library.class);
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        InputParser inputParser = new InputParser(books, consoleView);
+        InputParser inputParser = new InputParser(library, consoleView);
 
         String userChoice = "3";
 
-        assertEquals(new ReturnBookMenuItem(books, consoleView).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new ReturnBookMenuItem(library, consoleView).getClass(), inputParser.parse(userChoice).getClass());
+    }
+
+    @Test
+    public void shouldReturnAnObjectOfTypeListMoviesItemWhenTheUsersChoiceOfMenuItemIsFive () {
+        Library library = mock(Library.class);
+        ConsoleView consoleView = mock(ConsoleView.class);
+        InputParser inputParser = new InputParser(library, consoleView);
+
+        String userChoice = "5";
+
+        assertEquals(new ListMovieMenuItem(library, consoleView).getClass(), inputParser.parse(userChoice).getClass());
     }
 }

@@ -11,10 +11,12 @@ public class BibliotecaApplication {
     private ConsoleView consoleView;
     private LibraryBooksObserver libraryBooksObserver;
     private Books books;
+    private Movies movies;
     private MenuItem menuItem;
     private InputParser inputParser;
     private WelcomeUser welcomeUser;
     private Controller controller;
+    private Library library;
 
     private ArrayList<Book> manufactureListOfBooks() {
         ArrayList<Book> listOfBooks = new ArrayList<>();
@@ -33,6 +35,7 @@ public class BibliotecaApplication {
         listOfMenuItems.add("2. Checkout Book");
         listOfMenuItems.add("3. Return Book");
         listOfMenuItems.add("4. Quit");
+        listOfMenuItems.add("5. List Movies");
         return listOfMenuItems;
     }
 
@@ -48,10 +51,22 @@ public class BibliotecaApplication {
         ArrayList<Book> listOfBooks = manufactureListOfBooks();
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         this.books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        this.inputParser = new InputParser(books, consoleView);
+        ArrayList<Movie> listOfMovies = manufactureListOfMovies();
+        this.movies = new Movies(listOfMovies);
+        this.library = new Library(books, movies);
+        this.inputParser = new InputParser(library, consoleView);
         ArrayList<String> listOfMenuItems = manufactureListOfMenuItems();
         this.menuItem = new MenuItem(listOfMenuItems, consoleView);
         this.welcomeUser = manufactureWelcomeUser();
+    }
+
+    private ArrayList<Movie> manufactureListOfMovies() {
+        ArrayList<Movie> listOfMovies = new ArrayList<>();
+        Movie movieOne = new Movie("Matrix", 1999, "Andy Wachowski", 9);
+        Movie movieTwo = new Movie("Gone Girl", 2014, "David Fincher", 8);
+        listOfMovies.add(movieOne);
+        listOfMovies.add(movieTwo);
+        return listOfMovies;
     }
 
     public void initialiseApplication() {

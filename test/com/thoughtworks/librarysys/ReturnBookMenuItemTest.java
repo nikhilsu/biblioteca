@@ -10,44 +10,28 @@ public class ReturnBookMenuItemTest {
 
     @Test
     public void shouldReturnABookFromTheUserToTheLibraryByTheInputNameOfTheBook() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
-        Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
-        Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
-        listOfBooks.add(bookOne);
-        listOfBooks.add(bookTwo);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        Book book = new Book("Inferno", "Dan Brown", 2012);
-        listOfCheckedOutBooks.add(book);
+        Library library = mock(Library.class);
         ConsoleView consoleView = mock(ConsoleView.class);
-        when(consoleView.inputFromUser()).thenReturn("Inferno");
-        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(books, consoleView);
-
+        when(consoleView.inputFromUser()).thenReturn("Gone Girl");
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(library, consoleView);
+        Book bookToReturn = new Book("Gone Girl", "Not needed", 0);
         returnBookMenuItem.performOperation();
 
-        verify(libraryBooksObserver).notifySuccessfulReturn();
+        verify(consoleView).printOnConsole("Enter The Book to Return: ");
+        verify(library).toReturn(bookToReturn);
     }
 
     @Test
     public void shouldNotReturnABookToTheLibraryThatDoesNotBelongToIt() {
 
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
-        Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
-        Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
-        listOfBooks.add(bookOne);
-        listOfBooks.add(bookTwo);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        Book book = new Book("Inferno", "Dan Brown", 2012);
-        listOfCheckedOutBooks.add(book);
+        Library library = mock(Library.class);
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("Head First Java");
-        LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(books, consoleView);
-
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(library, consoleView);
+        Book bookToReturn = new Book("Head First Java", "Not needed", 0);
         returnBookMenuItem.performOperation();
 
-        verify(libraryBooksObserver).notifyUnsuccessfulReturn();
+        verify(consoleView).printOnConsole("Enter The Book to Return: ");
+        verify(library).toReturn(bookToReturn);
     }
 }
