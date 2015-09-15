@@ -58,6 +58,6 @@ public class LibraryObserverTest {
         LibraryObserver libraryObserver = new LibraryObserver(consoleView);
         libraryObserver.notifyUnsuccessfulMovieCheckout();
 
-        verify(consoleView).printOnConsole("That book is not available\n\n");
+        verify(consoleView).printOnConsole("That Movie is not available\n\n");
     }
 }

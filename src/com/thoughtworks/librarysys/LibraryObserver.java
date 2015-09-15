@@ -29,6 +29,6 @@ public class LibraryObserver {
     }
 
     public void notifyUnsuccessfulMovieCheckout() {
-        consoleView.printOnConsole("That book is not available\n\n");
+        consoleView.printOnConsole("That Movie is not available\n\n");
     }
 }
