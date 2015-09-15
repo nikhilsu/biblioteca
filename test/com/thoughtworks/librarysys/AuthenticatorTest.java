@@ -21,4 +21,16 @@ public class AuthenticatorTest {
 
         assertTrue(authenticator.authenticateUser(userToAuthenticate));
     }
+
+    @Test
+    public void shouldNotAuthenticateARegistedUserWithInvalidCredentials() {
+        User userOne = new User("111-1111", "password1");
+        User userTwo = new User("222-2222", "password2");
+        User userThree = new User("333-3333", "password3");
+        ArrayList<User> listOfRegisteredUsers = new ArrayList<>(Arrays.asList(userOne, userTwo, userThree));
+        Authenticator authenticator = new Authenticator(listOfRegisteredUsers);
+        User userToAuthenticate = new User("111-1111", "wrong Password");
+
+        assertFalse(authenticator.authenticateUser(userToAuthenticate));
+    }
 }
