@@ -37,7 +37,7 @@
           <mkdir dir="out/testclasses" />
           <mkdir dir="out/reports" />
           <mkdir dir="out/reports/junit" />
-          <mkdir dir="out/reports/cobertura}" />
+          <mkdir dir="out/reports/cobertura" />
      </target>
  
      <target name="compile.sources" depends="prepare">
