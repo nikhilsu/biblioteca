@@ -43,4 +43,12 @@ public class UserTest {
 
         assertNotEquals(userOne, null);
     }
+
+    @Test
+    public void shouldHaveTheSameHashCodeAsAnotherObjectHavingTheSameState() {
+        User userOne = new User("111-1111", "passwd");
+        User userTwo = new User("111-1111", "passwd");
+        
+        assertEquals(userOne.hashCode(), userTwo.hashCode());
+    }
 }

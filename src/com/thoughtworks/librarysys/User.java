@@ -19,4 +19,11 @@ public class User {
         else
             return false;
     }
+
+    @Override
+    public int hashCode() {
+        int result = libraryID.hashCode();
+        result = 31 * result + password.hashCode();
+        return result;
+    }
 }
