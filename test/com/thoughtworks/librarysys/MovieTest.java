@@ -22,5 +22,11 @@ public class MovieTest {
         assertEquals(movie, movie);
     }
 
-    @
+    @Test
+    public void shouldBeEqualToAnotherMovieWithTheSameName() {
+        Movie movieOne = new Movie("Matrix", 1999, "Andy Wachowski", 9);
+        Movie movieTwo = new Movie("Matrix", 0, "Director", 0);
+
+        assertEquals(movieOne, movieTwo);
+    }
 }
