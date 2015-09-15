@@ -20,6 +20,7 @@ public class LibraryMovies implements LibraryOperations{
 
     @Override
     public void checkOut(LibraryItem libraryItem) {
-
+        int indexOfMovieToCheckout = listOfMovies.indexOf(libraryItem);
+        listOfMovies.remove(indexOfMovieToCheckout);
     }
 }
