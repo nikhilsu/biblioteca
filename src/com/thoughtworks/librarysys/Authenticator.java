@@ -9,7 +9,11 @@ public class Authenticator {
         this.listOfRegisteredUsers = listOfRegisteredUsers;
     }
 
-    public boolean authenticateUser(User userToAuthenticate) {
-        return listOfRegisteredUsers.contains(userToAuthenticate);
+    public User authenticateUser(User userToAuthenticate) {
+        int indexOfRegisteredUserInTheList = listOfRegisteredUsers.indexOf(userToAuthenticate);
+        if (indexOfRegisteredUserInTheList != -1)
+            return listOfRegisteredUsers.get(indexOfRegisteredUserInTheList);
+        else
+            return new User("Not a Member", "No password", "Unregistered");
     }
 }

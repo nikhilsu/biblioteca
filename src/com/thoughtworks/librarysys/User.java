@@ -3,10 +3,12 @@ package com.thoughtworks.librarysys;
 public class User {
     private String libraryID;
     private String password;
+    private String role;
 
-    public User(String libraryID, String password) {
+    public User(String libraryID, String password, String role) {
         this.libraryID = libraryID;
         this.password = password;
+        this.role = role;
     }
 
     @Override
