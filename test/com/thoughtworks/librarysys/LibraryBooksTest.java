@@ -12,7 +12,7 @@ public class LibraryBooksTest {
 
     @Test
     public void shouldReturnTheNamesOfAllTheBooksInTheList() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
+        ArrayList<Book> listOfBooks = new ArrayList<>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
         Book bookThree = new Book("Inferno", "Dan Brown", 2012);
@@ -36,7 +36,7 @@ public class LibraryBooksTest {
 
     @Test
     public void shouldNotIncludeABookInItsListOnceItIsCheckedOut() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
+        ArrayList<Book> listOfBooks = new ArrayList<>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
         Book bookThree = new Book("Inferno", "Dan Brown", 2012);
@@ -54,7 +54,7 @@ public class LibraryBooksTest {
 
     @Test
     public void cannotCheckoutABookThatIsNotPresentInTheLibrary() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
+        ArrayList<Book> listOfBooks = new ArrayList<>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
         Book bookThree = new Book("Inferno", "Dan Brown", 2012);
@@ -73,7 +73,7 @@ public class LibraryBooksTest {
 
     @Test
     public void shouldReturnACheckedOutBookToTheLibrary() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
+        ArrayList<Book> listOfBooks = new ArrayList<>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
         listOfBooks.add(bookOne);
@@ -92,7 +92,7 @@ public class LibraryBooksTest {
 
     @Test
     public void shouldNotReturnABookThatDoesNotBelongToTheLibrary() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
+        ArrayList<Book> listOfBooks = new ArrayList<>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
         listOfBooks.add(bookOne);
@@ -111,7 +111,7 @@ public class LibraryBooksTest {
 
     @Test
     public void shouldContainTheBookWhichWasReturnedInTheListOfAvailableBooks() {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
+        ArrayList<Book> listOfBooks = new ArrayList<>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
         listOfBooks.add(bookOne);

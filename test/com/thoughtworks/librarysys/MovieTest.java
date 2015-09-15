@@ -14,4 +14,13 @@ public class MovieTest {
 
         assertEquals(testString, movie.displayDetails());
     }
+
+    @Test
+    public void shouldBeEqualToItself() {
+        Movie movie = new Movie("Matrix", 1999, "Andy Wachowski", 9);
+
+        assertEquals(movie, movie);
+    }
+
+    @
 }

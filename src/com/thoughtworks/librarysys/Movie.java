@@ -17,4 +17,13 @@ public class Movie implements LibraryItem{
     public String displayDetails() {
         return String.format("%-25s%-20s%-30s%-20s\n", this.name, this.year, this.director, this.rating);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        Movie that = (Movie) o;
+        if (this.name.equals(that.name))
+            return true;
+        else
+            return false;
+    }
 }

@@ -2,7 +2,7 @@ package com.thoughtworks.librarysys;
 
 import java.util.ArrayList;
 
-public class LibraryMovies {
+public class LibraryMovies implements LibraryOperations{
     ArrayList<Movie> listOfMovies;
 
     public LibraryMovies(ArrayList<Movie> listOfMovies) {
@@ -16,5 +16,10 @@ public class LibraryMovies {
         for (Movie movie : listOfMovies)
             listOfMovieDetails += movie.displayDetails();
         return listOfMovieDetails + "\n";
+    }
+
+    @Override
+    public void checkOut(LibraryItem libraryItem) {
+
     }
 }
