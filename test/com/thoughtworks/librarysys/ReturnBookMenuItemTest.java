@@ -21,8 +21,8 @@ public class ReturnBookMenuItemTest {
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("Inferno");
         LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(libraryBooks, consoleView);
+        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(books, consoleView);
 
         returnBookMenuItem.performOperation();
 
@@ -43,8 +43,8 @@ public class ReturnBookMenuItemTest {
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("Head First Java");
         LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(libraryBooks, consoleView);
+        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(books, consoleView);
 
         returnBookMenuItem.performOperation();
 

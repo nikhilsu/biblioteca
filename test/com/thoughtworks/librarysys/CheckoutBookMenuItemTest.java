@@ -10,25 +10,25 @@ public class CheckoutBookMenuItemTest {
     public void shouldCheckoutABookFromTheListOfBooksInTheLibraryByInputtingTheNameOfTheBook() {
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("Gone Girl");
-        LibraryBooks libraryBooks = mock(LibraryBooks.class);
-        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(libraryBooks, consoleView);
+        Books books = mock(Books.class);
+        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(books, consoleView);
         Book bookToCheckout = new Book("Gone Girl", "Not needed", 0);
         checkoutBookMenuItem.performOperation();
 
         verify(consoleView).printOnConsole("Enter The Book to checkout: ");
-        verify(libraryBooks).checkOut(bookToCheckout);
+        verify(books).checkOut(bookToCheckout);
     }
 
     @Test
     public void shouldNotCheckOutABookFromTheLibraryIfItIsNotABookFromTheLibrary() {
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("Head First Java");
-        LibraryBooks libraryBooks = mock(LibraryBooks.class);
-        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(libraryBooks, consoleView);
+        Books books = mock(Books.class);
+        CheckoutBookMenuItem checkoutBookMenuItem = new CheckoutBookMenuItem(books, consoleView);
         Book bookToCheckout = new Book("Head First Java", "Not needed", 0);
         checkoutBookMenuItem.performOperation();
 
         verify(consoleView).printOnConsole("Enter The Book to checkout: ");
-        verify(libraryBooks).checkOut(bookToCheckout);
+        verify(books).checkOut(bookToCheckout);
     }
 }

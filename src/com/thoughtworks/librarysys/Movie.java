@@ -1,7 +1,7 @@
 package com.thoughtworks.librarysys;
 
 //Movie contains the name year of release director and the rating and returns the same in a formatted way
-public class Movie implements LibraryItem{
+public class Movie {
     private String name;
     private int year;
     private String director;

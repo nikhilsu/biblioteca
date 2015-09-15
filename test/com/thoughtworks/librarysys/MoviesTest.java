@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
-public class LibraryMoviesTest {
+public class MoviesTest {
 
     @Test
     public void shouldReturnTheNamesOfAllTheMovieList() {
@@ -16,7 +16,7 @@ public class LibraryMoviesTest {
         Movie movieTwo = new Movie("Matrix", 1999, "Andy Wachowski", 9);
         listOfMovies.add(movieOne);
         listOfMovies.add(movieTwo);
-        LibraryMovies libraryMovies = new LibraryMovies(listOfMovies) ;
+        Movies movies = new Movies(listOfMovies) ;
 
         String testString = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-25s%-20s%-30s%-20s\n", "Name Of The Movie", "Year Of Release", "Director", "Rating") +
@@ -24,7 +24,7 @@ public class LibraryMoviesTest {
                 String.format("%-25s%-20s%-30s%-20s\n", "Gone Girl", 2014, "David Fincher", 8) +
                 String.format("%-25s%-20s%-30s%-20s\n", "Matrix", 1999, "Andy Wachowski", 9) + "\n";
 
-        assertEquals(testString, libraryMovies.displayListOfDetails());
+        assertEquals(testString, movies.displayListOfDetails());
     }
 
     @Test
@@ -34,16 +34,16 @@ public class LibraryMoviesTest {
         Movie movieTwo = new Movie("Matrix", 1999, "Andy Wachowski", 9);
         listOfMovies.add(movieOne);
         listOfMovies.add(movieTwo);
-        LibraryMovies libraryMovies = new LibraryMovies(listOfMovies) ;
+        Movies movies = new Movies(listOfMovies) ;
 
         Movie movieToCheckOut = new Movie("Gone Girl", 0, "Director" ,0);
-        libraryMovies.checkOut(movieToCheckOut);
+        movies.checkOut(movieToCheckOut);
         String testString = String.format("%085d\n", 0).replace("0", "-") +
                 String.format("%-25s%-20s%-30s%-20s\n", "Name Of The Movie", "Year Of Release", "Director", "Rating") +
                 String.format("%085d\n", 0).replace("0", "-") +
                 String.format("%-25s%-20s%-30s%-20s\n", "Matrix", 1999, "Andy Wachowski", 9) + "\n";
 
-        assertEquals(testString, libraryMovies.displayListOfDetails());
+        assertEquals(testString, movies.displayListOfDetails());
     }
 
     @Test
@@ -53,16 +53,16 @@ public class LibraryMoviesTest {
         Movie movieTwo = new Movie("Matrix", 1999, "Andy Wachowski", 9);
         listOfMovies.add(movieOne);
         listOfMovies.add(movieTwo);
-        LibraryMovies libraryMovies = new LibraryMovies(listOfMovies) ;
+        Movies movies = new Movies(listOfMovies) ;
 
         Movie movieToCheckOut = new Movie("Movie", 0, "Director" ,0);
-        libraryMovies.checkOut(movieToCheckOut);
+        movies.checkOut(movieToCheckOut);
         String testString = String.format("%085d\n", 0).replace("0", "-") +
                 String.format("%-25s%-20s%-30s%-20s\n", "Name Of The Movie", "Year Of Release", "Director", "Rating") +
                 String.format("%085d\n", 0).replace("0", "-") +
                 String.format("%-25s%-20s%-30s%-20s\n", "Gone Girl", 2014, "David Fincher", 8) +
                 String.format("%-25s%-20s%-30s%-20s\n", "Matrix", 1999, "Andy Wachowski", 9) + "\n";
 
-        assertEquals(testString, libraryMovies.displayListOfDetails());
+        assertEquals(testString, movies.displayListOfDetails());
     }
 }

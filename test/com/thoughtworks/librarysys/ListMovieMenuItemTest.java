@@ -18,8 +18,8 @@ public class ListMovieMenuItemTest {
         listOfMovies.add(movieOne);
         listOfMovies.add(movieTwo);
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryMovies libraryMovies = new LibraryMovies(listOfMovies);
-        ListMovieMenuItem listMovieMenuItem = new ListMovieMenuItem(libraryMovies, consoleView);
+        Movies movies = new Movies(listOfMovies);
+        ListMovieMenuItem listMovieMenuItem = new ListMovieMenuItem(movies, consoleView);
 
         listMovieMenuItem.performOperation();
         String testString = String.format("%085d\n", 0).replace("0", "-") +
@@ -39,8 +39,8 @@ public class ListMovieMenuItemTest {
         listOfMovies.add(movieOne);
         listOfMovies.add(movieTwo);
         ConsoleView consoleView = mock(ConsoleView.class);
-        LibraryMovies libraryMovies = new LibraryMovies(listOfMovies);
-        ListMovieMenuItem listMovieMenuItem = new ListMovieMenuItem(libraryMovies, consoleView);
+        Movies movies = new Movies(listOfMovies);
+        ListMovieMenuItem listMovieMenuItem = new ListMovieMenuItem(movies, consoleView);
 
         String testString = String.format("%085d\n", 0).replace("0", "-") +
                 String.format("%-25s%-20s%-30s%-20s\n", "Name Of The Movie", "Year Of Release", "Director", "Rating") +

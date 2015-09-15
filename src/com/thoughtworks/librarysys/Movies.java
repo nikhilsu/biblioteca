@@ -2,10 +2,10 @@ package com.thoughtworks.librarysys;
 
 import java.util.ArrayList;
 
-public class LibraryMovies implements LibraryOperations{
+public class Movies {
     ArrayList<Movie> listOfMovies;
 
-    public LibraryMovies(ArrayList<Movie> listOfMovies) {
+    public Movies(ArrayList<Movie> listOfMovies) {
         this.listOfMovies = listOfMovies;
     }
 
@@ -18,8 +18,7 @@ public class LibraryMovies implements LibraryOperations{
         return listOfMovieDetails + "\n";
     }
 
-    @Override
-    public void checkOut(LibraryItem libraryItem) {
+    public void checkOut(Movie libraryItem) {
         int indexOfMovieToCheckout = listOfMovies.indexOf(libraryItem);
         if(indexOfMovieToCheckout != -1)
             listOfMovies.remove(indexOfMovieToCheckout);

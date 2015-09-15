@@ -22,8 +22,8 @@ public class ListBooksMenuItemTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
         LibraryBooksObserver libraryBooksObserver = new LibraryBooksObserver(consoleView);
-        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(libraryBooks, consoleView);
+        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(books, consoleView);
 
         String testString = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
@@ -48,8 +48,8 @@ public class ListBooksMenuItemTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
         LibraryBooksObserver libraryBooksObserver = new LibraryBooksObserver(consoleView);
-        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(libraryBooks, consoleView);
+        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(books, consoleView);
 
         String testString = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +

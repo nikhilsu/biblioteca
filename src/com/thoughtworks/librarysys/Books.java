@@ -3,18 +3,17 @@ package com.thoughtworks.librarysys;
 import java.util.ArrayList;
 
 //library has a list of books whose details are returned with a column header
-public class LibraryBooks implements LibraryOperations{
+public class Books {
     private ArrayList<Book> listOfBooksAvailable;
     private ArrayList<Book> listOfCheckedOutBooks;
     private LibraryBooksObserver libraryBooksObserver;
 
-    public LibraryBooks(ArrayList<Book> listOfBooksAvailable, ArrayList<Book> listOfCheckedOutBooks, LibraryBooksObserver libraryBooksObserver) {
+    public Books(ArrayList<Book> listOfBooksAvailable, ArrayList<Book> listOfCheckedOutBooks, LibraryBooksObserver libraryBooksObserver) {
         this.listOfBooksAvailable = listOfBooksAvailable;
         this.listOfCheckedOutBooks = listOfCheckedOutBooks;
         this.libraryBooksObserver = libraryBooksObserver;
     }
 
-    @Override
     public String displayListOfDetails() {
         String listOfBookDetails = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
@@ -34,8 +33,7 @@ public class LibraryBooks implements LibraryOperations{
         listOfCheckedOutBooks.remove(indexOfBookToBeReturned);
     }
 
-    @Override  // void checkout(Book bookToReturn)
-    public void checkOut(LibraryItem bookToCheckout) {
+    public void checkOut(Book bookToCheckout) {
         int indexOfBook = listOfBooksAvailable.indexOf(bookToCheckout);
         if (indexOfBook != -1) {
             removeBookFromAvailableBooksListAndAddItToCheckedOutBookList(indexOfBook);

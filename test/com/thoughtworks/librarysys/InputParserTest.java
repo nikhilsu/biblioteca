@@ -21,12 +21,12 @@ public class InputParserTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
         LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        InputParser inputParser = new InputParser(libraryBooks, consoleView);
+        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        InputParser inputParser = new InputParser(books, consoleView);
 
         String userChoice = "1";
 
-        assertEquals(new ListBooksMenuItem(libraryBooks, consoleView).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new ListBooksMenuItem(books, consoleView).getClass(), inputParser.parse(userChoice).getClass());
     }
 
     @Test
@@ -41,12 +41,12 @@ public class InputParserTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
         LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        InputParser inputParser = new InputParser(libraryBooks, consoleView);
+        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        InputParser inputParser = new InputParser(books, consoleView);
 
         String userChoice = "2";
 
-        assertEquals(new CheckoutBookMenuItem(libraryBooks, consoleView).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new CheckoutBookMenuItem(books, consoleView).getClass(), inputParser.parse(userChoice).getClass());
     }
 
     @Test
@@ -61,8 +61,8 @@ public class InputParserTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
         LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        InputParser inputParser = new InputParser(libraryBooks, consoleView);
+        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        InputParser inputParser = new InputParser(books, consoleView);
 
         String userChoice = "4";
 
@@ -81,8 +81,8 @@ public class InputParserTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
         LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        InputParser inputParser = new InputParser(libraryBooks, consoleView);
+        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        InputParser inputParser = new InputParser(books, consoleView);
 
         String userChoice = "0";
 
@@ -101,11 +101,11 @@ public class InputParserTest {
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
         ConsoleView consoleView = mock(ConsoleView.class);
         LibraryBooksObserver libraryBooksObserver = mock(LibraryBooksObserver.class);
-        LibraryBooks libraryBooks = new LibraryBooks(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
-        InputParser inputParser = new InputParser(libraryBooks, consoleView);
+        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        InputParser inputParser = new InputParser(books, consoleView);
 
         String userChoice = "3";
 
-        assertEquals(new ReturnBookMenuItem(libraryBooks, consoleView).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new ReturnBookMenuItem(books, consoleView).getClass(), inputParser.parse(userChoice).getClass());
     }
 }

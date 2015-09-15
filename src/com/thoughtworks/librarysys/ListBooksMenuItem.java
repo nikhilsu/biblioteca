@@ -1,12 +1,12 @@
 package com.thoughtworks.librarysys;
 
-//listbooksmenuitem is a mainmenuitem that returns the list of all the books in the libraryBooks
+//listbooksmenuitem is a mainmenuitem that returns the list of all the books in the books
 public class ListBooksMenuItem extends MenuItem {
-    private LibraryBooks libraryBooks;
+    private Books books;
     private ConsoleView consoleView;
 
-    public ListBooksMenuItem(LibraryBooks libraryBooks, ConsoleView consoleView) {
-        this.libraryBooks = libraryBooks;
+    public ListBooksMenuItem(Books books, ConsoleView consoleView) {
+        this.books = books;
         this.consoleView = consoleView;
     }
 
@@ -17,6 +17,6 @@ public class ListBooksMenuItem extends MenuItem {
 
     @Override
     public String toString() {
-        return libraryBooks.displayListOfDetails();
+        return books.displayListOfDetails();
     }
 }

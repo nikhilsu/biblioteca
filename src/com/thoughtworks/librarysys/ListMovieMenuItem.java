@@ -1,11 +1,11 @@
 package com.thoughtworks.librarysys;
 
 public class ListMovieMenuItem extends MenuItem {
-    private LibraryMovies libraryMovies;
+    private Movies movies;
     private ConsoleView consoleView;
 
-    public ListMovieMenuItem(LibraryMovies libraryMovies, ConsoleView consoleView) {
-        this.libraryMovies = libraryMovies;
+    public ListMovieMenuItem(Movies movies, ConsoleView consoleView) {
+        this.movies = movies;
         this.consoleView = consoleView;
     }
 
@@ -16,6 +16,6 @@ public class ListMovieMenuItem extends MenuItem {
 
     @Override
     public String toString() {
-        return libraryMovies.displayListOfDetails();
+        return movies.displayListOfDetails();
     }
 }
