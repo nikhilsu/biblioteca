@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class Books {
     private ArrayList<Book> listOfBooksAvailable;
     private ArrayList<Book> listOfCheckedOutBooks;
-    private LibraryBooksObserver libraryBooksObserver;
+    private LibraryObserver libraryObserver;
 
-    public Books(ArrayList<Book> listOfBooksAvailable, ArrayList<Book> listOfCheckedOutBooks, LibraryBooksObserver libraryBooksObserver) {
+    public Books(ArrayList<Book> listOfBooksAvailable, ArrayList<Book> listOfCheckedOutBooks, LibraryObserver libraryObserver) {
         this.listOfBooksAvailable = listOfBooksAvailable;
         this.listOfCheckedOutBooks = listOfCheckedOutBooks;
-        this.libraryBooksObserver = libraryBooksObserver;
+        this.libraryObserver = libraryObserver;
     }
 
     public String displayListOfDetails() {
@@ -37,19 +37,19 @@ public class Books {
         int indexOfBook = listOfBooksAvailable.indexOf(bookToCheckout);
         if (indexOfBook != -1) {
             removeBookFromAvailableBooksListAndAddItToCheckedOutBookList(indexOfBook);
-            libraryBooksObserver.notifySuccessfulBookCheckout();
+            libraryObserver.notifySuccessfulBookCheckout();
         }
         else
-            libraryBooksObserver.notifyUnsuccessfulCheckout();
+            libraryObserver.notifyUnsuccessfulBookCheckout();
     }
 
     public void toReturn(Book bookToBeReturned) {
         int indexOfBookToBeReturned = listOfCheckedOutBooks.indexOf(bookToBeReturned);
         if (indexOfBookToBeReturned != -1) {
             removeBookFromCheckedOutBookListAndAddItToAvailableBooksList(indexOfBookToBeReturned);
-            libraryBooksObserver.notifySuccessfulReturn();
+            libraryObserver.notifySuccessfulBookReturn();
         }
         else
-            libraryBooksObserver.notifyUnsuccessfulReturn();
+            libraryObserver.notifyUnsuccessfulBookReturn();
     }
 }

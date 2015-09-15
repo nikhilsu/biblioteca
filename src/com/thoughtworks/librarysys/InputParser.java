@@ -22,6 +22,8 @@ public class InputParser {
             return new QuitMenuItem();
         else if (userChoice.equals("5"))
             return new ListMovieMenuItem(library, consoleView);
+        else if (userChoice.equals("6"))
+            return new CheckoutMovieMenuItem(library, consoleView);
         else
             return new InvalidMenuItem("Select a valid option!", consoleView);
     }

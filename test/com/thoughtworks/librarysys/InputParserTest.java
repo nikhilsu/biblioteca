@@ -74,4 +74,15 @@ public class InputParserTest {
 
         assertEquals(new ListMovieMenuItem(library, consoleView).getClass(), inputParser.parse(userChoice).getClass());
     }
+
+    @Test
+    public void shouldReturnAnObjectOfTypeCheckoutMovieItemWhenTheUsersChoiceOfMenuItemIsSix () {
+        Library library = mock(Library.class);
+        ConsoleView consoleView = mock(ConsoleView.class);
+        InputParser inputParser = new InputParser(library, consoleView);
+
+        String userChoice = "6";
+
+        assertEquals(new CheckoutMovieMenuItem(library, consoleView).getClass(), inputParser.parse(userChoice).getClass());
+    }
 }

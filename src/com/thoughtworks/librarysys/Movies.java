@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class Movies {
     ArrayList<Movie> listOfMovies;
+    LibraryObserver libraryObserver;
 
-    public Movies(ArrayList<Movie> listOfMovies) {
+    public Movies(ArrayList<Movie> listOfMovies, LibraryObserver libraryObserver) {
         this.listOfMovies = listOfMovies;
+        this.libraryObserver = libraryObserver;
     }
 
     public String displayListOfDetails() {
@@ -20,7 +22,11 @@ public class Movies {
 
     public void checkOut(Movie libraryItem) {
         int indexOfMovieToCheckout = listOfMovies.indexOf(libraryItem);
-        if(indexOfMovieToCheckout != -1)
+        if(indexOfMovieToCheckout != -1) {
             listOfMovies.remove(indexOfMovieToCheckout);
+            libraryObserver.notifySuccessfulMovieCheckout();
+        }
+        else
+            libraryObserver.notifyUnsuccessfulMovieCheckout();
     }
 }

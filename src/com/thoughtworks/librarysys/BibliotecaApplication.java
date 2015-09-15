@@ -9,7 +9,7 @@ public class BibliotecaApplication {
     private Scanner scanner;
     private PrintStream printStream;
     private ConsoleView consoleView;
-    private LibraryBooksObserver libraryBooksObserver;
+    private LibraryObserver libraryObserver;
     private Books books;
     private Movies movies;
     private MenuItem menuItem;
@@ -36,6 +36,7 @@ public class BibliotecaApplication {
         listOfMenuItems.add("3. Return Book");
         listOfMenuItems.add("4. Quit");
         listOfMenuItems.add("5. List Movies");
+        listOfMenuItems.add("6. Checkout Movie");
         return listOfMenuItems;
     }
 
@@ -47,12 +48,12 @@ public class BibliotecaApplication {
         this.scanner = new Scanner(System.in);
         this.printStream = new PrintStream(System.out);
         this.consoleView = new ConsoleView(scanner, printStream);
-        this.libraryBooksObserver = new LibraryBooksObserver(consoleView);
+        this.libraryObserver = new LibraryObserver(consoleView);
         ArrayList<Book> listOfBooks = manufactureListOfBooks();
         ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        this.books = new Books(listOfBooks, listOfCheckedOutBooks, libraryBooksObserver);
+        this.books = new Books(listOfBooks, listOfCheckedOutBooks, libraryObserver);
         ArrayList<Movie> listOfMovies = manufactureListOfMovies();
-        this.movies = new Movies(listOfMovies);
+        this.movies = new Movies(listOfMovies, libraryObserver);
         this.library = new Library(books, movies);
         this.inputParser = new InputParser(library, consoleView);
         ArrayList<String> listOfMenuItems = manufactureListOfMenuItems();
