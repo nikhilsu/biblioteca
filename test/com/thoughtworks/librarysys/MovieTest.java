@@ -29,4 +29,11 @@ public class MovieTest {
 
         assertEquals(movieOne, movieTwo);
     }
+
+    @Test
+    public void shouldNotBeEqualoSomethingThatIsNotAMovie() {
+        Movie movie = new Movie("Matrix", 1999, "Andy Wachowski", 9);
+
+        assertNotEquals(movie, "Movie");
+    }
 }
