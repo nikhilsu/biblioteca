@@ -12,7 +12,7 @@ public class User {
     @Override
     public boolean equals(Object obj) {
         User that = (User) obj;
-        if (this.libraryID.equals(that.libraryID))
+        if (this.libraryID.equals(that.libraryID) && this.password.equals(that.password))
             return true;
         else
             return false;

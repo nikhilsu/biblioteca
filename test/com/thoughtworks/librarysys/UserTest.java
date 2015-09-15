@@ -14,4 +14,11 @@ public class UserTest {
         assertEquals(userOne, userTwo);
     }
 
+    @Test
+    public void shouldBeEqualToAnotherUserWithTheSameLibraryIDAndPassword() {
+        User userOne = new User("111-1111", "passwd");
+        User userTwo = new User("111-1111", "passwd");
+
+        assertEquals(userOne, userTwo);
+    }
 }
