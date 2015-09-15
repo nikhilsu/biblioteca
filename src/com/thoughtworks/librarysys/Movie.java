@@ -28,4 +28,13 @@ public class Movie implements LibraryItem{
         else
             return false;
     }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + year;
+        result = 31 * result + director.hashCode();
+        result = 31 * result + rating;
+        return result;
+    }
 }

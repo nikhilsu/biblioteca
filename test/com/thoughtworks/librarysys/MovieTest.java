@@ -51,4 +51,11 @@ public class MovieTest {
 
         assertNotEquals(movieOne, movieTwo);
     }
+
+    @Test
+    public void shouldHaveSameHashCodeWhenTheObjectsAreSame() {
+        Movie movieOne = new Movie("Matrix", 1999, "Andy Wachowski", 9);
+        
+        assertEquals(movieOne.hashCode(), movieOne.hashCode());
+    }
 }

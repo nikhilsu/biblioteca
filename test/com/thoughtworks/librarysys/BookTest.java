@@ -38,7 +38,7 @@ public class BookTest {
     }
 
     @Test
-    public void hasSameHashCodeWhenPointsAreSame() {
+    public void hasSameHashCodeWhenMoviesAreSame() {
         Book book = new Book("Kite Runner", "Khaled Hossieni", 2003);
 
         assertEquals(book.hashCode(), book.hashCode());
