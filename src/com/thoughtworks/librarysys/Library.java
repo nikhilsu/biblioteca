@@ -20,5 +20,9 @@ public class Library {
     public void toReturn(Book bookToReturn) {
         books.toReturn(bookToReturn);
     }
+
+    public String listBooks() {
+        return books.displayListOfDetails();
+    }
 }
 

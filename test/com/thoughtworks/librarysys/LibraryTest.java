@@ -43,4 +43,15 @@ public class LibraryTest {
 
         verify(books).toReturn(bookToReturn);
     }
+
+    @Test
+    public void shouldListTheDetailsOfBooksOfTheLibrary() {
+        Books books = mock(Books.class);
+        Movies movies = mock(Movies.class);
+        Library library = new Library(books, movies);
+
+        library.listBooks();
+
+        verify(books).displayListOfDetails();
+    }
 }
