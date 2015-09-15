@@ -29,4 +29,11 @@ public class UserTest {
 
         assertNotEquals(userOne, userTwo);
     }
+
+    @Test
+    public void shouldNotBeEqualToSomethingThatIsNotAUser() {
+        User userOne = new User("111-1111", "passwd");
+
+        assertNotEquals(userOne, "User");
+    }
 }

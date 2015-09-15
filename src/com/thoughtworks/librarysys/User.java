@@ -11,6 +11,8 @@ public class User {
 
     @Override
     public boolean equals(Object obj) {
+        if (this.getClass() != obj.getClass())
+            return false;
         User that = (User) obj;
         if (this.libraryID.equals(that.libraryID) && this.password.equals(that.password))
             return true;
