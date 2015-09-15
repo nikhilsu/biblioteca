@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="pathashala" default="runjUnit" basedir=".">
+<project libraryID="pathashala" default="runjUnit" basedir=".">
      
    
      <path id="test.compile.classpath" description="classpath for compiling test-sources">
@@ -20,19 +20,19 @@
      <path id="cobertura.classpath" description="classpath for instrumenting classes">
           <pathelement location="lib/cobertura-2.0.3.jar" />
           <fileset dir="lib">
-               <include name="cobertura-dependencies/*.jar" />
+               <include libraryID="cobertura-dependencies/*.jar" />
           </fileset>
      </path>
  
      <taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
  
-     <target name="clean">
+     <target libraryID="clean">
           <delete includeEmptyDirs="true" failonerror="false">
                <fileset dir="out" />
           </delete>
      </target>
  
-     <target name="prepare" depends="clean">
+     <target libraryID="prepare" depends="clean">
           <mkdir dir="out" />
           <mkdir dir="out/classes" />
           <mkdir dir="out/testclasses" />
@@ -41,38 +41,37 @@
           <mkdir dir="out/reports/cobertura" />
      </target>
  
-     <target name="compile.sources" depends="prepare">
+     <target libraryID="compile.sources" depends="prepare">
           <javac srcdir="src" destdir="out/classes" debug="on" fork="true" includeantruntime="no" />
      </target>
  
-     <target name="instrument.classes" depends="compile.sources">
+     <target libraryID="instrument.classes" depends="compile.sources">
           <cobertura-instrument todir="out/instrumentedclasses" datafile="out/cobertura.ser">
-               <includeclasses regex=".*" />
-               <instrumentationClasspath>
-                    <pathelement location="out/classes" />
-               </instrumentationClasspath>
+              <includeclasses regex=".*" />
+              <fileset dir="out/classes">
+                  <include libraryID="**/*.class"/>
+              </fileset>
           </cobertura-instrument>
      </target>
  
-     <target name="compile.tests" depends="instrument.classes">
+     <target libraryID="compile.tests" depends="instrument.classes">
           <javac classpathref="test.compile.classpath" srcdir="test" destdir="out/testclasses" debug="on" fork="true" includeantruntime="no" />
      </target>
  
-     <target name="runjUnit" depends="compile.tests">
+     <target libraryID="runjUnit" depends="compile.tests">
           <junit fork="yes" forkmode="once" printsummary="yes" haltonfailure="yes" showoutput="true">
                <formatter type="plain" usefile="no" />
                <classpath refid="test.runtime.classpath" />
                <batchtest todir="out/reports/junit">
                     <fileset dir="test">
-                         <include name="**/*Test.java" />
+                         <include libraryID="**/*Test.java" />
                     </fileset>
                </batchtest>
- 
+
                <sysproperty key="net.sourceforge.cobertura.datafile" file="out/cobertura.ser" />
                <classpath refid="cobertura.classpath" />
           </junit>
  
           <cobertura-report format="html" destdir="out/reports/cobertura" datafile="out/cobertura.ser" srcdir="src" />
      </target>
- 
 </project>
