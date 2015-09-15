@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.mockito.Mockito.*;
 
-public class CheckoutMovieMenuItemTest {
+public class CheckoutMovieMainMenuTest {
 
     @Test
     public void shouldCheckoutAMovieFromTheListOfMoviesInTheLibraryByInputtingTheNameOfTheMovie() {

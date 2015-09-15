@@ -9,7 +9,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class ListBooksMenuItemTest {
+public class ListBooksMainMenuTest {
 
     @Test
     public void shouldReturnTheListOfAllTheBooksInTheLibrary() {

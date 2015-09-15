@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class MenuItemTest {
+public class MainMenuTest {
 
     @Test
     public void shouldDisplayTheMainMenuWhenToStringIsCalled() {
@@ -18,7 +18,7 @@ public class MenuItemTest {
         listOfMenuItems.add("3. Return Book");
         listOfMenuItems.add("4. Quit");
         ConsoleView consoleView = mock(ConsoleView.class);
-        MenuItem menuItem = new MenuItem(listOfMenuItems, consoleView);
+        MainMenu mainMenu = new MainMenu(listOfMenuItems, consoleView);
 
         String testString = "----------Menu----------\n" +
                 "1. List Books\n" +
@@ -27,7 +27,7 @@ public class MenuItemTest {
                 "4. Quit\n" +
                 "Enter your choice : ";
 
-        assertEquals(testString, menuItem.toString());
+        assertEquals(testString, mainMenu.toString());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class MenuItemTest {
         listOfMenuItems.add("3. Return Book");
         listOfMenuItems.add("4. Quit");
         ConsoleView consoleView = mock(ConsoleView.class);
-        MenuItem menuItem = new MenuItem(listOfMenuItems, consoleView);
+        MainMenu mainMenu = new MainMenu(listOfMenuItems, consoleView);
 
         String testString = "----------Menu----------\n" +
                 "1. List Books\n" +
@@ -47,7 +47,7 @@ public class MenuItemTest {
                 "4. Quit\n" +
                 "Enter your choice : ";
 
-        menuItem.performOperation();
+        mainMenu.performOperation();
 
         verify(consoleView).printOnConsole(testString);
     }

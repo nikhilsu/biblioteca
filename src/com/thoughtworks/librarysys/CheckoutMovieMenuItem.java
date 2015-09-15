@@ -1,6 +1,6 @@
 package com.thoughtworks.librarysys;
 
-public class CheckoutMovieMenuItem extends MenuItem {
+public class CheckoutMovieMenuItem implements MenuOptions {
     private Library library;
     private ConsoleView consoleView;
 

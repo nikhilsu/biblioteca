@@ -3,7 +3,7 @@ package com.thoughtworks.librarysys;
 import java.util.ArrayList;
 
 //returnbookmenuitem is a menu item responsible for returning a book to the books
-public class ReturnBookMenuItem extends MenuItem {
+public class ReturnBookMenuItem implements MenuOptions {
     private Library library;
     private ConsoleView consoleView;
 

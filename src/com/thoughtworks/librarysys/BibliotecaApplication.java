@@ -12,7 +12,7 @@ public class BibliotecaApplication {
     private LibraryObserver libraryObserver;
     private Books books;
     private Movies movies;
-    private MenuItem menuItem;
+    private MainMenu mainMenu;
     private InputParser inputParser;
     private WelcomeUser welcomeUser;
     private Controller controller;
@@ -57,7 +57,7 @@ public class BibliotecaApplication {
         this.library = new Library(books, movies);
         this.inputParser = new InputParser(library, consoleView);
         ArrayList<String> listOfMenuItems = manufactureListOfMenuItems();
-        this.menuItem = new MenuItem(listOfMenuItems, consoleView);
+        this.mainMenu = new MainMenu(listOfMenuItems, consoleView);
         this.welcomeUser = manufactureWelcomeUser();
     }
 
@@ -72,7 +72,7 @@ public class BibliotecaApplication {
 
     public void initialiseApplication() {
         this.consoleView.printOnConsole(welcomeUser.toString());
-        this.controller = new Controller(menuItem, inputParser, consoleView);
+        this.controller = new Controller(mainMenu, inputParser, consoleView);
     }
 
     public void start() {

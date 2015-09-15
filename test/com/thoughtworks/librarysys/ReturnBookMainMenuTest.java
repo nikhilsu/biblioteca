@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import static org.mockito.Mockito.*;
 
-public class ReturnBookMenuItemTest {
+public class ReturnBookMainMenuTest {
 
     @Test
     public void shouldReturnABookFromTheUserToTheLibraryByTheInputNameOfTheBook() {

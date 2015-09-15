@@ -11,7 +11,7 @@ public class InputParser {
         this.consoleView = consoleView;
     }
 
-    public MenuItem parse(String userChoice) {
+    public MenuOptions parse(String userChoice) {
         if (userChoice.equals("1"))
             return new ListBooksMenuItem(library, consoleView);
         else if (userChoice.equals("2"))

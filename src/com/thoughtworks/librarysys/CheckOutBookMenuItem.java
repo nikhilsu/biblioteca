@@ -1,7 +1,7 @@
 package com.thoughtworks.librarysys;
 
 //checkoutbook menu item is a menu item responsible for checking out a book from the books
-public class CheckoutBookMenuItem extends MenuItem {
+public class CheckoutBookMenuItem implements MenuOptions {
     private Library library;
     private ConsoleView consoleView;
 

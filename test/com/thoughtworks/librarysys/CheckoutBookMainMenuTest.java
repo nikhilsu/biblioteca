@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.mockito.Mockito.*;
 
-public class CheckoutBookMenuItemTest {
+public class CheckoutBookMainMenuTest {
 
     @Test
     public void shouldCheckoutABookFromTheListOfBooksInTheLibraryByInputtingTheNameOfTheBook() {
