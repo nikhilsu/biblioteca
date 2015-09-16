@@ -5,8 +5,6 @@ public class Controller {
     private MainMenu mainMenu;
     private InputParser inputParser;
     private ConsoleView consoleView;
-    private User currentUser;
-    private Users users;
 
     public Controller(MainMenu mainMenu, InputParser inputParser, ConsoleView consoleView) {
         this.mainMenu = mainMenu;

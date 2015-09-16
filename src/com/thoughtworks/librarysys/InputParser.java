@@ -5,7 +5,6 @@ public class InputParser {
     private Library library;
     private ConsoleView consoleView;
 
-
     public InputParser(Library library, ConsoleView consoleView) {
         this.library = library;
         this.consoleView = consoleView;
