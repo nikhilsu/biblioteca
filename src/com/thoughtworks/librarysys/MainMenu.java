@@ -23,4 +23,13 @@ public class MainMenu {
             menu += item + "\n";
         return menu + "Enter your choice : ";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        MainMenu that = (MainMenu) obj;
+        if (this.listOfMenuItems.equals(that.listOfMenuItems))
+            return true;
+        else
+            return false;
+    }
 }

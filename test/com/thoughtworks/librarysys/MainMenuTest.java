@@ -51,4 +51,17 @@ public class MainMenuTest {
 
         verify(consoleView).printOnConsole(testString);
     }
+
+    @Test
+    public void shouldBeEqualToItself() {
+        ArrayList<String> listOfMenuItems = new ArrayList<String>();
+        listOfMenuItems.add("1. List Books");
+        listOfMenuItems.add("2. Checkout Book");
+        listOfMenuItems.add("3. Return Book");
+        listOfMenuItems.add("4. Quit");
+        ConsoleView consoleView = mock(ConsoleView.class);
+        MainMenu mainMenu = new MainMenu(listOfMenuItems, consoleView);
+
+        assertEquals(mainMenu, mainMenu);
+    }
 }
