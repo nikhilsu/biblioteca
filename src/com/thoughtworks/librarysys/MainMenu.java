@@ -26,7 +26,7 @@ public class MainMenu {
 
     @Override
     public boolean equals(Object obj) {
-        if (this.getClass() != obj.getClass())
+        if (obj == null || this.getClass() != obj.getClass())
             return false;
         MainMenu that = (MainMenu) obj;
         if (this.listOfMenuItems.equals(that.listOfMenuItems))
