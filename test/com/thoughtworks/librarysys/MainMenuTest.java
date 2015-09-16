@@ -4,7 +4,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -12,7 +14,7 @@ public class MainMenuTest {
 
     @Test
     public void shouldDisplayTheMainMenuWhenToStringIsCalled() {
-        ArrayList<String> listOfMenuItems = new ArrayList<String>();
+        ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
         listOfMenuItems.add("3. Return Book");
@@ -32,7 +34,7 @@ public class MainMenuTest {
 
     @Test
     public void shouldDisplayTheMainMenuWhenPerformOperationIsCalled() {
-        ArrayList<String> listOfMenuItems = new ArrayList<String>();
+        ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
         listOfMenuItems.add("3. Return Book");
@@ -54,7 +56,7 @@ public class MainMenuTest {
 
     @Test
     public void shouldBeEqualToItself() {
-        ArrayList<String> listOfMenuItems = new ArrayList<String>();
+        ArrayList<String> listOfMenuItems = new ArrayList<>();
         listOfMenuItems.add("1. List Books");
         listOfMenuItems.add("2. Checkout Book");
         listOfMenuItems.add("3. Return Book");
@@ -67,7 +69,7 @@ public class MainMenuTest {
 
     @Test
     public void shouldNotBeEqualToAnotherMenuWithDifferentMenuItems() {
-        ArrayList<String> listOfMenuItemsOne = new ArrayList<String>();
+        ArrayList<String> listOfMenuItemsOne = new ArrayList<>();
         listOfMenuItemsOne.add("1. List Books");
         listOfMenuItemsOne.add("2. Checkout Book");
         listOfMenuItemsOne.add("3. Return Book");
@@ -85,5 +87,18 @@ public class MainMenuTest {
         MainMenu mainMenuTwo = new MainMenu(listOfMenuItemsTwo, consoleView);
 
         assertNotEquals(mainMenuOne, mainMenuTwo);
+    }
+
+    @Test
+    public void shouldNotBeEqualToSomethingThatIsNotAMainMenu() {
+        ArrayList<String> listOfMenuItemsOne = new ArrayList<>();
+        listOfMenuItemsOne.add("1. List Books");
+        listOfMenuItemsOne.add("2. Checkout Book");
+        listOfMenuItemsOne.add("3. Return Book");
+        listOfMenuItemsOne.add("4. Quit");
+        ConsoleView consoleView = mock(ConsoleView.class);
+        MainMenu mainMenuOne = new MainMenu(listOfMenuItemsOne, consoleView);
+
+        assertNotEquals(mainMenuOne, "Main Menu");
     }
 }
