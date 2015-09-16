@@ -36,4 +36,17 @@ public class LoginMenuItemTest {
 
         assertEquals("Registered", loginMenuItem.getUser().getRole());
     }
+
+    @Test
+    public void shouldAssignTheRoleOfTheUserAsGuestOnUnsuccessfulLogin(){
+        Users users = mock(Users.class);
+        when(users.authenticate("111-1111", "invalid")).thenReturn(new User("111-1111", "password1", "Guest"));
+        ConsoleView consoleView = mock(ConsoleView.class);
+        when(consoleView.inputFromUser()).thenReturn("111-1111", "invalid");
+        LoginMenuItem loginMenuItem = new LoginMenuItem(users, consoleView);
+
+        loginMenuItem.performOperation();
+
+        assertEquals("Guest", loginMenuItem.getUser().getRole());
+    }
 }

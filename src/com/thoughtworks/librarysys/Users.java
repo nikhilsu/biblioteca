@@ -15,6 +15,6 @@ public class Users {
         if (indexOfRegisteredUserInTheList != -1)
             return listOfRegisteredUsers.get(indexOfRegisteredUserInTheList);
         else
-            return new User("Not a Member", "No password", "Unregistered");
+            return new User("Not a Member", "No password", "Guest");
     }
 }

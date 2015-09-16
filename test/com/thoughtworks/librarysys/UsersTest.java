@@ -18,7 +18,7 @@ public class UsersTest {
         ArrayList<User> listOfRegisteredUsers = new ArrayList<>(Arrays.asList(userOne, userTwo, userThree));
         Users users = new Users(listOfRegisteredUsers);
 
-        assertEquals(users.authenticate("111-1111", "password1"), new User("111-1111", "password1", "Registered"));
+        assertEquals(users.authenticate("111-1111", "password1"), new User("111-1111", "password1", "Guest"));
     }
 
     @Test
@@ -29,7 +29,7 @@ public class UsersTest {
         ArrayList<User> listOfRegisteredUsers = new ArrayList<>(Arrays.asList(userOne, userTwo, userThree));
         Users users = new Users(listOfRegisteredUsers);
 
-        assertNotEquals(users.authenticate("111-1111", "wrong Password"), new User("Not a member", "No password", "Unregistered"));
+        assertNotEquals(users.authenticate("111-1111", "wrong Password"), new User("Not a member", "No password", "Guest"));
     }
 
     @Test
@@ -40,6 +40,6 @@ public class UsersTest {
         ArrayList<User> listOfRegisteredUsers = new ArrayList<>(Arrays.asList(userOne, userTwo, userThree));
         Users users = new Users(listOfRegisteredUsers);
 
-        assertEquals(users.authenticate("Not a member", "No password"), new User("Not a Member", "No password", "Unregistered"));
+        assertEquals(users.authenticate("Not a member", "No password"), new User("Not a Member", "No password", "Guest"));
     }
 }
