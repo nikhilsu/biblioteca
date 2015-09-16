@@ -64,4 +64,26 @@ public class MainMenuTest {
 
         assertEquals(mainMenu, mainMenu);
     }
+
+    @Test
+    public void shouldNotBeEqualToAnotherMenuWithDifferentMenuItems() {
+        ArrayList<String> listOfMenuItemsOne = new ArrayList<String>();
+        listOfMenuItemsOne.add("1. List Books");
+        listOfMenuItemsOne.add("2. Checkout Book");
+        listOfMenuItemsOne.add("3. Return Book");
+        listOfMenuItemsOne.add("4. Quit");
+        ConsoleView consoleView = mock(ConsoleView.class);
+        MainMenu mainMenuOne = new MainMenu(listOfMenuItemsOne, consoleView);
+        ArrayList<String> listOfMenuItemsTwo = new ArrayList<>();
+        listOfMenuItemsTwo.add("1. List Books");
+        listOfMenuItemsTwo.add("2. List Movies");
+        listOfMenuItemsTwo.add("3. Checkout Movie");
+        listOfMenuItemsTwo.add("4. CheckOut Book");
+        listOfMenuItemsTwo.add("5. Return Book");
+        listOfMenuItemsTwo.add("6. User Details");
+        listOfMenuItemsTwo.add("7. Logout");
+        MainMenu mainMenuTwo = new MainMenu(listOfMenuItemsTwo, consoleView);
+
+        assertNotEquals(mainMenuOne, mainMenuTwo);
+    }
 }
