@@ -10,8 +10,8 @@ public class MainMenuFactory {
     }
 
     public MainMenu manufacture(User user){
-        if (user.getRole().equals("Registered")){
-            ArrayList<String> listOfMenuItems = new ArrayList<>();
+        ArrayList<String> listOfMenuItems = new ArrayList<>();
+        if (user.getRole().equals("Registered")) {
             listOfMenuItems.add("1. List Books");
             listOfMenuItems.add("2. List Movies");
             listOfMenuItems.add("3. Checkout Movie");
@@ -22,8 +22,18 @@ public class MainMenuFactory {
             return new MainMenu(listOfMenuItems, consoleView);
         }
 
+        else if (user.getRole().equals("Librarian")) {
+            listOfMenuItems.add("1. List Books");
+            listOfMenuItems.add("2. List Movies");
+            listOfMenuItems.add("3. Checkout Movie");
+            listOfMenuItems.add("4. CheckOut Book");
+            listOfMenuItems.add("5. Return Book");
+            listOfMenuItems.add("6. User Details");
+            listOfMenuItems.add("7. CheckedOut Book Details");
+            listOfMenuItems.add("8. Logout");
+            return new MainMenu(listOfMenuItems, consoleView);
+        }
         else {
-            ArrayList<String> listOfMenuItems = new ArrayList<String>();
             listOfMenuItems.add("1. List Books");
             listOfMenuItems.add("2. List Movies");
             listOfMenuItems.add("3. Checkout Movie");
