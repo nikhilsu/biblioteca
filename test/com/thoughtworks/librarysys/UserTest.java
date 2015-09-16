@@ -58,4 +58,11 @@ public class UserTest {
 
         assertEquals(userOne.hashCode(), userOne.hashCode());
     }
+
+    @Test
+    public void registeredUserShouldHaveTheirRoleAsRegistered() {
+        User user = new User("111-1111", "password", "Registered");
+
+        assertEquals(user.getRole(), "Registered");
+    }
 }

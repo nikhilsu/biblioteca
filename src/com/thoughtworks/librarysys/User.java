@@ -28,4 +28,8 @@ public class User {
         result = 31 * result + password.hashCode();
         return result;
     }
+
+    public String getRole() {
+        return this.role;
+    }
 }

@@ -18,4 +18,8 @@ public class LoginMenuItem implements MenuOptions {
         String password = consoleView.inputFromUser();
         this.user = users.authenticate(userLibraryID, password);
     }
+
+    public User getUser() {
+        return user;
+    }
 }
