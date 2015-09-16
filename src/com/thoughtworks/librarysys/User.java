@@ -28,4 +28,10 @@ public class User {
         result = 31 * result + password.hashCode();
         return result;
     }
+
+    public void notfyNewUser(User newUser) {
+        this.libraryID = newUser.libraryID;
+        this.password = newUser.password;
+        this.role = newUser.role;
+    }
 }

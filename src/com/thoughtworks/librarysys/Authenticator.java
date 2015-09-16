@@ -9,7 +9,8 @@ public class Authenticator {
         this.listOfRegisteredUsers = listOfRegisteredUsers;
     }
 
-    public User authenticateUser(User userToAuthenticate) {
+    public User authenticateUser(String libraryID, String password) {
+        User userToAuthenticate = new User(libraryID, password, "Not Known");
         int indexOfRegisteredUserInTheList = listOfRegisteredUsers.indexOf(userToAuthenticate);
         if (indexOfRegisteredUserInTheList != -1)
             return listOfRegisteredUsers.get(indexOfRegisteredUserInTheList);

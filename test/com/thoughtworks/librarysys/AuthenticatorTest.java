@@ -17,9 +17,8 @@ public class AuthenticatorTest {
         User userThree = new User("333-3333", "password3", "Registered");
         ArrayList<User> listOfRegisteredUsers = new ArrayList<>(Arrays.asList(userOne, userTwo, userThree));
         Authenticator authenticator = new Authenticator(listOfRegisteredUsers);
-        User userToAuthenticate = new User("111-1111", "password1", "Registered");
 
-        assertEquals(authenticator.authenticateUser(userToAuthenticate), new User("111-1111", "password1", "Registered"));
+        assertEquals(authenticator.authenticateUser("111-1111", "password1"), new User("111-1111", "password1", "Registered"));
     }
 
     @Test
@@ -29,9 +28,8 @@ public class AuthenticatorTest {
         User userThree = new User("333-3333", "password3", "Registered");
         ArrayList<User> listOfRegisteredUsers = new ArrayList<>(Arrays.asList(userOne, userTwo, userThree));
         Authenticator authenticator = new Authenticator(listOfRegisteredUsers);
-        User userToAuthenticate = new User("111-1111", "wrong Password", "Registered");
 
-        assertNotEquals(authenticator.authenticateUser(userToAuthenticate), new User("Not a member", "No password", "Unregistered"));
+        assertNotEquals(authenticator.authenticateUser("111-1111", "wrong Password"), new User("Not a member", "No password", "Unregistered"));
     }
 
     @Test
@@ -41,8 +39,7 @@ public class AuthenticatorTest {
         User userThree = new User("333-3333", "password3", "Registered");
         ArrayList<User> listOfRegisteredUsers = new ArrayList<>(Arrays.asList(userOne, userTwo, userThree));
         Authenticator authenticator = new Authenticator(listOfRegisteredUsers);
-        User userToAuthenticate = new User("Not a member", "No password", "Unregistered");
 
-        assertEquals(authenticator.authenticateUser(userToAuthenticate), new User("Not a Member", "No password", "Unregistered"));
+        assertEquals(authenticator.authenticateUser("Not a member", "No password"), new User("Not a Member", "No password", "Unregistered"));
     }
 }
