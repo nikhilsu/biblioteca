@@ -17,8 +17,7 @@ public class MainMenuFactory {
             listOfMenuItems.add("3. Checkout Movie");
             listOfMenuItems.add("4. CheckOut Book");
             listOfMenuItems.add("5. Return Book");
-            listOfMenuItems.add("6. User Details");
-            listOfMenuItems.add("7. Logout");
+            listOfMenuItems.add("6. Logout");
             return new MainMenu(listOfMenuItems, consoleView);
         }
 
@@ -28,9 +27,8 @@ public class MainMenuFactory {
             listOfMenuItems.add("3. Checkout Movie");
             listOfMenuItems.add("4. CheckOut Book");
             listOfMenuItems.add("5. Return Book");
-            listOfMenuItems.add("6. User Details");
-            listOfMenuItems.add("7. CheckedOut Book Details");
-            listOfMenuItems.add("8. Logout");
+            listOfMenuItems.add("6. CheckedOut Book Details");
+            listOfMenuItems.add("7. Logout");
             return new MainMenu(listOfMenuItems, consoleView);
         }
         else {

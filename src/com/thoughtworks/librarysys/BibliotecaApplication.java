@@ -2,7 +2,7 @@ package com.thoughtworks.librarysys;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Scanner;
 
 //Biblioteca Application constructs and assembles the dependencies of the controller, initiates and runs it.
@@ -13,12 +13,13 @@ public class BibliotecaApplication {
     private LibraryObserver libraryObserver;
     private Books books;
     private Movies movies;
-    private MainMenu mainMenu;
-    private InputParser inputParser;
+    private MainMenuFactory mainMenuFactory;
+    private InputParserFactory inputParserFactory;
     private WelcomeUser welcomeUser;
     private Controller controller;
     private Library library;
-    private HashMap<String, MenuOptions> mapper;
+    private User user;
+    private Users users;
 
     private ArrayList<Book> manufactureListOfBooks() {
         ArrayList<Book> listOfBooks = new ArrayList<>();
@@ -29,17 +30,6 @@ public class BibliotecaApplication {
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
         return listOfBooks;
-    }
-
-    private ArrayList<String> manufactureListOfMenuItems() {
-        ArrayList<String> listOfMenuItems = new ArrayList<>();
-        listOfMenuItems.add("1. List Books");
-        listOfMenuItems.add("2. Checkout Book");
-        listOfMenuItems.add("3. Return Book");
-        listOfMenuItems.add("4. Quit");
-        listOfMenuItems.add("5. List Movies");
-        listOfMenuItems.add("6. Checkout Movie");
-        return listOfMenuItems;
     }
 
     private WelcomeUser manufactureWelcomeUser() {
@@ -57,22 +47,20 @@ public class BibliotecaApplication {
         ArrayList<Movie> listOfMovies = manufactureListOfMovies();
         this.movies = new Movies(listOfMovies, libraryObserver);
         this.library = new Library(books, movies);
-        mapper = manufactureHashMapForParser();
-        this.inputParser = new InputParser(consoleView, mapper);
-        ArrayList<String> listOfMenuItems = manufactureListOfMenuItems();
-        this.mainMenu = new MainMenu(listOfMenuItems, consoleView);
+        ArrayList<User> listOfRegisteredUsers = manufactureListOfRegisteredUsers();
+        this.users = new Users(listOfRegisteredUsers);
+        this.inputParserFactory = new InputParserFactory(library, consoleView, users);
+        this.mainMenuFactory = new MainMenuFactory(consoleView);
         this.welcomeUser = manufactureWelcomeUser();
+        this.user = new User("Not a member", "Not known", "Guest");
     }
 
-    private HashMap<String, MenuOptions> manufactureHashMapForParser() {
-        HashMap<String, MenuOptions> mapper = new HashMap<>();
-        mapper.put("1", new ListBooksMenuItem(this.library, consoleView));
-        mapper.put("2", new CheckoutBookMenuItem(this.library, consoleView));
-        mapper.put("3", new ReturnBookMenuItem(this.library, consoleView));
-        mapper.put("4", new QuitMenuItem());
-        mapper.put("5", new ListMovieMenuItem(this.library, consoleView));
-        mapper.put("6", new CheckoutMovieMenuItem(this.library, consoleView));
-        return mapper;
+    private ArrayList<User> manufactureListOfRegisteredUsers() {
+        User userOne = new User("111-1111", "password1", "Registered");
+        User userTwo = new User("222-2222", "password2", "Registered");
+        User userThree = new User("333-3333", "password3", "Registered");
+        User admin = new User("999-9999", "confidential", "Librarian");
+        return new ArrayList<>(Arrays.asList(userOne, userTwo, userThree, admin));
     }
 
     private ArrayList<Movie> manufactureListOfMovies() {
@@ -86,7 +74,7 @@ public class BibliotecaApplication {
 
     public void initialiseApplication() {
         this.consoleView.printOnConsole(welcomeUser.toString());
-        this.controller = new Controller(mainMenu, inputParser, consoleView);
+        this.controller = new Controller(mainMenuFactory, inputParserFactory, consoleView, user);
     }
 
     public void start() {

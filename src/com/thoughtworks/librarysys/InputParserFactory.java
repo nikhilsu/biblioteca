@@ -5,10 +5,12 @@ import java.util.HashMap;
 public class InputParserFactory {
     private Library library;
     private ConsoleView consoleView;
+    private Users users;
 
-    public InputParserFactory(Library library, ConsoleView consoleView) {
+    public InputParserFactory(Library library, ConsoleView consoleView, Users users) {
         this.library = library;
         this.consoleView = consoleView;
+        this.users = users;
     }
 
     public InputParser manufacture(User user) {
@@ -31,16 +33,14 @@ public class InputParserFactory {
             mapper.put("5", new ReturnBookMenuItem(library, consoleView));
             mapper.put("6", new LogoutMenuItem());
             return new InputParser(consoleView, mapper);
-
         }
         else {
             HashMap<String, MenuOptions> mapper = new HashMap<>();
             mapper.put("1", new ListBooksMenuItem(this.library, consoleView));
-            mapper.put("2", new CheckoutBookMenuItem(this.library, consoleView));
-            mapper.put("3", new ReturnBookMenuItem(this.library, consoleView));
-            mapper.put("4", new QuitMenuItem());
-            mapper.put("5", new ListMovieMenuItem(this.library, consoleView));
-            mapper.put("6", new CheckoutMovieMenuItem(this.library, consoleView));
+            mapper.put("2", new ListMovieMenuItem(this.library, consoleView));
+            mapper.put("3", new CheckoutMovieMenuItem(this.library, consoleView));
+            mapper.put("4", new LoginMenuItem(this.users, this.consoleView));
+            mapper.put("5", new QuitMenuItem());
             return new InputParser(consoleView, mapper);
         }
     }

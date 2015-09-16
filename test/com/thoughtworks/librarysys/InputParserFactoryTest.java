@@ -14,7 +14,8 @@ public class InputParserFactoryTest {
     public void shouldReturnAParserWithAnAppropriateMapperForTheRegisteredUser(){
         Library library = mock(Library.class);
         ConsoleView consoleView = mock(ConsoleView.class);
-        InputParserFactory inputParserFactory = new InputParserFactory(library, consoleView);
+        Users users = mock(Users.class);
+        InputParserFactory inputParserFactory = new InputParserFactory(library, consoleView, users);
         User user = mock(User.class);
         when(user.getRole()).thenReturn("Registered");
         HashMap<String, MenuOptions> mapper = new HashMap<>();
