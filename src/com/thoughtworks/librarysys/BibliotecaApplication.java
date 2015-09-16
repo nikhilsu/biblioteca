@@ -2,6 +2,7 @@ package com.thoughtworks.librarysys;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 //Biblioteca Application constructs and assembles the dependencies of the controller, initiates and runs it.
@@ -17,6 +18,7 @@ public class BibliotecaApplication {
     private WelcomeUser welcomeUser;
     private Controller controller;
     private Library library;
+    private HashMap<String, MenuOptions> mapper;
 
     private ArrayList<Book> manufactureListOfBooks() {
         ArrayList<Book> listOfBooks = new ArrayList<>();
@@ -55,10 +57,22 @@ public class BibliotecaApplication {
         ArrayList<Movie> listOfMovies = manufactureListOfMovies();
         this.movies = new Movies(listOfMovies, libraryObserver);
         this.library = new Library(books, movies);
-        this.inputParser = new InputParser(library, consoleView);
+        mapper = manufactureHashMapForParser();
+        this.inputParser = new InputParser(library, consoleView, mapper);
         ArrayList<String> listOfMenuItems = manufactureListOfMenuItems();
         this.mainMenu = new MainMenu(listOfMenuItems, consoleView);
         this.welcomeUser = manufactureWelcomeUser();
+    }
+
+    private HashMap<String, MenuOptions> manufactureHashMapForParser() {
+        HashMap<String, MenuOptions> mapper = new HashMap<>();
+        mapper.put("1", new ListBooksMenuItem(library, consoleView));
+        mapper.put("2", new CheckoutBookMenuItem(library, consoleView));
+        mapper.put("3", new ReturnBookMenuItem(library, consoleView));
+        mapper.put("4", new QuitMenuItem());
+        mapper.put("5", new ListMovieMenuItem(library, consoleView));
+        mapper.put("6", new CheckoutMovieMenuItem(library, consoleView));
+        return mapper;
     }
 
     private ArrayList<Movie> manufactureListOfMovies() {

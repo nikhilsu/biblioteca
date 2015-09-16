@@ -7,9 +7,6 @@ public class MainMenu {
     private ArrayList<String> listOfMenuItems;
     private ConsoleView consoleView;
 
-    public MainMenu() {
-    }
-
     public MainMenu(ArrayList<String> listOfMenuItems, ConsoleView consoleView) {
         this.listOfMenuItems = listOfMenuItems;
         this.consoleView = consoleView;

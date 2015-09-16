@@ -1,29 +1,23 @@
 package com.thoughtworks.librarysys;
 
+import java.util.HashMap;
+
 //input parser parses a string input to concrete mainmenuitem types
 public class InputParser {
     private Library library;
     private ConsoleView consoleView;
+    private HashMap<String, MenuOptions> mapper;
 
-    public InputParser(Library library, ConsoleView consoleView) {
+    public InputParser(Library library, ConsoleView consoleView, HashMap<String, MenuOptions> mapper) {
         this.library = library;
         this.consoleView = consoleView;
+        this.mapper = mapper;
     }
 
     public MenuOptions parse(String userChoice) {
-        if (userChoice.equals("1"))
-            return new ListBooksMenuItem(library, consoleView);
-        else if (userChoice.equals("2"))
-            return new CheckoutBookMenuItem(library, consoleView);
-        else if (userChoice.equals("3"))
-            return new ReturnBookMenuItem(library, consoleView);
-        else if (userChoice.equals("4"))
-            return new QuitMenuItem();
-        else if (userChoice.equals("5"))
-            return new ListMovieMenuItem(library, consoleView);
-        else if (userChoice.equals("6"))
-            return new CheckoutMovieMenuItem(library, consoleView);
+       if (mapper.get(userChoice) != null)
+           return mapper.get(userChoice);
         else
-            return new InvalidMenuItem("Select a valid option!", consoleView);
+           return new InvalidMenuItem("Select a valid option!", consoleView);
     }
 }
