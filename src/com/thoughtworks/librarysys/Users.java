@@ -2,14 +2,14 @@ package com.thoughtworks.librarysys;
 
 import java.util.ArrayList;
 
-public class Authenticator {
+public class Users {
     private ArrayList<User> listOfRegisteredUsers;
 
-    public Authenticator(ArrayList<User> listOfRegisteredUsers) {
+    public Users(ArrayList<User> listOfRegisteredUsers) {
         this.listOfRegisteredUsers = listOfRegisteredUsers;
     }
 
-    public User authenticateUser(String libraryID, String password) {
+    public User authenticate(String libraryID, String password) {
         User userToAuthenticate = new User(libraryID, password, "Not Known");
         int indexOfRegisteredUserInTheList = listOfRegisteredUsers.indexOf(userToAuthenticate);
         if (indexOfRegisteredUserInTheList != -1)

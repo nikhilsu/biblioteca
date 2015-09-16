@@ -1,7 +1,5 @@
 package com.thoughtworks.librarysys;
 
-import java.util.ArrayList;
-
 public class ListMovieMenuItem implements MenuOptions {
     private Library library;
     private ConsoleView consoleView;
