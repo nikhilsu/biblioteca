@@ -16,7 +16,7 @@ public class InputParserTest {
         ConsoleView consoleView = mock(ConsoleView.class);
         HashMap<String, MenuOptions> mapper = mock(HashMap.class);
         when(mapper.get("1")).thenReturn(new ListBooksMenuItem(library, consoleView));
-        InputParser inputParser = new InputParser(library, consoleView, mapper);
+        InputParser inputParser = new InputParser(consoleView, mapper);
 
         String userChoice = "1";
 
@@ -29,7 +29,7 @@ public class InputParserTest {
         ConsoleView consoleView = mock(ConsoleView.class);
         HashMap<String, MenuOptions> mapper = mock(HashMap.class);
         when(mapper.get("2")).thenReturn(new CheckoutBookMenuItem(library, consoleView));
-        InputParser inputParser = new InputParser(library, consoleView, mapper);
+        InputParser inputParser = new InputParser(consoleView, mapper);
 
         String userChoice = "2";
 
@@ -42,7 +42,7 @@ public class InputParserTest {
         ConsoleView consoleView = mock(ConsoleView.class);
         HashMap<String, MenuOptions> mapper = mock(HashMap.class);
         when(mapper.get("4")).thenReturn(new QuitMenuItem());
-        InputParser inputParser = new InputParser(library, consoleView, mapper);
+        InputParser inputParser = new InputParser(consoleView, mapper);
 
         String userChoice = "4";
 
@@ -55,7 +55,7 @@ public class InputParserTest {
         ConsoleView consoleView = mock(ConsoleView.class);
         HashMap<String, MenuOptions> mapper = mock(HashMap.class);
         when(mapper.get("0")).thenReturn(new InvalidMenuItem("Select a valid option!", consoleView));
-        InputParser inputParser = new InputParser(library, consoleView, mapper);
+        InputParser inputParser = new InputParser(consoleView, mapper);
 
         String userChoice = "0";
 
@@ -67,8 +67,9 @@ public class InputParserTest {
         Library library = mock(Library.class);
         ConsoleView consoleView = mock(ConsoleView.class);
         HashMap<String, MenuOptions> mapper = mock(HashMap.class);
-        when(mapper.get("3")).thenReturn(new ReturnBookMenuItem(library, consoleView));
-        InputParser inputParser = new InputParser(library, consoleView, mapper);
+        when(mapper.get("3" +
+                "")).thenReturn(new ReturnBookMenuItem(library, consoleView));
+        InputParser inputParser = new InputParser(consoleView, mapper);
 
         String userChoice = "3";
 
@@ -81,7 +82,7 @@ public class InputParserTest {
         ConsoleView consoleView = mock(ConsoleView.class);
         HashMap<String, MenuOptions> mapper = mock(HashMap.class);
         when(mapper.get("5")).thenReturn(new ListMovieMenuItem(library, consoleView));
-        InputParser inputParser = new InputParser(library, consoleView, mapper);
+        InputParser inputParser = new InputParser(consoleView, mapper);
 
         String userChoice = "5";
 
@@ -94,7 +95,7 @@ public class InputParserTest {
         ConsoleView consoleView = mock(ConsoleView.class);
         HashMap<String, MenuOptions> mapper = mock(HashMap.class);
         when(mapper.get("6")).thenReturn(new CheckoutMovieMenuItem(library, consoleView));
-        InputParser inputParser = new InputParser(library, consoleView, mapper);
+        InputParser inputParser = new InputParser(consoleView, mapper);
 
         String userChoice = "6";
 

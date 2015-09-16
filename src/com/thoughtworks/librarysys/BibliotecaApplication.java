@@ -58,7 +58,7 @@ public class BibliotecaApplication {
         this.movies = new Movies(listOfMovies, libraryObserver);
         this.library = new Library(books, movies);
         mapper = manufactureHashMapForParser();
-        this.inputParser = new InputParser(library, consoleView, mapper);
+        this.inputParser = new InputParser(consoleView, mapper);
         ArrayList<String> listOfMenuItems = manufactureListOfMenuItems();
         this.mainMenu = new MainMenu(listOfMenuItems, consoleView);
         this.welcomeUser = manufactureWelcomeUser();
@@ -66,12 +66,12 @@ public class BibliotecaApplication {
 
     private HashMap<String, MenuOptions> manufactureHashMapForParser() {
         HashMap<String, MenuOptions> mapper = new HashMap<>();
-        mapper.put("1", new ListBooksMenuItem(library, consoleView));
-        mapper.put("2", new CheckoutBookMenuItem(library, consoleView));
-        mapper.put("3", new ReturnBookMenuItem(library, consoleView));
+        mapper.put("1", new ListBooksMenuItem(this.library, consoleView));
+        mapper.put("2", new CheckoutBookMenuItem(this.library, consoleView));
+        mapper.put("3", new ReturnBookMenuItem(this.library, consoleView));
         mapper.put("4", new QuitMenuItem());
-        mapper.put("5", new ListMovieMenuItem(library, consoleView));
-        mapper.put("6", new CheckoutMovieMenuItem(library, consoleView));
+        mapper.put("5", new ListMovieMenuItem(this.library, consoleView));
+        mapper.put("6", new CheckoutMovieMenuItem(this.library, consoleView));
         return mapper;
     }
 
