@@ -22,7 +22,14 @@ public class MainMenuFactory {
             return new MainMenu(listOfMenuItems, consoleView);
         }
 
-        else
-            return null;
+        else {
+            ArrayList<String> listOfMenuItems = new ArrayList<String>();
+            listOfMenuItems.add("1. List Books");
+            listOfMenuItems.add("2. List Movies");
+            listOfMenuItems.add("3. Checkout Movie");
+            listOfMenuItems.add("4. Login");
+            listOfMenuItems.add("5. Quit");
+            return new MainMenu(listOfMenuItems, consoleView);
+        }
     }
 }

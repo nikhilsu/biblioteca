@@ -27,4 +27,21 @@ public class MainMenuFactoryTest {
 
         assertEquals(mainMenu, mainMenuFactory.manufacture(user));
     }
+
+    @Test
+    public void shouldCreateAMenuItemHavingAvalidListForTheGuestUserWhenTheUserPassedToItIsGuest() {
+        ArrayList<String> listOfMenuItems = new ArrayList<String>();
+        listOfMenuItems.add("1. List Books");
+        listOfMenuItems.add("2. List Movies");
+        listOfMenuItems.add("3. Checkout Movie");
+        listOfMenuItems.add("4. Login");
+        listOfMenuItems.add("5. Quit");
+        ConsoleView consoleView = mock(ConsoleView.class);
+        MainMenu mainMenu = new MainMenu(listOfMenuItems, consoleView);
+        MainMenuFactory mainMenuFactory = new MainMenuFactory(consoleView);
+
+        User user = new User("Not a member", "Not applicable", "Guest");
+
+        assertEquals(mainMenu, mainMenuFactory.manufacture(user));
+    }
 }
