@@ -34,4 +34,11 @@ public class MainMenu {
         else
             return false;
     }
+
+    @Override
+    public int hashCode() {
+        int result = listOfMenuItems.hashCode();
+        result = 31 * result + consoleView.hashCode();
+        return result;
+    }
 }

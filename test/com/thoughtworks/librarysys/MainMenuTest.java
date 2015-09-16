@@ -114,4 +114,17 @@ public class MainMenuTest {
 
         assertNotEquals(mainMenuOne, null);
     }
+
+    @Test
+    public void shouldHaveSameHashCodesWhenThe2ObjectsAreTheSame() {
+        ArrayList<String> listOfMenuItemsOne = new ArrayList<>();
+        listOfMenuItemsOne.add("1. List Books");
+        listOfMenuItemsOne.add("2. Checkout Book");
+        listOfMenuItemsOne.add("3. Return Book");
+        listOfMenuItemsOne.add("4. Quit");
+        ConsoleView consoleView = mock(ConsoleView.class);
+        MainMenu mainMenuOne = new MainMenu(listOfMenuItemsOne, consoleView);
+
+        assertEquals(mainMenuOne.hashCode(), mainMenuOne.hashCode());
+    }
 }
