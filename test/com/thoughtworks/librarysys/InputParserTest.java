@@ -1,6 +1,7 @@
 package com.thoughtworks.librarysys;
 
 import org.junit.Test;
+import org.mockito.Mock;
 
 import java.util.HashMap;
 
@@ -101,5 +102,15 @@ public class InputParserTest {
         String userChoice = "6";
 
         assertEquals(new CheckoutMovieMenuItem(library, consoleView).getClass(), inputParser.parse(userChoice).getClass());
+    }
+
+    @Test
+    public void shouldBeEqualToAnotherParserWithTheSameConsoleView() {
+        ConsoleView consoleView = mock(ConsoleView.class);
+        HashMap<String, MenuOptions> map = mock(HashMap.class);
+        InputParser inputParserOne = new InputParser(consoleView, map);
+        InputParser inputParserTwo = new InputParser(consoleView, map);
+
+        assertEquals(inputParserOne, inputParserTwo);
     }
 }

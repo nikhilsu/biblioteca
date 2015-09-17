@@ -18,4 +18,13 @@ public class InputParser {
         else
            return new InvalidMenuItem("Select a valid option!", consoleView);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        InputParser that = (InputParser) obj;
+        if(this.consoleView.equals(that.consoleView))
+            return true;
+        else
+            return false;
+    }
 }
