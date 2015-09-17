@@ -29,4 +29,11 @@ public class InputParser {
         else
             return false;
     }
+
+    @Override
+    public int hashCode() {
+        int result = consoleView.hashCode();
+        result = 31 * result + mapper.hashCode();
+        return result;
+    }
 }

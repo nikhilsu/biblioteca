@@ -143,4 +143,14 @@ public class InputParserTest {
 
         assertNotEquals(inputParserOne, null);
     }
+
+    @Test
+    public void twoParsersWithTheSameStateShouldHaveSameHashCodes() {
+        ConsoleView consoleView = mock(ConsoleView.class);
+        HashMap<String, MenuOptions> map = mock(HashMap.class);
+        InputParser inputParserOne = new InputParser(consoleView, map);
+        InputParser inputParserTwo = new InputParser(consoleView, map);
+
+        assertEquals(inputParserOne.hashCode(), inputParserTwo.hashCode());
+    }
 }
