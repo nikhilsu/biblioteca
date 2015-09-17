@@ -6,6 +6,7 @@ import org.mockito.Mock;
 import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -112,5 +113,16 @@ public class InputParserTest {
         InputParser inputParserTwo = new InputParser(consoleView, map);
 
         assertEquals(inputParserOne, inputParserTwo);
+    }
+
+    @Test
+    public void shouldNotBeEqualToAnotherParserWithTheSameConsoleViewAndMap() {
+        ConsoleView consoleView = mock(ConsoleView.class);
+        HashMap<String, MenuOptions> mapOne = mock(HashMap.class);
+        HashMap<String, MenuOptions> mapTwo = mock(HashMap.class);
+        InputParser inputParserOne = new InputParser(consoleView, mapOne);
+        InputParser inputParserTwo = new InputParser(consoleView, mapTwo);
+
+        assertNotEquals(inputParserOne, inputParserTwo);
     }
 }

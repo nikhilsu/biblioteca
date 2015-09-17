@@ -22,7 +22,7 @@ public class InputParser {
     @Override
     public boolean equals(Object obj) {
         InputParser that = (InputParser) obj;
-        if(this.consoleView.equals(that.consoleView))
+        if(this.consoleView.equals(that.consoleView) && this.mapper.equals(that.mapper))
             return true;
         else
             return false;
