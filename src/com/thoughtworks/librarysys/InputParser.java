@@ -1,6 +1,7 @@
 package com.thoughtworks.librarysys;
 
 import java.util.HashMap;
+import java.util.Map;
 
 //input parser parses a string input to concrete mainmenuitem types
 public class InputParser {
@@ -17,23 +18,5 @@ public class InputParser {
            return mapper.get(userChoice);
         else
            return new InvalidMenuItem("Select a valid option!", consoleView);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null || obj.getClass() != this.getClass())
-            return false;
-        InputParser that = (InputParser) obj;
-        if(this.consoleView.equals(that.consoleView) && this.mapper.equals(that.mapper))
-            return true;
-        else
-            return false;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = consoleView.hashCode();
-        result = 31 * result + mapper.hashCode();
-        return result;
     }
 }
