@@ -13,7 +13,7 @@ public class Book {
     }
 
     public String displayDetails() {
-        return String.format("%-30s%-30s%-20s\n", this.name, this.author, yearOfPublication);
+        return String.format("%s\t%s\t%s", this.name, this.author, yearOfPublication);
     }
 
     @Override

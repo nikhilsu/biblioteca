@@ -2,6 +2,7 @@ package com.thoughtworks.librarysys;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 //library has a list of books whose details are returned with a column header
 public class Books {
@@ -19,8 +20,10 @@ public class Books {
         String listOfBookDetails = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
                 String.format("%085d\n", 0).replace("0","-");
-        for (Book book : listOfBooksAvailable)
-            listOfBookDetails += book.displayDetails();
+        for (Book book : listOfBooksAvailable) {
+             String [] tokensOfBookDetails = book.displayDetails().split("\t");
+             listOfBookDetails += String.format("%-30s%-30s%-20s\n", tokensOfBookDetails[0], tokensOfBookDetails[1], tokensOfBookDetails[2]);
+        }
         return listOfBookDetails + "\n";
     }
 
@@ -58,5 +61,17 @@ public class Books {
         }
         else
             libraryObserver.notifyUnsuccessfulBookReturn();
+    }
+
+    public String listCheckoutDetails() {
+        String bookChekOutDetails = String.format("%085d\n", 0).replace("0","-") +
+                String.format("%-30s%-30s%-20s%-30s\n", "Name of the book", "Author", "Year Of Publication", "Library ID") +
+                String.format("%085d\n", 0).replace("0", "-");
+        for (Map.Entry<Book, User> entry : listOfBooksCheckedOutByUsers.entrySet()) {
+            String [] tokensOfBookDetails = entry.getKey().displayDetails().split("\t");
+
+            bookChekOutDetails += String.format("%-30s%-30s%-20s%-30s\n", tokensOfBookDetails[0], tokensOfBookDetails[1], tokensOfBookDetails[2], entry.getValue().toString());
+        }
+        return bookChekOutDetails;
     }
 }

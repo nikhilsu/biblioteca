@@ -161,4 +161,29 @@ public class BooksTest {
 
         assertEquals(testString, books.displayListOfDetails());
     }
+
+    @Test
+    public void shouldListCheckOutDetailsOfTheBorrowedBooksInTheLibrary() {
+        ArrayList<Book> listOfBooks = new ArrayList<>();
+        Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
+        listOfBooks.add(bookOne);
+        HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
+        Book borrowedBookOne = new Book("Inferno", "Dan Brown", 2012);
+        Book borrowedBookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
+        User userOne = new User("222-2222", "password2", "Registered");
+        User userTwo = new User("333-3333", "password3", "Registered");
+        listOfBooksCheckedOutByUsers.put(borrowedBookOne, userOne);
+        listOfBooksCheckedOutByUsers.put(borrowedBookTwo, userTwo);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
+
+
+        String testString = String.format("%085d\n", 0).replace("0","-") +
+                String.format("%-30s%-30s%-20s%-30s\n", "Name of the book", "Author", "Year Of Publication", "Library ID") +
+                String.format("%085d\n", 0).replace("0", "-") +
+                String.format("%-30s%-30s%-20s%-30s\n", "Inferno", "Dan Brown", "2012", "222-2222") +
+                String.format("%-30s%-30s%-20s%-30s\n", "Kite Runner", "Khaled Hossieni", "2003", "333-3333") ;
+
+        assertEquals(testString, books.listCheckoutDetails());
+    }
 }

@@ -21,6 +21,10 @@ public class Library {
         books.toReturn(bookToReturn, currentUser);
     }
 
+    public String listBookCheckoutDetails() {
+        return books.listCheckoutDetails();
+    }
+
     public String listBooks() {
         return books.displayListOfDetails();
     }
