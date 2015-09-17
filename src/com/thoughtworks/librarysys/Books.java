@@ -16,15 +16,12 @@ public class Books {
         this.libraryObserver = libraryObserver;
     }
 
-    public String displayListOfDetails() {
-        String listOfBookDetails = String.format("%085d\n", 0).replace("0","-") +
-                String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
-                String.format("%085d\n", 0).replace("0","-");
+    private String getListOfBookDetails(String listOfBookDetails) {
         for (Book book : listOfBooksAvailable) {
              String [] tokensOfBookDetails = book.displayDetails().split("\t");
              listOfBookDetails += String.format("%-30s%-30s%-20s\n", tokensOfBookDetails[0], tokensOfBookDetails[1], tokensOfBookDetails[2]);
         }
-        return listOfBookDetails + "\n";
+        return listOfBookDetails;
     }
 
     private void removeBookFromAvailableBooksListAndAddItToCheckedOutBookList(int indexOfBook, User currentUser) {
@@ -38,6 +35,14 @@ public class Books {
                 listOfBooksAvailable.add(book);
                 listOfBooksCheckedOutByUsers.remove(book);
             }
+    }
+
+    public String displayListOfBookDetails() {
+        String listOfBookDetails = String.format("%085d\n", 0).replace("0","-") +
+                String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
+                String.format("%085d\n", 0).replace("0","-");
+        listOfBookDetails = getListOfBookDetails(listOfBookDetails);
+        return listOfBookDetails + "\n";
     }
 
     public void checkOut(Book bookToCheckout, User currentUser) {

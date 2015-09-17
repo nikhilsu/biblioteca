@@ -26,7 +26,7 @@ public class Library {
     }
 
     public String listBooks() {
-        return books.displayListOfDetails();
+        return books.displayListOfBookDetails();
     }
 
     public String listMovies() {

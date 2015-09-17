@@ -2,7 +2,6 @@ package com.thoughtworks.librarysys;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -53,7 +52,7 @@ public class LibraryTest {
 
         library.listBooks();
 
-        verify(books).displayListOfDetails();
+        verify(books).displayListOfBookDetails();
     }
 
     @Test
@@ -65,5 +64,16 @@ public class LibraryTest {
         library.listMovies();
 
         verify(movies).displayListOfDetails();
+    }
+
+    @Test
+    public void shouldListTheDetailsOfCheckedOutBooksInTheLibrary() {
+        Books books = mock(Books.class);
+        Movies movies = mock(Movies.class);
+        Library library = new Library(books, movies);
+
+        library.listBookCheckoutDetails();
+
+        verify(books).listCheckoutDetails();
     }
 }
