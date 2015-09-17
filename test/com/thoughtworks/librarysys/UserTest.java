@@ -65,4 +65,11 @@ public class UserTest {
 
         assertEquals(user.getRole(), "Registered");
     }
+
+    @Test
+    public void shouldReturnTheLibraryIDOfTheUserWhenTheToStringMethodIsCalled() {
+        User user = new User("222-2222", "password2", "Registered");
+
+        assertEquals("222-2222", user.toString());
+    }
 }
