@@ -18,7 +18,8 @@ public class MainMenuFactoryTest {
         listOfMenuItems.add("3. Checkout Movie");
         listOfMenuItems.add("4. CheckOut Book");
         listOfMenuItems.add("5. Return Book");
-        listOfMenuItems.add("6. Logout");
+        listOfMenuItems.add("6. User Details");
+        listOfMenuItems.add("7. Logout");
         ConsoleView consoleView = mock(ConsoleView.class);
         MainMenu mainMenu = new MainMenu(listOfMenuItems, consoleView);
         MainMenuFactory mainMenuFactory = new MainMenuFactory(consoleView);
@@ -55,8 +56,9 @@ public class MainMenuFactoryTest {
         listOfMenuItems.add("3. Checkout Movie");
         listOfMenuItems.add("4. CheckOut Book");
         listOfMenuItems.add("5. Return Book");
-        listOfMenuItems.add("6. CheckedOut Book Details");
-        listOfMenuItems.add("7. Logout");
+        listOfMenuItems.add("6. User Details");
+        listOfMenuItems.add("7. CheckedOut Book Details");
+        listOfMenuItems.add("8. Logout");
         ConsoleView consoleView = mock(ConsoleView.class);
         MainMenu mainMenu = new MainMenu(listOfMenuItems, consoleView);
         MainMenuFactory mainMenuFactory = new MainMenuFactory(consoleView);
