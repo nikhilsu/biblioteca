@@ -52,4 +52,28 @@ public class InputParserFactoryTest {
 
         assertEquals(inputParserFactory.manufacture(user).getClass(), inputParser.getClass());
     }
+
+    @Test
+    public void shouldReturnAParserWithAnAppropriateMapperForTheLibrarian(){
+        Library library = mock(Library.class);
+        ConsoleView consoleView = mock(ConsoleView.class);
+        Users users = mock(Users.class);
+        InputParserFactory inputParserFactory = new InputParserFactory(library, consoleView, users);
+        User user = mock(User.class);
+        when(user.getRole()).thenReturn("Librarian");
+        HashMap<String, MenuOptions> mapper = new HashMap<>();
+        mapper.put("1", new ListBooksMenuItem(library, consoleView));
+        mapper.put("2", new ListMovieMenuItem(library, consoleView));
+        mapper.put("3", new CheckoutMovieMenuItem(library, consoleView));
+        mapper.put("4", new CheckoutBookMenuItem(library, consoleView, user));
+        mapper.put("5", new ReturnBookMenuItem(library, consoleView, user));
+        mapper.put("6", new UserDetailMenuItem(user, consoleView));
+        mapper.put("7", new DetailsOfCheckedOutBooksMenuItem(library, consoleView));
+        mapper.put("8", new LogoutMenuItem(user, consoleView));
+
+        InputParser inputParser = new InputParser(consoleView, mapper);
+
+        assertEquals(inputParserFactory.manufacture(user).getClass(), inputParser.getClass());
+    }
+
 }
