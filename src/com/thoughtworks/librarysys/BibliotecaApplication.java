@@ -53,14 +53,14 @@ public class BibliotecaApplication {
         this.inputParserFactory = new InputParserFactory(library, consoleView, users);
         this.mainMenuFactory = new MainMenuFactory(consoleView);
         this.welcomeUser = manufactureWelcomeUser();
-        this.user = new User("Not a member", "Not known", "Guest");
+        this.user = new User("Temp", "mailAddress", "00000000", "Not a member", "Not known", "Guest");
     }
 
     private ArrayList<User> manufactureListOfRegisteredUsers() {
-        User userOne = new User("111-1111", "password1", "Registered");
-        User userTwo = new User("222-2222", "password2", "Registered");
-        User userThree = new User("333-3333", "password3", "Registered");
-        User admin = new User("999-9999", "confidential", "Librarian");
+        User userOne = new User("John", "abc@mail.com", "12345678", "111-1111", "password1", "Registered");
+        User userTwo = new User("Mary", "xyz@mail.com", "22345678", "222-2222", "password2", "Registered");
+        User userThree = new User("David", "pqr@mail.com", "32345678", "333-3333", "password3", "Registered");
+        User admin = new User("Admin", "admin@mail.com", "23230066", "999-9999", "confidential", "Librarian");
         return new ArrayList<>(Arrays.asList(userOne, userTwo, userThree, admin));
     }
 

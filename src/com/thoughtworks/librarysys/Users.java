@@ -10,11 +10,11 @@ public class Users {
     }
 
     public User authenticate(String libraryID, String password) {
-        User userToAuthenticate = new User(libraryID, password, "Not Known");
+        User userToAuthenticate = new User("Temp", "mailAddress", "phoneNumber", libraryID, password, "Not Known");
         int indexOfRegisteredUserInTheList = listOfRegisteredUsers.indexOf(userToAuthenticate);
         if (indexOfRegisteredUserInTheList != -1)
             return listOfRegisteredUsers.get(indexOfRegisteredUserInTheList);
         else
-            return new User("Not a Member", "No password", "Guest");
+            return new User("Temp", "mailAddress", "00000000", "Not a member", "Not known", "Guest");
     }
 }

@@ -2,17 +2,15 @@ package com.thoughtworks.librarysys;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 public class LoginMenuItemTest {
 
     @Test
     public void shouldLoginAValidUser() {
         Users users = mock(Users.class);
-        when(users.authenticate("111-1111", "password1")).thenReturn(new User("111-1111", "password1", "Registered"));
+        when(users.authenticate("111-1111", "password1")).thenReturn(new User("John", "abc@mail.com", "12345678", "111-1111", "password1", "Registered"));
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("111-1111", "password1");
         LoginMenuItem loginMenuItem = new LoginMenuItem(users, consoleView);
@@ -27,7 +25,7 @@ public class LoginMenuItemTest {
     @Test
     public void shouldAssignTheRoleOfAUserAsRegisteredOnSuccessfulLogin() {
         Users users = mock(Users.class);
-        when(users.authenticate("111-1111", "password1")).thenReturn(new User("111-1111", "password1", "Registered"));
+        when(users.authenticate("111-1111", "password1")).thenReturn(new User("John", "abc@mail.com", "12345678", "111-1111", "password1", "Registered"));
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("111-1111", "password1");
         LoginMenuItem loginMenuItem = new LoginMenuItem(users, consoleView);
@@ -40,7 +38,7 @@ public class LoginMenuItemTest {
     @Test
     public void shouldAssignTheRoleOfTheUserAsGuestOnUnsuccessfulLogin(){
         Users users = mock(Users.class);
-        when(users.authenticate("111-1111", "invalid")).thenReturn(new User("111-1111", "password1", "Guest"));
+        when(users.authenticate("111-1111", "invalid")).thenReturn(new User("John", "abc@mail.com", "12345678", "111-1111", "password1", "Guest"));
         ConsoleView consoleView = mock(ConsoleView.class);
         when(consoleView.inputFromUser()).thenReturn("111-1111", "invalid");
         LoginMenuItem loginMenuItem = new LoginMenuItem(users, consoleView);

@@ -1,6 +1,6 @@
 package com.thoughtworks.librarysys;
 
-//invalidmenuitem is a mainmenuitem that return "select a valic option!" string
+//invalidmenuitem is a mainmenuitem that return "select a valid option!" string
 public class InvalidMenuItem implements MenuOptions {
     private String displayMessage;
     private ConsoleView consoleView;

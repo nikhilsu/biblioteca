@@ -1,7 +1,5 @@
 package com.thoughtworks.librarysys;
 
-import java.util.ArrayList;
-
 //listbooksmenuitem is a mainmenuitem that returns the list of all the books in the books
 public class ListBooksMenuItem implements MenuOptions {
     private  Library library;

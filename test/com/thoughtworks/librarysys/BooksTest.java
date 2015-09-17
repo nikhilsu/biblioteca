@@ -83,7 +83,7 @@ public class BooksTest {
         listOfBooks.add(bookTwo);
         HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
-        User user = new User("222-2222", "password2", "Registered");
+        User user = new User("John", "abc@mail.com", "12345678", "222-2222", "password2", "Registered");
         listOfBooksCheckedOutByUsers.put(borrowedBook, user);
         LibraryObserver libraryObserver = mock(LibraryObserver.class);
         Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
@@ -103,7 +103,7 @@ public class BooksTest {
         listOfBooks.add(bookTwo);
         HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
-        User user = new User("222-2222", "password2", "Registered");
+        User user = new User("Mary", "xyz@mail.com", "22345678", "222-2222", "password2", "Registered");
         listOfBooksCheckedOutByUsers.put(borrowedBook, user);
         LibraryObserver libraryObserver = mock(LibraryObserver.class);
         Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
@@ -124,11 +124,11 @@ public class BooksTest {
         listOfBooks.add(bookTwo);
         HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
-        User user = new User("222-2222", "password2", "Registered");
+        User user = new User("Mary", "xyz@mail.com", "22345678", "222-2222", "password2", "Registered");
         listOfBooksCheckedOutByUsers.put(borrowedBook, user);
         LibraryObserver libraryObserver = mock(LibraryObserver.class);
         Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
-        User returningUser = new User("111-1111", "password1", "Registered");
+        User returningUser = new User("John", "abc@mail.com", "12345678", "111-1111", "password1", "Registered");
 
         Book libraryBook = new Book("Inferno", "Author", 0);
         books.toReturn(libraryBook, returningUser);
@@ -145,7 +145,7 @@ public class BooksTest {
         listOfBooks.add(bookTwo);
         HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
-        User user = new User("222-2222", "password2", "Registered");
+        User user = new User("Mary", "xyz@mail.com", "22345678", "222-2222", "password2", "Registered");
         listOfBooksCheckedOutByUsers.put(borrowedBook, user);
         LibraryObserver libraryObserver = mock(LibraryObserver.class);
         Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
@@ -170,8 +170,8 @@ public class BooksTest {
         HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
         Book borrowedBookOne = new Book("Inferno", "Dan Brown", 2012);
         Book borrowedBookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
-        User userOne = new User("222-2222", "password2", "Registered");
-        User userTwo = new User("333-3333", "password3", "Registered");
+        User userOne = new User("Mary", "xyz@mail.com", "22345678", "222-2222", "password2", "Registered");
+        User userTwo = new User("David", "pqr@mail.com", "32345678", "333-3333", "password3", "Registered");
         listOfBooksCheckedOutByUsers.put(borrowedBookOne, userOne);
         listOfBooksCheckedOutByUsers.put(borrowedBookTwo, userTwo);
         LibraryObserver libraryObserver = mock(LibraryObserver.class);
@@ -182,7 +182,7 @@ public class BooksTest {
                 String.format("%-25s%-25s%-25s%-20s\n", "Name of the book", "Author", "Year Of Publication", "Library ID") +
                 String.format("%085d\n", 0).replace("0", "-") +
                 String.format("%-25s%-25s%-25s%-20s\n", "Inferno", "Dan Brown", "2012", "222-2222") +
-                String.format("%-25s%-25s%-25s%-20s\n", "Kite Runner", "Khaled Hossieni", "2003", "333-3333") ;
+                String.format("%-25s%-25s%-25s%-20s\n\n", "Kite Runner", "Khaled Hossieni", "2003", "333-3333") ;
 
         assertEquals(testString, books.listCheckoutDetails());
     }

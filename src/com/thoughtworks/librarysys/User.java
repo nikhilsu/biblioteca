@@ -1,11 +1,18 @@
 package com.thoughtworks.librarysys;
 
 public class User {
+    private String name;
+    private String email;
+    private String phoneNumber;
     private String libraryID;
     private String password;
     private String role;
 
-    public User(String libraryID, String password, String role) {
+
+    public User(String name, String email, String phoneNumber, String libraryID, String password, String role) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.libraryID = libraryID;
         this.password = password;
         this.role = role;
@@ -35,6 +42,6 @@ public class User {
 
     @Override
     public String toString() {
-        return libraryID;
+        return String.format("%s\t%s\t%s\t%s",libraryID, name, email, phoneNumber);
     }
 }

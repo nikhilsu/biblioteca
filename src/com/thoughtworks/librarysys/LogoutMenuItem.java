@@ -11,7 +11,7 @@ public class LogoutMenuItem implements MenuOptions {
 
     @Override
     public void performOperation() {
-        this.user = new User("Not a member", "Not Known", "Guest");
+        this.user = new User("Temp", "mailAddress", "00000000", "Not a member", "Not known", "Guest");
         consoleView.printOnConsole("Successfully Logged Out!\n\n");
     }
 
