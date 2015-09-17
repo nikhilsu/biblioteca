@@ -2,10 +2,7 @@ package com.thoughtworks.librarysys;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class DetailsOfCheckedOutBooksMenuItemTest {
 
@@ -21,5 +18,4 @@ public class DetailsOfCheckedOutBooksMenuItemTest {
         verify(library).listBookCheckoutDetails();
         verify(consoleView).printOnConsole("List of details of checked out books");
     }
-
 }

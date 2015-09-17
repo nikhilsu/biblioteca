@@ -70,12 +70,12 @@ public class Books {
 
     public String listCheckoutDetails() {
         String bookChekOutDetails = String.format("%085d\n", 0).replace("0","-") +
-                String.format("%-30s%-30s%-20s%-30s\n", "Name of the book", "Author", "Year Of Publication", "Library ID") +
+                String.format("%-25s%-25s%-25s%-20s\n", "Name of the book", "Author", "Year Of Publication", "Library ID") +
                 String.format("%085d\n", 0).replace("0", "-");
         for (Map.Entry<Book, User> entry : listOfBooksCheckedOutByUsers.entrySet()) {
             String [] tokensOfBookDetails = entry.getKey().displayDetails().split("\t");
 
-            bookChekOutDetails += String.format("%-30s%-30s%-20s%-30s\n", tokensOfBookDetails[0], tokensOfBookDetails[1], tokensOfBookDetails[2], entry.getValue().toString());
+            bookChekOutDetails += String.format("%-25s%-25s%-25s%-20s\n", tokensOfBookDetails[0], tokensOfBookDetails[1], tokensOfBookDetails[2], entry.getValue().toString());
         }
         return bookChekOutDetails + "\n";
     }

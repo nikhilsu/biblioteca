@@ -179,10 +179,10 @@ public class BooksTest {
 
 
         String testString = String.format("%085d\n", 0).replace("0","-") +
-                String.format("%-30s%-30s%-20s%-30s\n", "Name of the book", "Author", "Year Of Publication", "Library ID") +
+                String.format("%-25s%-25s%-25s%-20s\n", "Name of the book", "Author", "Year Of Publication", "Library ID") +
                 String.format("%085d\n", 0).replace("0", "-") +
-                String.format("%-30s%-30s%-20s%-30s\n", "Inferno", "Dan Brown", "2012", "222-2222") +
-                String.format("%-30s%-30s%-20s%-30s\n", "Kite Runner", "Khaled Hossieni", "2003", "333-3333") ;
+                String.format("%-25s%-25s%-25s%-20s\n", "Inferno", "Dan Brown", "2012", "222-2222") +
+                String.format("%-25s%-25s%-25s%-20s\n", "Kite Runner", "Khaled Hossieni", "2003", "333-3333") ;
 
         assertEquals(testString, books.listCheckoutDetails());
     }

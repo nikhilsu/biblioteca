@@ -31,7 +31,8 @@ public class InputParserFactory {
             mapper.put("3", new CheckoutMovieMenuItem(library, consoleView));
             mapper.put("4", new CheckoutBookMenuItem(library, consoleView, user));
             mapper.put("5", new ReturnBookMenuItem(library, consoleView, user));
-            mapper.put("6", new LogoutMenuItem(user, consoleView));
+            mapper.put("6", new DetailsOfCheckedOutBooksMenuItem(library, consoleView));
+            mapper.put("7", new LogoutMenuItem(user, consoleView));
             return new InputParser(consoleView, mapper);
         }
         else {
