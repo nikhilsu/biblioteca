@@ -3,6 +3,7 @@ package com.thoughtworks.librarysys;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -19,10 +20,10 @@ public class BooksTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
         ConsoleView consoleView = mock(ConsoleView.class);
         LibraryObserver libraryObserver = new LibraryObserver(consoleView);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
 
         String testString = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
@@ -43,11 +44,12 @@ public class BooksTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
         LibraryObserver libraryObserver = mock(LibraryObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
+        User user = mock(User.class);
 
-        books.checkOut(bookTwo);
+        books.checkOut(bookTwo, user);
 
         verify(libraryObserver).notifySuccessfulBookCheckout();
     }
@@ -61,31 +63,33 @@ public class BooksTest {
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
         listOfBooks.add(bookThree);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
         LibraryObserver libraryObserver = mock(LibraryObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
+        User user = mock(User.class);
 
         Book notALibraryBook = new Book("Head First java", "Bert Bates", 2003);
-        books.checkOut(notALibraryBook);
+        books.checkOut(notALibraryBook, user);
 
         verify(libraryObserver).notifyUnsuccessfulBookCheckout();
     }
 
     @Test
-    public void shouldReturnACheckedOutBookToTheLibrary() {
+    public void shouldReturnACheckedOutBookByTheSameUserWhoBorrowedItToTheLibrary() {
         ArrayList<Book> listOfBooks = new ArrayList<>();
         Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
-        listOfCheckedOutBooks.add(borrowedBook);
+        User user = new User("222-2222", "password2", "Registered");
+        listOfBooksCheckedOutByUsers.put(borrowedBook, user);
         LibraryObserver libraryObserver = mock(LibraryObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
 
         Book libraryBook = new Book("Inferno", "Author", 0);
-        books.toReturn(libraryBook);
+        books.toReturn(libraryBook, user);
 
         verify(libraryObserver).notifySuccessfulBookReturn();
     }
@@ -97,14 +101,15 @@ public class BooksTest {
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
-        listOfCheckedOutBooks.add(borrowedBook);
+        User user = new User("222-2222", "password2", "Registered");
+        listOfBooksCheckedOutByUsers.put(borrowedBook, user);
         LibraryObserver libraryObserver = mock(LibraryObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
 
         Book libraryBook = new Book("Head First Java", "Author", 0);
-        books.toReturn(libraryBook);
+        books.toReturn(libraryBook, user);
 
         verify(libraryObserver).notifyUnsuccessfulBookReturn();
     }
@@ -116,14 +121,15 @@ public class BooksTest {
         Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
         listOfBooks.add(bookOne);
         listOfBooks.add(bookTwo);
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
+        HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
         Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
-        listOfCheckedOutBooks.add(borrowedBook);
+        User user = new User("222-2222", "password2", "Registered");
+        listOfBooksCheckedOutByUsers.put(borrowedBook, user);
         LibraryObserver libraryObserver = mock(LibraryObserver.class);
-        Books books = new Books(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
         Book libraryBook = new Book("Inferno", "Author", 0);
 
-        books.toReturn(libraryBook);
+        books.toReturn(libraryBook, user);
         String testString = String.format("%085d\n", 0).replace("0","-") +
                 String.format("%-30s%-30s%-20s\n", "Name Of The Book", "Author", "Year Of Publication") +
                 String.format("%085d\n", 0).replace("0", "-") +

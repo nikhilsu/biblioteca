@@ -6,10 +6,12 @@ import java.util.ArrayList;
 public class ReturnBookMenuItem implements MenuOptions {
     private Library library;
     private ConsoleView consoleView;
+    private User currentUser;
 
-    public ReturnBookMenuItem(Library library, ConsoleView consoleView) {
+    public ReturnBookMenuItem(Library library, ConsoleView consoleView, User currentUser) {
         this.library = library;
         this.consoleView = consoleView;
+        this.currentUser = currentUser;
     }
 
     @Override
@@ -17,6 +19,6 @@ public class ReturnBookMenuItem implements MenuOptions {
         consoleView.printOnConsole("Enter The Book to Return: ");
         String nameOfTheBookToCheckout = consoleView.inputFromUser();
         Book bookToBeReturned = new Book(nameOfTheBookToCheckout, "Author", 0);
-        library.toReturn(bookToBeReturned);
+        library.toReturn(bookToBeReturned, currentUser);
     }
 }

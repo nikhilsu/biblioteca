@@ -9,16 +9,16 @@ public class Library {
         this.movies = movies;
     }
 
-    public void checkOut(Book bookToCheckOut) {
-        books.checkOut(bookToCheckOut);
+    public void checkOut(Book bookToCheckOut, User currentUser) {
+        books.checkOut(bookToCheckOut, currentUser);
     }
 
     public void checkOut(Movie movieToCheckout) {
         movies.checkOut(movieToCheckout);
     }
 
-    public void toReturn(Book bookToReturn) {
-        books.toReturn(bookToReturn);
+    public void toReturn(Book bookToReturn, User currentUser) {
+        books.toReturn(bookToReturn, currentUser);
     }
 
     public String listBooks() {

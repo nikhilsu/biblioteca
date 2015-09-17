@@ -20,9 +20,11 @@ public class Book {
     public boolean equals(Object obj) {
         if (obj == null || this.getClass() != obj.getClass())
             return false;
+
         Book that = (Book) obj;
         if (this.name.equals(that.name))
             return true;
+
         else
             return false;
     }
@@ -30,8 +32,6 @@ public class Book {
     @Override
     public int hashCode() {
         int result = name.hashCode();
-        result = 31 * result + author.hashCode();
-        result = 31 * result + yearOfPublication;
         return result;
     }
 }

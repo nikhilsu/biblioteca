@@ -19,8 +19,8 @@ public class InputParserFactory {
             mapper.put("1", new ListBooksMenuItem(library, consoleView));
             mapper.put("2", new ListMovieMenuItem(library, consoleView));
             mapper.put("3", new CheckoutMovieMenuItem(library, consoleView));
-            mapper.put("4", new CheckoutBookMenuItem(library, consoleView));
-            mapper.put("5", new ReturnBookMenuItem(library, consoleView));
+            mapper.put("4", new CheckoutBookMenuItem(library, consoleView, user));
+            mapper.put("5", new ReturnBookMenuItem(library, consoleView, user));
             mapper.put("6", new LogoutMenuItem());
             return new InputParser(consoleView, mapper);
         }
@@ -29,8 +29,8 @@ public class InputParserFactory {
             mapper.put("1", new ListBooksMenuItem(library, consoleView));
             mapper.put("2", new ListMovieMenuItem(library, consoleView));
             mapper.put("3", new CheckoutMovieMenuItem(library, consoleView));
-            mapper.put("4", new CheckoutBookMenuItem(library, consoleView));
-            mapper.put("5", new ReturnBookMenuItem(library, consoleView));
+            mapper.put("4", new CheckoutBookMenuItem(library, consoleView, user));
+            mapper.put("5", new ReturnBookMenuItem(library, consoleView, user));
             mapper.put("6", new LogoutMenuItem());
             return new InputParser(consoleView, mapper);
         }

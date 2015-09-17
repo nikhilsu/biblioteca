@@ -3,6 +3,7 @@ package com.thoughtworks.librarysys;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 //Biblioteca Application constructs and assembles the dependencies of the controller, initiates and runs it.
@@ -42,8 +43,8 @@ public class BibliotecaApplication {
         this.consoleView = new ConsoleView(scanner, printStream);
         this.libraryObserver = new LibraryObserver(consoleView);
         ArrayList<Book> listOfBooks = manufactureListOfBooks();
-        ArrayList<Book> listOfCheckedOutBooks = new ArrayList<>();
-        this.books = new Books(listOfBooks, listOfCheckedOutBooks, libraryObserver);
+        HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
+        this.books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
         ArrayList<Movie> listOfMovies = manufactureListOfMovies();
         this.movies = new Movies(listOfMovies, libraryObserver);
         this.library = new Library(books, movies);

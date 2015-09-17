@@ -28,12 +28,13 @@ public class InputParserTest {
         Library library = mock(Library.class);
         ConsoleView consoleView = mock(ConsoleView.class);
         HashMap<String, MenuOptions> mapper = mock(HashMap.class);
-        when(mapper.get("2")).thenReturn(new CheckoutBookMenuItem(library, consoleView));
+        User user = mock(User.class);
+        when(mapper.get("2")).thenReturn(new CheckoutBookMenuItem(library, consoleView, user));
         InputParser inputParser = new InputParser(consoleView, mapper);
 
         String userChoice = "2";
 
-        assertEquals(new CheckoutBookMenuItem(library, consoleView).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new CheckoutBookMenuItem(library, consoleView, user).getClass(), inputParser.parse(userChoice).getClass());
     }
 
     @Test
@@ -66,14 +67,14 @@ public class InputParserTest {
     public void shouldReturnAnObjectOfTypeReturnBookMenuItemWhenTheUsersChoiceOfMenuItemIsThree() {
         Library library = mock(Library.class);
         ConsoleView consoleView = mock(ConsoleView.class);
+        User user = mock(User.class);
         HashMap<String, MenuOptions> mapper = mock(HashMap.class);
-        when(mapper.get("3" +
-                "")).thenReturn(new ReturnBookMenuItem(library, consoleView));
+        when(mapper.get("3")).thenReturn(new ReturnBookMenuItem(library, consoleView, user));
         InputParser inputParser = new InputParser(consoleView, mapper);
 
         String userChoice = "3";
 
-        assertEquals(new ReturnBookMenuItem(library, consoleView).getClass(), inputParser.parse(userChoice).getClass());
+        assertEquals(new ReturnBookMenuItem(library, consoleView, user).getClass(), inputParser.parse(userChoice).getClass());
     }
 
     @Test

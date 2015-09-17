@@ -13,11 +13,11 @@ public class LibraryTest {
         Books books = mock(Books.class);
         Movies movies = mock(Movies.class);
         Library library = new Library(books, movies);
-
+        User user = mock(User.class);
         Book bookToCheckOut = new Book("Book", "Author", 0);
-        library.checkOut(bookToCheckOut);
+        library.checkOut(bookToCheckOut, user);
 
-        verify(books).checkOut(bookToCheckOut);
+        verify(books).checkOut(bookToCheckOut, user);
     }
 
     @Test
@@ -37,11 +37,12 @@ public class LibraryTest {
         Books books = mock(Books.class);
         Movies movies = mock(Movies.class);
         Library library = new Library(books, movies);
+        User user = mock(User.class);
 
         Book bookToReturn = new Book("Book", "Author", 0);
-        library.toReturn(bookToReturn);
+        library.toReturn(bookToReturn, user);
 
-        verify(books).toReturn(bookToReturn);
+        verify(books).toReturn(bookToReturn, user);
     }
 
     @Test

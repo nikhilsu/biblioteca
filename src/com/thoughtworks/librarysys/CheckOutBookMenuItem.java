@@ -4,11 +4,12 @@ package com.thoughtworks.librarysys;
 public class CheckoutBookMenuItem implements MenuOptions {
     private Library library;
     private ConsoleView consoleView;
+    private User currentUser;
 
-
-    public CheckoutBookMenuItem(Library library, ConsoleView consoleView) {
+    public CheckoutBookMenuItem(Library library, ConsoleView consoleView, User currentUser) {
         this.library = library;
         this.consoleView = consoleView;
+        this.currentUser = currentUser;
     }
 
     @Override
@@ -16,6 +17,6 @@ public class CheckoutBookMenuItem implements MenuOptions {
         consoleView.printOnConsole("Enter The Book to checkout: ");
         String nameOfTheBookToCheckout = consoleView.inputFromUser();
         Book bookToCheckout = new Book(nameOfTheBookToCheckout, "Not needed", 0);
-        library.checkOut(bookToCheckout);
+        library.checkOut(bookToCheckout, currentUser);
     }
 }
