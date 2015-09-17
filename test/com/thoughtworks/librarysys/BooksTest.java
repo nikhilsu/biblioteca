@@ -107,11 +107,33 @@ public class BooksTest {
         listOfBooksCheckedOutByUsers.put(borrowedBook, user);
         LibraryObserver libraryObserver = mock(LibraryObserver.class);
         Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
+        User returningUser = mock(User.class);
 
         Book libraryBook = new Book("Head First Java", "Author", 0);
-        books.toReturn(libraryBook, user);
+        books.toReturn(libraryBook, returningUser);
 
         verify(libraryObserver).notifyUnsuccessfulBookReturn();
+    }
+
+    @Test
+    public void shouldNotReturnABookToTheLibraryFromADifferentUserEvenIfItBelongsToTheLibrary() {
+        ArrayList<Book> listOfBooks = new ArrayList<>();
+        Book bookOne = new Book("Gone Girl", "Gillian Flynn", 2014);
+        Book bookTwo = new Book("Kite Runner", "Khaled Hossieni", 2003);
+        listOfBooks.add(bookOne);
+        listOfBooks.add(bookTwo);
+        HashMap<Book, User> listOfBooksCheckedOutByUsers = new HashMap<>();
+        Book borrowedBook = new Book("Inferno", "Dan Brown", 2012);
+        User user = new User("222-2222", "password2", "Registered");
+        listOfBooksCheckedOutByUsers.put(borrowedBook, user);
+        LibraryObserver libraryObserver = mock(LibraryObserver.class);
+        Books books = new Books(listOfBooks, listOfBooksCheckedOutByUsers, libraryObserver);
+        User returningUser = new User("111-1111", "password1", "Registered");
+
+        Book libraryBook = new Book("Inferno", "Author", 0);
+        books.toReturn(libraryBook, returningUser);
+
+        verify(libraryObserver).notifyInvalidUser();
     }
 
     @Test
