@@ -10,7 +10,7 @@ public class UserTest {
     @Test
     public void shouldBeEqualToAnotherUserWithTheSameLibraryID() {
         User userOne = new User("John", "abc@mail.com", "12345678", "111-1111", "password1", "Registered");
-        User userTwo = new User("Mary", "xyz@mail.com", "22345678", "111-1111", "password2", "Registered");
+        User userTwo = new User("Mary", "xyz@mail.com", "22345678", "111-1111", "password1", "Registered");
 
         assertEquals(userOne, userTwo);
     }

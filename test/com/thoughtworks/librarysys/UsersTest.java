@@ -29,7 +29,7 @@ public class UsersTest {
         ArrayList<User> listOfRegisteredUsers = new ArrayList<>(Arrays.asList(userOne, userTwo, userThree));
         Users users = new Users(listOfRegisteredUsers);
 
-        assertNotEquals(users.authenticate("111-1111", "wrong Password"), new User("Temp", "mailAddress", "00000000", "Not a member", "Not known", "Guest"));
+        assertEquals(users.authenticate("111-1111", "wrong Password"), new User("Temp", "mailAddress", "00000000", "Not a member", "Not known", "Guest"));
     }
 
     @Test
