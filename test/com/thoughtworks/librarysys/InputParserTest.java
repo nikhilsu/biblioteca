@@ -125,4 +125,13 @@ public class InputParserTest {
 
         assertNotEquals(inputParserOne, inputParserTwo);
     }
+
+    @Test
+    public void shouldNotBeEqualToSomethingThatIsNotAParser() {
+        ConsoleView consoleView = mock(ConsoleView.class);
+        HashMap<String, MenuOptions> map = mock(HashMap.class);
+        InputParser inputParserOne = new InputParser(consoleView, map);
+
+        assertNotEquals(inputParserOne, "inputParserTwo");
+    }
 }

@@ -21,6 +21,8 @@ public class InputParser {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj.getClass() != this.getClass())
+            return false;
         InputParser that = (InputParser) obj;
         if(this.consoleView.equals(that.consoleView) && this.mapper.equals(that.mapper))
             return true;
