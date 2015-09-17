@@ -77,6 +77,6 @@ public class Books {
 
             bookChekOutDetails += String.format("%-30s%-30s%-20s%-30s\n", tokensOfBookDetails[0], tokensOfBookDetails[1], tokensOfBookDetails[2], entry.getValue().toString());
         }
-        return bookChekOutDetails;
+        return bookChekOutDetails + "\n";
     }
 }

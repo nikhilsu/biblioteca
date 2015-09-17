@@ -13,6 +13,6 @@ public class DetailsOfCheckedOutBooksMenuItem implements MenuOptions {
     @Override
     public void performOperation() {
         String bookCheckoutDetails = library.listBookCheckoutDetails();
-        consoleView.printOnConsole(bookCheckoutDetails + "\n\n");
+        consoleView.printOnConsole(bookCheckoutDetails);
     }
 }
