@@ -17,6 +17,10 @@ public class LoginMenuItem implements MenuOptions {
         consoleView.printOnConsole("Enter Password : ");
         String password = consoleView.inputFromUser();
         this.user = users.authenticate(userLibraryID, password);
+        if (user.getRole().equals("Guest"))
+            consoleView.printOnConsole("Login Unsuccessful, Try again!\n\n");
+        else
+            consoleView.printOnConsole("Login Successful!\n\n");
     }
 
     public User getUser() {

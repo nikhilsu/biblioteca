@@ -24,7 +24,7 @@ public class InputParserFactoryTest {
         mapper.put("3", new CheckoutMovieMenuItem(library, consoleView));
         mapper.put("4", new CheckoutBookMenuItem(library, consoleView, user));
         mapper.put("5", new ReturnBookMenuItem(library, consoleView, user));
-        mapper.put("6", new LogoutMenuItem());
+        mapper.put("6", new LogoutMenuItem(user, consoleView));
 
         InputParser inputParser = new InputParser(consoleView, mapper);
 
