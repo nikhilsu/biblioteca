@@ -1,7 +1,7 @@
 
 ## Description
 
-To design an implement a Library Management system based on the User requirements.
+Implemented a simple Library Management System for a Design exercise. 
 
 ## Dependencies
 * JDK(1.6 or higher)
